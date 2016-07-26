@@ -1,0 +1,3 @@
+# Pip.WebUI Getting Started <br/> Step 6. Add IoT Nodes page with tiles view
+
+...
