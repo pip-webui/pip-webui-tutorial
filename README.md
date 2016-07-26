@@ -1,4 +1,4 @@
-# Pip.WebUI Getting Started
+# <img src="https://github.com/pip-webui/pip-webui/blob/master/doc/Logo.png" alt="Pip.WebUI Logo" style="max-width:30%"> <br/> Getting Started Guide
 
 This sample demonstrates step-by-step creation of non-trivial Line-of-Business application
 using [Pip.WebUI framework](http://www.github.com/pip-webui/pip-webui). 
