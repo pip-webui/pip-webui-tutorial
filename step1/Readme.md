@@ -1,4 +1,3 @@
-# Pip.WebUI Getting Started
-# Step 1. Create application structure
+# Pip.WebUI Getting Started <br/> Step 1. Create application structure
 
 ...
