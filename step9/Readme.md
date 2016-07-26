@@ -1,3 +1,3 @@
-# Pip.WebUI Getting Started <br/> Step 9. Show map view for IoT Nodes page
+# Pip.WebUI Getting Started <br/> Step 9. Add map view for IoT Nodes page
 
 ...
