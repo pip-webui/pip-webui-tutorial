@@ -1,4 +1,8 @@
-# Pip.WebUI Getting Started <br/> Step 4. Add signin and signup
+# Pip.WebUI Getting Started <br/> Step 4. Add sign in and sign up
+
+##### In [previous step](https://github.com/pip-webui/pip-webui-sample/blob/master/step3/Readme.md) we described how to configure navigation in your application using pip-webui components
+
+#### Let's add sign in and sign up pages to your application
 
 To initialize `signin` and `signup` states was connected `pipEntry`
 
@@ -75,3 +79,5 @@ thisModule.controller('module2Controller', function($scope, pipAppBar) {
     pipAppBar.showLocalActions(); // Show actions of your application
 });
 ```
+
+##### In [next step](https://github.com/pip-webui/pip-webui-sample/blob/master/step5/Readme.md) we will describe how to add settings and help pages to your application

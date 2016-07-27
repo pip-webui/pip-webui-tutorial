@@ -1,8 +1,8 @@
 # Pip.WebUI Getting Started <br/> Step 2. Include pip-webui components
 
-###### In [previous step](https://github.com/pip-webui/pip-webui-sample/blob/master/step1/Readme.md) we described how to create structure for your application
+##### In [previous step](https://github.com/pip-webui/pip-webui-sample/blob/master/step1/Readme.md) we described how to create structure for your application
 
-##### Let's include pip-webui components:
+#### Let's include pip-webui components:
 
 Add links to external libraries and pip-webui components `.css` files in your `index.html`
 
@@ -51,4 +51,4 @@ Add `ng-app` and `ng-controller` attributes to `body` tag in your `index.html`
 <body ng-app="pipWebUISampleModule" ng-controller="pipWebUISampleController">
 ```
 
-###### In [next step](https://github.com/pip-webui/pip-webui-sample/blob/master/step3/Readme.md) we will describe how to configure navigation in your application using pip-webui components
+##### In [next step](https://github.com/pip-webui/pip-webui-sample/blob/master/step3/Readme.md) we will describe how to configure navigation in your application using pip-webui components

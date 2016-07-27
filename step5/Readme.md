@@ -1,5 +1,9 @@
 # Pip.WebUI Getting Started <br/> Step 5. Add settings and help
 
+##### In [previous step](https://github.com/pip-webui/pip-webui-sample/blob/master/step4/Readme.md) we described how to add sign in and sign up pages to your application
+
+#### Let's add settings and help pages to your application
+
 To initialize settings states was connected `pipSettings`
 
 To go to settings pages add `Settings` link with such url:`/settings` to sidenav sections

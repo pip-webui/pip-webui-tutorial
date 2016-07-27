@@ -138,4 +138,4 @@ Don't forget to add link to `index.js` in your `index.html`
 <script src="index.js"></script>
 ```
 
-####### In [next step](https://github.com/pip-webui/pip-webui-sample/blob/master/step2/Readme.md) we will describe how to include pip-webui components to your application
+###### In [next step](https://github.com/pip-webui/pip-webui-sample/blob/master/step2/Readme.md) we will describe how to include pip-webui components to your application
