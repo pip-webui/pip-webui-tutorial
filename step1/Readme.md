@@ -39,7 +39,7 @@ Create `package.json` file in root of project with such code:
 
 Create `/src` folder in root of project and create such files inside:
 
-`index.html`
+###### `index.html`
 
 ```html
 <!DOCTYPE html>
@@ -54,7 +54,7 @@ Create `/src` folder in root of project and create such files inside:
 </html>
 ```
 
-`index.js`
+###### `index.js`
 
 ```javascript
 (function () {
