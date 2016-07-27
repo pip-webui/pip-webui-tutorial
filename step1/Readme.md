@@ -56,11 +56,6 @@ require('pip-webui-tasks').all();
 // Define build tasks        
 gulp.task('build', ['build-dev', 'build-prod']);
 gulp.task('rebuild', ['build-dev']);
-gulp.task('clean', ['build-clean']);
-gulp.task('watch', ['build-watch']);
-gulp.task('jshint', ['test-jshint']);
-gulp.task('launch', ['samples-launch']);
-gulp.task('publish', ['samples-publish']);
 
 // Set default task
 gulp.task('default', ['build']);
@@ -88,15 +83,6 @@ module.exports = {
         import: [
             'node_modules/pip-webui/dist/**/*'
         ]
-    },
-    samples: {
-        port: 8004,
-        publish: {
-            bucket: 'webui.pipdevs.com',
-            accessKeyId: 'AKIAIEXTTAEEHYPHS3OQ',
-            secretAccessKey: 'otMg2vQLZjF4Nkb90j1prtugoUCNm3XqLS/KkHyc',
-            region: 'us-west-1'
-        }
     }
 };
 ```
@@ -119,7 +105,7 @@ Run default gulp task
 gulp
 ```
 
-After the task in root of project will appear folder `/lib`, where 
+After the task, in root of project will appear folder `/lib`, in which will be copied dist files of pipWebUI components and external libraries
 
 Create `/src` folder in root of project and create such files inside:
 
@@ -145,3 +131,11 @@ Create `/src` folder in root of project and create such files inside:
     
 })();
 ```
+
+Don't forget to add link to `index.js` in your `index.html`
+
+```markup
+<script src="index.js"></script>
+```
+
+In [next step](https://github.com/pip-webui/pip-webui-sample/blob/master/step2/Readme.md) we will describe how to include pip-webui components to your application
