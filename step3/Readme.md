@@ -1,6 +1,6 @@
 # Pip.WebUI Getting Started <br/> Step 3. Add appbar and sidenav
 
-In [previous step](https://github.com/pip-webui/pip-webui-sample/blob/master/step2/Readme.md) we described how to include pip-webui components to your application
+###### In [previous step](https://github.com/pip-webui/pip-webui-sample/blob/master/step2/Readme.md) we described how to include pip-webui components to your application
 
 ##### Let's add appbar and sidenav components to your application
 
@@ -85,4 +85,4 @@ thisModule.config(function (pipSideNavProvider, $mdIconProvider, pipAppBarProvid
 });
 ```
 
-In [next step](https://github.com/pip-webui/pip-webui-sample/blob/master/step4/Readme.md) we will describe how to add sign in and sign up pages to your application
+###### In [next step](https://github.com/pip-webui/pip-webui-sample/blob/master/step4/Readme.md) we will describe how to add sign in and sign up pages to your application
