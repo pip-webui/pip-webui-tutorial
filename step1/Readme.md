@@ -1,69 +1,67 @@
 # Pip.WebUI Getting Started <br/> Step 1. Create application structure
 
-#### Prerequisite: Node.js
+### Setup development environment
 
-Install Node.js® and npm if they are not already on your machine.
+If you don't have node.js installed on your computer, download and install it from https://nodejs.org/en/download/
 
 Verify that you are running at least node v4.x.x and npm 3.x.x or older by running node -v and npm -v in a terminal/console window.
 
-#### Let's build application:
+Install required build tools.
+```bash
+npm install bower -g
+npm install gulp-cli -g
+```
 
-Create `package.json` file in root of project with such code:
+### Create project folder structure
+
+Todo: Add list of folders or screenshot from Windows Explorer 
+
+### Install dependencies
+
+Create `package.json` file in the root folder, to define npm dependencies.
 
 ```javascript
 {
-  "name": "SampleApplication",
+  "name": "pip-webui-sample",
   "version": "1.0.0",
-  "author": "Author",
-  "description": "Sample of application using pipWebUI components",
-  "contributors": [
-    {
-      "name": "<contributor_name>",
-      "email": "<contributor_email>"
-    }
-  ],
-  "keywords": [
-    "sample",
-    "pipWebUI"
-  ],
-  "noAnalyze": true,
-  "license": "Commercial",
-  "private": true,
-  "scripts": {
-    "build": "gulp build",
-    "lint": "gulp lint",
-    "samples": "gulp launch",
-    "test": "karma start"
-  },
+  "description": "Getting started sample for Pip.WebUI",
   "dependencies": {
   },
   "devDependencies": {
-    "pip-webui": "git+https://github.com/pip-webui/pip-webui-all.git",
-    "pip-webui-tasks": "git+https://github.com/pip-webui/pip-webui-tasks.git"
+    "pip-webui": "^1.0.0",
+    "pip-webui-tasks": "^1.0.0"
   }
 }
 
 ```
 
-Create `gulpfile.js`, where will use standard gulp-tasks from **pip-webui-tasks** module:
+Install npm dependencies by executing in command line:
+```bash
+npm install
+```
+
+Todo: Add installation of bower dependencies.
+
+### Configure build tasks 
+
+Create `gulpfile.js` file in the root folder, and define their build tasks using tasks provided **pip-webui-tasks** module.
 
 ```javascript
 var gulp = require('gulp');
 
-// Add standard tasks    
+// Add all standard tasks    
 require('pip-webui-tasks').all();
 
 // Define build tasks        
 gulp.task('build', ['build-dev', 'build-prod']);
 gulp.task('rebuild', ['build-dev']);
+gulp.task('clean', ['build-clean']);
 
 // Set default task
 gulp.task('default', ['build']);
 ```
 
-More information about standard gulp-tasks from **pip-webui-tasks** module you can find [here](https://github.com/pip-webui/pip-webui-tasks).
-
-Create `build.conf.js`, where will configure build tasks
+Create `build.conf.js` file in the root folder and define configuration for the build tasks.
 
 ```javascript
 module.exports = {
@@ -73,50 +71,41 @@ module.exports = {
     },
     build: {
         js: true,
-        ts: true,
         html: true,
         css: true,
         lib: true,
         images: true
     },
     file: {
-        import: [
+        lib: [
             'node_modules/pip-webui/dist/**/*'
         ]
     }
 };
 ```
 
-Before install packages install global gulp
+For more information on build tasks and configuration see [pip-webui-tasks module](https://github.com/pip-webui/pip-webui-tasks).
 
-```
-npm install gulp -g && npm install gulp --save-dev
-```
+### Create stubs for application source files
 
-and then install dependencies
+In the `/src` folder create the following tree file.
 
-```
-npm install
-```
-
-Run default gulp task
-
-```
-gulp
+##### `index.js`
+```javascript
+(function () {
+    
+})();
 ```
 
-After the task, in root of project will appear folder `/lib`, in which will be copied dist files of pipWebUI components and external libraries
-
-Create `/src` folder in root of project and create such files inside:
-
-###### `index.html`
-
+##### `index.html`
 ```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>PipWebUI Sample Application</title>
+    <title>Pip.WebUI Getting Started</title>
+    <link rel="stylesheet" href="styles.css"/>
+    <script src="index.js"></script>
 </head>
 <body>
 
@@ -124,18 +113,24 @@ Create `/src` folder in root of project and create such files inside:
 </html>
 ```
 
-###### `index.js`
-
-```javascript
-(function () {
-    
-})();
+##### `styles.less`
+```css
+// Todo: add styles here
 ```
 
-Don't forget to add link to `index.js` in your `index.html`
+### Execute first build
 
-```markup
-<script src="index.js"></script>
+In command line start the build process:
+```
+gulp build
 ```
 
-###### In [next step](https://github.com/pip-webui/pip-webui-sample/blob/master/step2/Readme.md) we will describe how to include pip-webui components to your application
+If build is successful, in the root folder you can find two new folders `/lib` and `/dist`
+
+Go to `/dist` folder, locate `index.html` file and open it in the browser.  You shall see an empty web page.
+
+Todo: Add screeshot with the empty application
+
+### Go to step 2
+
+Go to [step 2](https://github.com/pip-webui/pip-webui-sample/blob/master/step2/Readme.md) to add Pip.WebUI libraries and create Angular boilerplate code in your application.
