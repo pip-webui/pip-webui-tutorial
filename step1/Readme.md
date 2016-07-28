@@ -127,6 +127,8 @@ gulp build
 
 If build is successful, in the root folder you can find two new folders **/lib** and **/dist**
 
+Todo: Add screenshot from Windows Exlorer that shows content on the new folders
+
 Go to **/dist** folder, locate **index.html** file and open it in the browser.  You shall see an empty web page.
 
 Todo: Add screeshot with the empty application
