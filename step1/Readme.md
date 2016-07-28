@@ -18,7 +18,7 @@ Todo: Add list of folders or screenshot from Windows Explorer
 
 ### Install dependencies
 
-Create `package.json` file in the root folder, to define npm dependencies.
+Create **package.json** file in the root folder, to define npm dependencies.
 
 ```javascript
 {
@@ -44,7 +44,7 @@ Todo: Add installation of bower dependencies.
 
 ### Configure build tasks 
 
-Create `gulpfile.js` file in the root folder, and define their build tasks using tasks provided **pip-webui-tasks** module.
+Create **gulpfile.js** file in the root folder, and define their build tasks using tasks provided **pip-webui-tasks** module.
 
 ```javascript
 var gulp = require('gulp');
@@ -61,7 +61,7 @@ gulp.task('clean', ['build-clean']);
 gulp.task('default', ['build']);
 ```
 
-Create `build.conf.js` file in the root folder and define configuration for the build tasks.
+Create **build.conf.js** file in the root folder and define configuration for the build tasks.
 
 ```javascript
 module.exports = {
@@ -88,16 +88,16 @@ For more information on build tasks and configuration see [pip-webui-tasks modul
 
 ### Create stubs for application source files
 
-In the `/src` folder create the following tree file.
+In the **/src** folder create the following tree file.
 
-##### `index.js`
+##### index.js
 ```javascript
 (function () {
     
 })();
 ```
 
-##### `index.html`
+##### index.html
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -113,7 +113,7 @@ In the `/src` folder create the following tree file.
 </html>
 ```
 
-##### `styles.less`
+##### styles.less
 ```css
 // Todo: add styles here
 ```
@@ -125,9 +125,9 @@ In command line start the build process:
 gulp build
 ```
 
-If build is successful, in the root folder you can find two new folders `/lib` and `/dist`
+If build is successful, in the root folder you can find two new folders **/lib** and **/dist**
 
-Go to `/dist` folder, locate `index.html` file and open it in the browser.  You shall see an empty web page.
+Go to **/dist** folder, locate **index.html** file and open it in the browser.  You shall see an empty web page.
 
 Todo: Add screeshot with the empty application
 
