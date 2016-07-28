@@ -1,12 +1,12 @@
 # Pip.WebUI Getting Started <br/> Step 4. Add sign in and sign up
 
-##### In [previous step](https://github.com/pip-webui/pip-webui-sample/blob/master/step3/Readme.md) we described how to configure navigation in your application using pip-webui components
+[Go to step 3](https://github.com/pip-webui/pip-webui-sample/blob/master/step3/) to configure navigation in your application using pip.WebUI components
 
-#### Let's add sign in and sign up pages to your application
+To initialize **signin** and **signup** states was connected **pipEntry** in [step 2](https://github.com/pip-webui/pip-webui-sample/blob/master/step2/)
 
-To initialize `signin` and `signup` states was connected `pipEntry`
+### Add link to go to **signin** page
 
-To go to `signin` page add `Sign Out` link with such url:`/signout` to sidenav sections
+To go to **signin** page add **Sign Out** link with such url:**/signout** to sidenav sections
 It will look like this:
 
 ```javascript
@@ -25,7 +25,9 @@ pipSideNavProvider.sections([
 ]);
 ```
 
-After add `pip-main-body` tag with ui-view attribute inside `pip-main` tag in your `index.html`
+### Add **pip-main-body** tag
+
+After add **pip-main-body** tag with ui-view attribute inside **pip-main** tag in your **index.html**
 
 ```markup
 <pip-main>
@@ -37,7 +39,9 @@ After add `pip-main-body` tag with ui-view attribute inside `pip-main` tag in yo
 </pip-main>
 ```
 
-Also you need to configure states to go to your application pages after `Sign in` or `Sign Up`
+### Configure states and add controllers
+
+Also you need to configure states to go to your application pages after authorization
 
 ```javascript
 thisModule.config(function (pipSideNavProvider, $mdIconProvider, pipAppBarProvider) {
@@ -80,4 +84,16 @@ thisModule.controller('module2Controller', function($scope, pipAppBar) {
 });
 ```
 
-##### In [next step](https://github.com/pip-webui/pip-webui-sample/blob/master/step5/Readme.md) we will describe how to add settings and help pages to your application
+Update page in browser and you shall see **Sing in** page
+
+![Sign in page](artifacts/sign_in_page.png)
+
+Click **Sign up here** link and you will see **Sign up** form
+
+![Sign up form](artifacts/sign_up_form.png)
+
+After **sign up** you will see **post sign up** form. Fill form fields (if you want), click **continue** button and you will see pages of your application
+
+### Continue
+
+[Go to step 5](https://github.com/pip-webui/pip-webui-sample/blob/master/step5/) to add settings and help tabs to your application

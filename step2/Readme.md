@@ -1,24 +1,26 @@
-# Pip.WebUI Getting Started <br/> Step 2. Include pip-webui components
+# Pip.WebUI Getting Started <br/> Step 2. Include pip.WebUI components
 
-##### In [previous step](https://github.com/pip-webui/pip-webui-sample/blob/master/step1/Readme.md) we described how to create structure for your application
+[Go to step 1](https://github.com/pip-webui/pip-webui-sample/blob/master/step1/) to create structure for your application.
 
-#### Let's include pip-webui components:
+### Add Pip.WebUI libraries:
 
-Add links to external libraries and pip-webui components `.css` files in your `index.html`
+Add links to external libraries and pip.WebUI components **.css** files in your **index.html**
 
 ```markup
 <link rel="stylesheet" href="../lib/pip-webui-lib.css"/>
 <link rel="stylesheet" href="../lib/pip-webui.css"/>
 ```
 
-Add links to external libraries and pip-webui components `.js` files in your `index.html`
+Add links to external libraries and pip.WebUI components **.js** files in your **index.html**
 
 ```markup
 <script src="../lib/pip-webui-lib.js"></script>
 <script src="../lib/pip-webui.js"></script>
 ```
 
-Initialize **angular module** in your `index.js` and add links to all pipWebUI modules
+### Create Angular boilerplate code
+
+Initialize **angular module** in your **index.js** and add links to all pip.WebUI modules
 
 ```javascript
 var thisModule = angular.module('pipWebUISampleModule', [
@@ -29,7 +31,7 @@ var thisModule = angular.module('pipWebUISampleModule', [
 ]);
 ```
 
-Add **angular config** in your `index.js`
+Add **angular config** in your **index.js**
 
 ```javascript
 thisModule.config(function () {
@@ -37,7 +39,7 @@ thisModule.config(function () {
 });
 ```
 
-Add **angular controller** in your `index.js`
+Add **angular controller** in your **index.js**
 
 ```javascript
 thisModule.controller('pipWebUISampleController', function($scope) {
@@ -45,10 +47,12 @@ thisModule.controller('pipWebUISampleController', function($scope) {
 });
 ```
 
-Add `ng-app` and `ng-controller` attributes to `body` tag in your `index.html`
+Add **ng-app** and **ng-controller** attributes to **body** tag in your **index.html**
 
 ```markup
 <body ng-app="pipWebUISampleModule" ng-controller="pipWebUISampleController">
 ```
 
-##### In [next step](https://github.com/pip-webui/pip-webui-sample/blob/master/step3/Readme.md) we will describe how to configure navigation in your application using pip-webui components
+### Continue
+
+[Go to step 3](https://github.com/pip-webui/pip-webui-sample/blob/master/step3/) to configure navigation in your application using pip.WebUI components.

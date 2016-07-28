@@ -1,0 +1,31 @@
+{
+  "name": "SampleApplication",
+  "version": "1.0.0",
+  "author": "Author",
+  "description": "Sample of application using pipWebUI components",
+  "contributors": [
+    {
+      "name": "<contributor_name>",
+      "email": "<contributor_email>"
+    }
+  ],
+  "keywords": [
+    "sample",
+    "pipWebUI"
+  ],
+  "noAnalyze": true,
+  "license": "Commercial",
+  "private": true,
+  "scripts": {
+    "build": "gulp build",
+    "lint": "gulp lint",
+    "samples": "gulp launch",
+    "test": "karma start"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "pip-webui": "git+https://github.com/pip-webui/pip-webui-all.git",
+    "pip-webui-tasks": "git+https://github.com/pip-webui/pip-webui-tasks.git"
+  }
+}
