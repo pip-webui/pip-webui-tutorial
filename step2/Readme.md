@@ -27,7 +27,7 @@ var thisModule = angular.module('pipWebUISampleModule', [
         // pipWebUI modules
         'pipCore', 'pipRest', 'pipData', 'pipEntry', 'pipControls', 'pipLayout', 'pipNav',
         'pipLocations', 'pipPictures', 'pipDocuments', 'pipComposite', 'pipGuidance',
-        'pipSettings', 'pipUserSettings', 'pipErrorHandling', 'pipSupport'
+        'pipSettings', 'pipUserSettings', 'pipErrorHandling', 'pipSupport', 'pipHelp'
 ]);
 ```
 
