@@ -131,6 +131,6 @@ Go to `/dist` folder, locate `index.html` file and open it in the browser.  You 
 
 Todo: Add screeshot with the empty application
 
-### Go to step 2
+### Continue
 
-Go to [step 2](https://github.com/pip-webui/pip-webui-sample/blob/master/step2/Readme.md) to add Pip.WebUI libraries and create Angular boilerplate code in your application.
+[Go to step 2](https://github.com/pip-webui/pip-webui-sample/blob/master/step2/Readme.md) to add Pip.WebUI libraries and create Angular boilerplate code in your application.
