@@ -67,7 +67,7 @@
             ]);
 
             // Add a specific settings tab
-            pipSettingsProvider.addPage({
+            pipSettingsProvider.addTab({
                 state: 'specific_settings_tab',
                 title: 'Specific settings tab',
                 auth: true,
@@ -78,7 +78,7 @@
             });
 
             // Add a specific help tab
-            pipHelpProvider.addPage({
+            pipHelpProvider.addTab({
                 state: 'specific_help_tab',
                 title: 'Specific help tab',
                 auth: true,
