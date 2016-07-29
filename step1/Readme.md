@@ -1,4 +1,4 @@
-# <small>Pip.WebUI Getting Started</small> <br/> Step 1. Create application structure
+# Pip.WebUI Getting Started <br/> Step 1. Create application structure
 
 ### Setup development environment
 
