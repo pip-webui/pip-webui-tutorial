@@ -6,7 +6,7 @@
 
 Add **pip-main** tag in body of your **index.html**
 
-```markup
+```html
 <body ng-app="pipWebUISampleModule" ng-controller="pipWebUISampleController">
 
     <pip-main>
@@ -18,7 +18,7 @@ Add **pip-main** tag in body of your **index.html**
 
 Add **pip-appbar** and **pip-sidenav** tags inside **pip-main** tag
 
-```markup
+```html
 <pip-main>
         <pip-appbar></pip-appbar>
 

@@ -6,14 +6,14 @@
 
 Add links to external libraries and pip.WebUI components **.css** files in your **index.html**
 
-```markup
+```html 
 <link rel="stylesheet" href="../lib/pip-webui-lib.css"/>
 <link rel="stylesheet" href="../lib/pip-webui.css"/>
 ```
 
 Add links to external libraries and pip.WebUI components **.js** files in your **index.html**
 
-```markup
+```html
 <script src="../lib/pip-webui-lib.js"></script>
 <script src="../lib/pip-webui.js"></script>
 ```
@@ -49,7 +49,7 @@ thisModule.controller('pipWebUISampleController', function($scope) {
 
 Add **ng-app** and **ng-controller** attributes to **body** tag in your **index.html**
 
-```markup
+```html
 <body ng-app="pipWebUISampleModule" ng-controller="pipWebUISampleController">
 ```
 

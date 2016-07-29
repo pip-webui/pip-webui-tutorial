@@ -29,7 +29,7 @@ pipSideNavProvider.sections([
 
 After add **pip-main-body** tag with ui-view attribute inside **pip-main** tag in your **index.html**
 
-```markup
+```html
 <pip-main>
         ...
 
@@ -96,4 +96,4 @@ After **sign up** you will see **post sign up** form. Fill form fields (if you w
 
 ### Continue
 
-[Go to step 5](https://github.com/pip-webui/pip-webui-sample/blob/master/step5/) to add settings and help tabs to your application
+[Go to step 5](https://github.com/pip-webui/pip-webui-sample/blob/master/step5/) to add settings and help to your application.

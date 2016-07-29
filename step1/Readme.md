@@ -112,8 +112,8 @@ In the **/src** folder create the following tree file.
 <head>
     <meta charset="UTF-8">
     <title>Pip.WebUI Getting Started</title>
-    <link rel="stylesheet" href="styles.css"/>
-    <script src="index.js"></script>
+    <link rel="stylesheet" href="SampleApplication.css"/>
+    <script src="SampleApplication.js"></script>
 </head>
 <body>
 
