@@ -1,16 +1,20 @@
 (function (angular) {
     var thisModule = angular.module('pipWebUISampleModule', [
-        // pipWebUI modules
+        // pip.WebUI modules
         'pipCore', 'pipRest', 'pipData', 'pipEntry', 'pipControls', 'pipLayout', 'pipNav',
         'pipLocations', 'pipPictures', 'pipDocuments', 'pipComposite', 'pipGuidance',
         'pipSettings', 'pipUserSettings', 'pipErrorHandling', 'pipSupport', 'pipHelp',
-
+        
         // Application templates
-        'SampleApplication.Templates'
+        'SampleApplication.Templates',
+        
+        // Sample application modules
+        'tilesViewModule'
     ]);
     
     thisModule.config(
-        function (pipSideNavProvider, $mdIconProvider, pipAppBarProvider, pipAuthStateProvider, pipSettingsProvider, pipHelpProvider) {
+        function (pipSideNavProvider, $mdIconProvider, pipAppBarProvider, pipAuthStateProvider, 
+                  pipSettingsProvider, pipHelpProvider, $urlRouterProvider) {
             // Configure icons of application
             $mdIconProvider.iconSet('icons', 'images/icons.svg', 512);
 
@@ -25,9 +29,10 @@
 
             // Configure states of application
             pipAuthStateProvider
-                .state('module_1', {
-                    url: '/module_1',
-                    controller: 'module1Controller',
+                .state('tiles_view', {
+                    url: '/tiles_view',
+                    controller: 'tilesViewController',
+                    templateUrl: 'tiles_view/tiles_view.html',
                     auth: true
                 })
                 .state('module_2', {
@@ -38,13 +43,17 @@
 
             // Configure default states
             pipAuthStateProvider.unauthorizedState('signin');
-            pipAuthStateProvider.authorizedState('module_1');
+            pipAuthStateProvider.authorizedState('tiles_view');
+            
+            $urlRouterProvider.otherwise(function ($injector, $location) {
+                return $location.$$path === '' ? '/signin' : '/tiles_view';
+            });
 
             // Configure sidenav sections
             pipSideNavProvider.sections([
                 {
                     links: [
-                        {title: 'Module 1', url: '/module_1'},
+                        {title: 'Tiles View', url: '/tiles_view'},
                         {title: 'Module 2', url: '/module_2'}
                     ]
                 },
@@ -82,12 +91,6 @@
     
     thisModule.controller('pipWebUISampleController', function($scope, pipAppBar) {
 
-    });
-
-    thisModule.controller('module1Controller', function($scope, pipAppBar) {
-        pipAppBar.showTitleText('Module 1'); // Show title of application or specific page
-        pipAppBar.showMenuNavIcon(); // Show button in appbar, which open sidenav
-        pipAppBar.showLocalActions(); // Show actions of your application
     });
 
     thisModule.controller('module2Controller', function($scope, pipAppBar) {

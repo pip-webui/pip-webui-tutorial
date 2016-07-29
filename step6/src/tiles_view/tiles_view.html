@@ -1,0 +1,19 @@
+<pip-tiles class="layout-fill" column-width="440">
+    <div class="masonry-brick pip-tile w440-flex">
+        <div class="p24-flex">
+            <div class="pip-details-title">
+                <p class="pip-title">This is a special node</p>
+                <p class="pip-subtitle">Near</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="masonry-brick pip-tile w440-flex " ng-repeat="node in nodes">
+        <div class="p24-flex">
+            <div class="pip-details-title">
+                <p class="pip-title">{{ node.name }}</p>
+                <p class="pip-subtitle">Temperature: {{ node.temperature }}</p>
+            </div>
+        </div>
+    </div>
+</pip-tiles>

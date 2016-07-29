@@ -3,15 +3,18 @@
         // pipWebUI modules
         'pipCore', 'pipRest', 'pipData', 'pipEntry', 'pipControls', 'pipLayout', 'pipNav',
         'pipLocations', 'pipPictures', 'pipDocuments', 'pipComposite', 'pipGuidance',
-        'pipSettings', 'pipUserSettings', 'pipErrorHandling', 'pipSupport'
+        'pipSettings', 'pipUserSettings', 'pipErrorHandling', 'pipSupport', 'pipHelp',
+
+        // Application templates
+        'SampleApplication.Templates'
     ]);
     
     thisModule.config(function (pipSideNavProvider, $mdIconProvider, pipAppBarProvider) {
         // Configure icons of application
-        $mdIconProvider.iconSet('icons', '../lib/images/icons.svg', 512);
+        $mdIconProvider.iconSet('icons', 'images/icons.svg', 512);
 
         // Configure application logo
-        pipAppBarProvider.appTitleLogo('../lib/images/Logo.svg');
+        pipAppBarProvider.appTitleLogo('images/Logo.svg');
 
         // Configure global secondary actions
         pipAppBarProvider.globalSecondaryActions([

@@ -63,7 +63,10 @@ thisModule.config(function (pipSideNavProvider, $mdIconProvider, pipAppBarProvid
      // Configure default states
      pipAuthStateProvider.unauthorizedState('signin');
      pipAuthStateProvider.authorizedState('module_1');
-
+    
+    $urlRouterProvider.otherwise(function ($injector, $location) {
+        return $location.$$path === '' ? '/signin' : '/tiles_view';
+    });
     ... 
 });
 ```

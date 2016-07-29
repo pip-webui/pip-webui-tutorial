@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PipWebUI Sample Application</title>
+
+    <link rel="stylesheet" href="pip-webui-lib.css"/>
+    <link rel="stylesheet" href="pip-webui.css"/>
+
+    <script src="pip-webui-lib.js"></script>
+    <script src="pip-webui.js"></script>
+    <script src="tiles_view/tiles_view.js"></script>
+    <script src="index.js"></script>
+</head>
+<body ng-app="pipWebUISampleModule" ng-controller="pipWebUISampleController">
+
+    <pip-main>
+        <pip-appbar></pip-appbar>
+
+        <pip-sidenav></pip-sidenav>
+
+        <pip-main-body ui-view></pip-main-body>
+
+    </pip-main>
+
+</body>
+</html>
