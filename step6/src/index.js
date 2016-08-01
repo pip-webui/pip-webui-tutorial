@@ -32,7 +32,7 @@
                 .state('iot_nodes', {
                     url: '/iot_nodes',
                     controller: 'IoTNodesController',
-                    templateUrl: 'IoT_nodes/IoT_nodes.html',
+                    templateUrl: 'IoT_nodes/IoT_nodes_tiles.html',
                     auth: true
                 })
                 .state('module_2', {
