@@ -18,7 +18,7 @@ npm install gulp-cli -g
 ├── src
 │    ├── index.html
 │    ├── index.js
-│    ├── styles.css
+│    ├── styles.less
 ├── package.json
 ├── gulpfile.js
 ├── build.conf.js

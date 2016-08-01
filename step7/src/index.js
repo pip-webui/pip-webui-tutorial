@@ -9,7 +9,7 @@
         'SampleApplication.Templates',
         
         // Sample application modules
-        'IoTNodesModule'
+        'IoTNodesModule', 'maintenanceEventsModule'
     ]);
     
     thisModule.config(
@@ -35,9 +35,10 @@
                     templateUrl: 'IoT_nodes/IoT_nodes.html',
                     auth: true
                 })
-                .state('module_2', {
-                    url: '/module_2',
-                    controller: 'module2Controller',
+                .state('maintenance_events', {
+                    url: '/maintenance_events',
+                    controller: 'maintenanceEventsController',
+                    templateUrl: 'maintenance_events/maintenance_events.html',
                     auth: true
                 });
 
@@ -54,7 +55,7 @@
                 {
                     links: [
                         {title: 'IoT Nodes', url: '/iot_nodes'},
-                        {title: 'Module 2', url: '/module_2'}
+                        {title: 'Maintenance Events', url: '/maintenance_events'}
                     ]
                 },
                 {
@@ -65,17 +66,6 @@
                     ]
                 }
             ]);
-
-            // Add a specific settings tab
-            pipSettingsProvider.addPage({
-                state: 'specific_settings_tab',
-                title: 'Specific settings tab',
-                auth: true,
-                stateConfig: {
-                    url: '/specific_settings_tab',
-                    templateUrl: 'settings_tab.html'
-                }
-            });
 
             // Add a specific help tab
             pipHelpProvider.addPage({

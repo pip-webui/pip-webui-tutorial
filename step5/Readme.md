@@ -36,13 +36,15 @@ For determining the geolocation by pip.WebUI components add such link to head ta
 <head lang="en">
     ...
     
-    <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyBg6cm-FDBFPWzRcn39AuSHGQSrdtVIjEo"></script>
     
     ...
 </head>
 ```
 
-Todo: describe how to get Google Map Key
+How to get **Google Map Key** you can read [here](https://developers.google.com/maps/documentation/javascript/get-api-key)
+
+Or you can use my key at first time: AIzaSyBg6cm-FDBFPWzRcn39AuSHGQSrdtVIjEo
 
 ### Standard settings tabs and how to add specific tab
 
@@ -52,59 +54,6 @@ If you click **Settings** link in sidenav you will see page with list of default
 * Active sessions
 
 ![Settings standard tabs](artifacts/settings_standard_tab.png)
-
-Using **pipSettings** services you can add specific tab
-
-```javascript
-thisModule.config(
-        function (pipSideNavProvider, $mdIconProvider, pipAppBarProvider, pipAuthStateProvider, pipSettingsProvider) {
-        ...
-        
-        pipSettingsProvider.addTab({
-            state: 'specific_settings_tab',
-            title: 'Specific settings tab',
-            auth: true,
-            stateConfig: {
-                url: '/specific_settings_tab',
-                templateUrl: 'settings_tab.html'
-            }
-        });
-        
-        ...
-        }
-);
-
-```
-
-Tab template **settings_tab.html**
-
-```html
-<div class="pip-details-title">
-    <p class="pip-title">
-        Specific settings tab
-    </p>
-
-    <p class="pip-subtitle ">
-        In this tab you can add anything you want to configure
-    </p>
-    
-    <md-switch>
-            Get information about locations
-    </md-switch>
-    
-    <md-switch>
-        Get information about temperature
-    </md-switch>
-    
-    <md-switch>
-        Get information about new nodes
-    </md-switch>
-</div>
-```
-
-Add such template to your **/src** folder and you shall see:
-
-![Setting specific tab](artifacts/settings_specific_tab.png)
 
 ### Add link to go to Help and configure help tabs
 
@@ -173,4 +122,4 @@ And you shall see such page after click **help** link in sidenav:
 
 ### Continue
 
-[Go to step 6](https://github.com/pip-webui/pip-webui-sample/blob/master/step6/) to add IoT Nodes page with tiles view to your application
+[Go to step 6](https://github.com/pip-webui/pip-webui-sample/blob/master/step6/) to add IoT Nodes page with tiles view to your application.
