@@ -2,7 +2,7 @@
 
 [Go to step 2](https://github.com/pip-webui/pip-webui-sample/blob/master/step2/Readme.md) to add **pip-webui** references.
 
-## Include navigation components into the application
+### Include navigation components into the application
 
 Add reference to **pipNav** in application module references
 
