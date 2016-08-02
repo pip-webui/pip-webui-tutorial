@@ -1,4 +1,4 @@
-# Pip.WebUI Getting Started <br/> Step 3. Add appbar and sidenav
+# Pip.WebUI Getting Started <br/> Step 3. Add global navigation
 
 [Go to step 2](https://github.com/pip-webui/pip-webui-sample/blob/master/step2/Readme.md) to add **pip-webui** references.
 
