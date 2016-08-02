@@ -2,6 +2,20 @@
 
 [Go to step 2](https://github.com/pip-webui/pip-webui-sample/blob/master/step2/Readme.md) to add **pip-webui** references.
 
+## Include navigation components into the application
+
+Add reference to **pipNav** in application module references
+
+```javascript
+var app = angular.module('app', [
+        // pipWebUI modules
+        'pipRest', 'pipLayout', 'pipErrorHandling', 'pipNav',
+
+        // Application templates
+        'app.Templates'
+]);
+```
+
 ### Add navigation components into index.html
 
 Add under **pip-main** tag **pip-appbar** and **pip-sidenav** components.
