@@ -1,10 +1,21 @@
-# Pip.WebUI Getting Started <br/> Step 5. Add settings and help
+# Pip.WebUI Getting Started <br/> Step 5. Add settings, support and help pages
 
-[Go to step 4](https://github.com/pip-webui/pip-webui-sample/blob/master/step4/) to add sign in and sign up pages to your application
+[Go to step 4](https://github.com/pip-webui/pip-webui-sample/blob/master/step4/) to add sign in and sign up pages.
 
-To initialize **settings** states was connected **pipSettings** in [step 2](https://github.com/pip-webui/pip-webui-sample/blob/master/step2/)
+### Include entry pages into the application
 
-To initialize **help** states was connected **pipHelp** in [step 2](https://github.com/pip-webui/pip-webui-sample/blob/master/step2/)
+Add **pipSettings**, **pipUserSettings**, **pipSupport** and **help** into the application module references
+
+```javascript
+var app = angular.module('app', [
+        // pipWebUI modules
+        'pipRest', 'pipErrorHandling', 'pipLayout', 'pipNav', 'pipEntry',
+        'pipSettings', 'pipUserSettings', 'pipSupport', 'pipHelp',
+        
+        // Application templates
+        'app.Templates'
+]);
+```
 
 ### Add link to go to Settings
 
