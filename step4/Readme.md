@@ -1,4 +1,4 @@
-# Pip.WebUI Getting Started <br/> Step 4. Add sign in and sign up
+# Pip.WebUI Getting Started <br/> Step 4. Add sign in and sign up pages
 
 [Go to step 3](https://github.com/pip-webui/pip-webui-sample/blob/master/step3/) to add global application configuration.
 
