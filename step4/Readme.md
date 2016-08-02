@@ -5,6 +5,26 @@
 Standard pages for **signin** and **signup** are implemented by **pipEntry** module.
 We added reference to that module into the application in [step 2](https://github.com/pip-webui/pip-webui-sample/blob/master/step2/)
 
+### Configure routing to signin page
+
+Now add default routing states into configuration section. 
+Unauthorized users shall see **signin** page when they open the application.
+After successful signin they shall switch to **nodes** page.
+
+```javascript
+app.config(function ($mdIconProvider, $urlRouterProvider, pipSideNavProvider, pipAppBarProvider) {
+    ...
+     // Configure default states
+     pipAuthStateProvider.unauthorizedState('signin');
+     pipAuthStateProvider.authorizedState('nodes');
+    
+    $urlRouterProvider.otherwise(function ($injector, $location) {
+        return $location.$$path === '' ? '/signin' : '/nodes';
+    });
+});
+```
+
+
 ### Add link to signout
 
 To support signout, add link to **/signout** route into the Sidenav config inside application configuration section
@@ -31,24 +51,6 @@ app.config(function ($mdIconProvider, pipSideNavProvider, pipAppBarProvider) {
 });
 ```
 
-### Add transition to signin
-
-Now add default routing states into configuration section. 
-Unauthorized users shall see **signin** page when they open the application.
-After successful signin they shall switch to **nodes** page.
-
-```javascript
-app.config(function ($mdIconProvider, $urlRouterProvider, pipSideNavProvider, pipAppBarProvider) {
-    ...
-     // Configure default states
-     pipAuthStateProvider.unauthorizedState('signin');
-     pipAuthStateProvider.authorizedState('nodes');
-    
-    $urlRouterProvider.otherwise(function ($injector, $location) {
-        return $location.$$path === '' ? '/signin' : '/nodes';
-    });
-});
-```
 
 Rebuild the application. Now you shall see **sing in** when you open application in the browser
 
