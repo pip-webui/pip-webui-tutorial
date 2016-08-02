@@ -74,15 +74,7 @@ Create **build.conf.js** file in the root folder and define configuration for th
 ```javascript
 module.exports = {
     module: {
-        name: 'SampleApplication',
-        index: 'sample'
-    },
-    build: {
-        js: true,
-        html: true,
-        css: true,
-        lib: true,
-        images: true
+        name: 'SampleApplication'
     },
     file: {
         lib: [
@@ -112,8 +104,8 @@ In the **/src** folder create the following tree file.
 <head>
     <meta charset="UTF-8">
     <title>Pip.WebUI Getting Started</title>
-    <link rel="stylesheet" href="SampleApplication.css"/>
-    <script src="SampleApplication.js"></script>
+    <link rel="stylesheet" href="styles.css"/>
+    <script src="index.js"></script>
 </head>
 <body>
 
