@@ -2,8 +2,19 @@
 
 [Go to step 3](https://github.com/pip-webui/pip-webui-sample/blob/master/step3/) to add global application configuration.
 
-Standard pages for **signin** and **signup** are implemented by **pipEntry** module.
-We added reference to that module into the application in [step 2](https://github.com/pip-webui/pip-webui-sample/blob/master/step2/)
+### Include entry pages into the application
+
+Add **pipEntry** into the application module references
+
+```javascript
+var app = angular.module('app', [
+        // pipWebUI modules
+        'pipRest', 'pipErrorHandling', 'pipLayout', 'pipNav', 'pipEntry',
+
+        // Application templates
+        'app.Templates'
+]);
+```
 
 ### Configure routing to signin page
 
