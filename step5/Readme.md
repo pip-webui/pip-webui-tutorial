@@ -4,7 +4,7 @@
 
 ### Include entry pages into the application
 
-Add **pipSettings**, **pipUserSettings**, **pipSupport** and **help** into the application module references
+Add **pipSettings**, **pipUserSettings**, **pipSupport** and **pipHelp** into the application module references
 
 ```javascript
 var app = angular.module('app', [
