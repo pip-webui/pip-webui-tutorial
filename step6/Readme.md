@@ -1,29 +1,14 @@
-# Pip.WebUI Getting Started <br/> Step 6. Add IoT Nodes page with tiles view
+# Pip.WebUI Getting Started <br/> Step 6. Add Nodes page with tiles view
 
-[Go to step 5](https://github.com/pip-webui/pip-webui-sample/blob/master/step5/) to add settings and help to your application.
+[Go to step 5](https://github.com/pip-webui/pip-webui-sample/blob/master/step5/) to add settings, feedback and help pages.
 
-### Add special template and controller to display tiles in module of your application
+### Create nodes tiles view
 
-In the **/src** create **IoT_nodes** folder and create the following tree file inside.
-
-##### IoT_nodes_tiles.html
+Create **nodes** folder under **src**. Place there **nodes_tiles.html** file with the content below.
+It will display a tile view with IoT nodes showing their name, measurements and current location
 
 ```html
 <pip-tiles class="layout-fill pip-no-tabs" column-width="440">
-    <div class="masonry-brick pip-tile w440-flex">
-        <div class="p24-flex">
-            <div class="pip-details-title">
-                <p class="pip-title">This is a special node</p>
-            </div>
-            <div>
-                Temperature: 28 deg
-            </div>
-            <div>
-                Radiation level: 0.11 msv
-            </div>
-        </div>
-    </div>
-
     <div class="masonry-brick pip-tile w440-flex " ng-repeat="node in nodes">
         <div class="p24-flex">
             <div class="pip-details-title">
@@ -44,14 +29,27 @@ In the **/src** create **IoT_nodes** folder and create the following tree file i
 </pip-tiles>
 ```
 
-##### IoT_nodes.js
+### Create nodes controller
+
+Create **nodes.js** file under **src/nodes** folder and copy the following code there
+
+Todo: Each node shall have its own location!
+Todo: Can we add the hook to resize tiles into the framework?
 
 ```javascript
 (function (angular) {
 
-    var thisModule = angular.module('IoTNodesModule', []);
+    var thisModule = angular.module('nodes', []);
 
-    thisModule.controller('IoTNodesController', function($scope, pipAppBar) {
+    thisModule.controller('nodesController', function($scope, pipAppBar) {
+        // Show page title
+        pipAppBar.showTitleText('Nodes');
+        // Show menu icon to open sidenav
+        pipAppBar.showMenuNavIcon();
+        // Show local page actions
+        pipAppBar.showLocalActions();
+        // Add shadow under the appbar
+        pipAppBar.showShadow();
 
         $scope.nodes = [
             {name: 'Node 1', temperature: '20 deg', radiation_level: '1.28 msv'},
@@ -72,90 +70,61 @@ In the **/src** create **IoT_nodes** folder and create the following tree file i
             name: 'Tucson'
         };
         
+        // Hook to resize tiles
         $scope.resizeTiles = function() {
             $scope.$broadcast('pipResizeLayout');
         };
-        
-        pipAppBar.showTitleText('IoT Nodes'); // Show title of application or specific page
-        pipAppBar.showMenuNavIcon(); // Show button in appbar, which open sidenav
-        pipAppBar.showLocalActions(); // Show actions of your application
-        pipAppBar.showShadow();
     });
 
 })(window.angular);
 ```
 
-### Update your index.js
+### Add page into the application
 
-Connect **IoT nodes** module to main module of application
+Add **nodes** into application module references in **index.js**
 
 ```javascript
-var thisModule = angular.module('pipWebUISampleModule', [
+var app = angular.module('app', [
     ...
     
     // Sample application modules
-    'IoTNodesModule'
-    
-    ...
+    'nodes'
 ]);
 ```
 
-Update **config**
+Make changes to the routing states in configuration section
 
 ```javascript
-thisModule.config(
+app.config(
     function (pipSideNavProvider, $mdIconProvider, pipAppBarProvider, pipAuthStateProvider, 
               pipSettingsProvider, pipHelpProvider, $urlRouterProvider) {
         ...
-
-        // Configure states of application
+        // Configure routing states
         pipAuthStateProvider
-            .state('iot_nodes', { // <---- Pay attention!
-                url: '/iot_nodes', // <---- Pay attention!
-                controller: 'IoTNodesController', // <---- Pay attention!
-                templateUrl: 'IoT_nodes/IoT_nodes_tiles.html', // <---- Pay attention!
+            .state('nodes', { // <---- Pay attention!
+                url: '/nodes', // <---- Pay attention!
+                controller: 'nodesController', // <---- Pay attention!
+                templateUrl: 'nodes/nodes_tiles.html', // <---- Pay attention!
                 auth: true
             })
-            .state('module_2', {
-                url: '/module_2',
-                controller: 'module2Controller',
+            .state('events', {
+                url: '/events',
+                controller: 'eventsController',
                 auth: true
             });
-
-        // Configure default states
-        pipAuthStateProvider.unauthorizedState('signin');
-        pipAuthStateProvider.authorizedState('iot_nodes'); // <---- Pay attention!
-        
-        $urlRouterProvider.otherwise(function ($injector, $location) {
-            return $location.$$path === '' ? '/signin' : '/iot_nodes'; // <---- Pay attention!
-        });
-
-        // Configure sidenav sections
-        pipSideNavProvider.sections([
-            {
-                links: [
-                    {title: 'IoT Nodes', url: '/iot_nodes'}, // <---- Pay attention!
-                    {title: 'Module 2', url: '/module_2'}
-                ]
-            },
-            {
-                links: [
-                    {title: 'Help', url: '/help'},
-                    {title: 'Settings', url: '/settings'},
-                    {title: 'Sign Out', url: '/signout'}
-                ]
-            }
-        ]);
-        
         ...
     }
 );
 ```
 
-After all changes instead of module_1 state you should get **IoT nodes**:
+Rebuild and reopen the application. You shall see now
 
 ![IoT nodes](artifacts/tiles_view.png)
 
+Resize the window and see those the page responses to fit the smaller screen
+
+Todo: Add picture with the page phone size
+
 ### Continue
 
-[Go to step 7](https://github.com/pip-webui/pip-webui-sample/blob/master/step7/) to add Maintenance Events page with table view
+[Go to step 7](https://github.com/pip-webui/pip-webui-sample/blob/master/step7/) to add Events page with table view
