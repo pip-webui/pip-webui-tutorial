@@ -61,7 +61,7 @@ When you click on tree dots on the right, a popup with secondary actions shall o
 
 ![Secondary actions](artifacts/secondary_actions.png)
 
- ### Configure SideNav
+### Configure SideNav
 
 Configure two links in sidenav inside application configuration section
 
