@@ -1,102 +1,68 @@
 # Pip.WebUI Getting Started <br/> Step 4. Add sign in and sign up
 
-[Go to step 3](https://github.com/pip-webui/pip-webui-sample/blob/master/step3/) to configure navigation in your application using pip.WebUI components
+[Go to step 3](https://github.com/pip-webui/pip-webui-sample/blob/master/step3/) to add global application configuration.
 
-To initialize **signin** and **signup** states was connected **pipEntry** in [step 2](https://github.com/pip-webui/pip-webui-sample/blob/master/step2/)
+Standard pages for **signin** and **signup** are implemented by **pipEntry** module.
+We added reference to that module into the application in [step 2](https://github.com/pip-webui/pip-webui-sample/blob/master/step2/)
 
-### Add link to go to **signin** page
+### Place **signout** link in Sidenav menu
 
+To support signout, add link to **/signout** route into the Sidenav config inside application configuration section
 To go to **signin** page add **Sign Out** link with such url:**/signout** to sidenav sections
 It will look like this:
 
 ```javascript
-pipSideNavProvider.sections([
-    {
-        links: [
-            {title: 'Module 1', url: '/module_1'},
-            {title: 'Module 2', url: '/module_2'}
-        ]
-    },
-    {
-        links: [
-            {title: 'Sign Out', url: '/signout'}
-        ]
-    }
-]);
+app.config(function ($mdIconProvider, pipSideNavProvider, pipAppBarProvider) {
+    ...
+    pipSideNavProvider.sections([
+        {
+            links: [
+                {title: 'nodes', url: '/nodes'},
+                {title: 'events', url: '/events'}
+            ]
+        },
+        {
+            links: [
+                {title: 'Sign Out', url: '/signout'}
+            ]
+        }
+    ]);
+    ...
+});
 ```
 
-### Add **pip-main-body** tag
+### Add transition to signin state
 
-After add **pip-main-body** tag with ui-view attribute inside **pip-main** tag in your **index.html**
-
-```html
-<pip-main>
-        ...
-
-        <pip-main-body ui-view></pip-main-body>
-        
-        ...
-</pip-main>
-```
-
-### Configure states and add controllers
-
-Also you need to configure states to go to your application pages after authorization
+Now add default routing states into configuration section. 
+Unauthorized users shall see **signin** page when they open the application.
+After successful signin they shall switch to **nodes** page.
 
 ```javascript
-thisModule.config(function (pipSideNavProvider, $mdIconProvider, pipAppBarProvider) {
+app.config(function ($mdIconProvider, $urlRouterProvider, pipSideNavProvider, pipAppBarProvider) {
     ...
-
-     // Configure states of application
-     pipAuthStateProvider
-        .state('module_1', {
-            url: '/module_1',
-            controller: 'module1Controller',
-            auth: true
-        })
-        .state('module_2', {
-            url: '/module_2',
-            controller: 'module2Controller',
-            auth: true
-        });
-     
      // Configure default states
      pipAuthStateProvider.unauthorizedState('signin');
-     pipAuthStateProvider.authorizedState('module_1');
+     pipAuthStateProvider.authorizedState('nodes');
     
     $urlRouterProvider.otherwise(function ($injector, $location) {
-        return $location.$$path === '' ? '/signin' : '/tiles_view';
+        return $location.$$path === '' ? '/signin' : '/nodes';
     });
-    ... 
 });
 ```
 
-After add controllers for your states like this:
-
-```javascript
-thisModule.controller('module1Controller', function($scope, pipAppBar) {
-    pipAppBar.showTitleText('Sample 1'); // Show title of application or specific page
-    pipAppBar.showMenuNavIcon(); // Show button in appbar, which open sidenav
-    pipAppBar.showLocalActions(); // Show actions of your application
-});
-
-thisModule.controller('module2Controller', function($scope, pipAppBar) {
-    pipAppBar.showTitleText('Sample 2'); // Show title of application or specific page
-    pipAppBar.showMenuNavIcon(); // Show button in appbar, which open sidenav
-    pipAppBar.showLocalActions(); // Show actions of your application
-});
-```
-
-Update page in browser and you shall see **Sing in** page
+Rebuild the application. Now you shall see **sing in** when you open application in the browser
 
 ![Sign in page](artifacts/sign_in_page.png)
 
-Click **Sign up here** link and you will see **Sign up** form
+When you click **Sign up here**  **sign up** form will open up
 
 ![Sign up form](artifacts/sign_up_form.png)
 
-After **sign up** you will see **post sign up** form. Fill form fields (if you want), click **continue** button and you will see pages of your application
+After **sign up** user will be transfered to **post sign up** form where he can enter additional details about himself.
+On **Continue** application shall open default **nodes** page.
+
+Todo: Add screen with empty nodes page
 
 ### Continue
 
-[Go to step 5](https://github.com/pip-webui/pip-webui-sample/blob/master/step5/) to add settings and help to your application.
+[Go to step 5](https://github.com/pip-webui/pip-webui-sample/blob/master/step5/) to add settings and help pages.
