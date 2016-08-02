@@ -119,6 +119,8 @@ app.config(
 
 Rebuild and reopen the application. You shall see now
 
+Todo: Update the picture to remove that "special tile"
+
 ![IoT nodes](artifacts/tiles_view.png)
 
 Resize the window and see those the page responses to fit the smaller screen
