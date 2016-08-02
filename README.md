@@ -17,7 +17,7 @@ Let's get started
 
 - Step 1. [Create application structure](step1/)
 - Step 2. [Include pip-webui components](step2/)
-- Step 3. [Add appbar and sidenav](step3/)
+- Step 3. [Add global navigation](step3/)
 - Step 4. [Add signin and signup](step4/)
 - Step 5. [Add settings and help](step5/)
 - Step 6. [Add IoT Nodes page with tiles view](step6/)
