@@ -4,14 +4,14 @@
 
 ### Add navigation components into index.html
 
-**pip-main** tag is the container for the **pip-webui** UI.
-Under **pip-main** add **pip-appbar** and **pip-sidenav** components.
+Add under **pip-main** tag **pip-appbar** and **pip-sidenav** components.
 
 ```html
 <body ng-app="app" ng-controller="appController">
     <pip-main>
         <pip-appbar></pip-appbar>
         <pip-sidenav></pip-sidenav>
+        <pip-main-body></pip-main-body>
     </pip-main>
 </body>
 ```
@@ -72,8 +72,8 @@ app.config(function ($mdIconProvider, pipAppBarProvider, pipSideNavProvider) {
     pipSideNavProvider.sections([
         {
             links: [
-                {title: 'Module 1', url: '/module_1'},
-                {title: 'Module 2', url: '/module_2'}
+                {title: 'Nodes', url: '/nodes'},
+                {title: 'Events', url: '/events'}
             ]
         }
     ]);
@@ -83,6 +83,29 @@ app.config(function ($mdIconProvider, pipAppBarProvider, pipSideNavProvider) {
 Rebuild and open the application
 
 ![Configured sidenav](artifacts/configured_sidenav.png)
+
+### Configure AppBar for custom pages
+
+Add code to configure appbar inside page controllers
+```javascript
+app.controller('nodesController', function($scope, pipAppBar) {
+    // Show page title
+    pipAppBar.showTitleText('Nodes');
+    // Show menu icon to open sidenav
+    pipAppBar.showMenuNavIcon();
+    // Show local actions in secondary actions popup
+    pipAppBar.showLocalActions();
+});
+
+app.controller('eventsController', function($scope, pipAppBar) {
+    // Show page title
+    pipAppBar.showTitleText('Events');
+    // Show menu icon to open sidenav
+    pipAppBar.showMenuNavIcon();
+    // Show local actions in secondary actions popup
+    pipAppBar.showLocalActions();
+});
+```
 
 ### Continue
 
