@@ -4,7 +4,7 @@
 
 ### Create nodes tiles view
 
-Create **/nodes** folder under **/src**. Place there **nodes_tiles.html** file with the content below.
+Create **/nodes** folder under **/src**. Place there **nodes.html** file with the content below.
 It will display a tile view with IoT nodes showing their name, measurements and current location
 
 ```html
@@ -39,7 +39,7 @@ Todo: Can we add the hook to resize tiles into the framework?
 ```javascript
 (function (angular) {
 
-    var thisModule = angular.module('nodes', []);
+    var thisModule = angular.module('nodesModule', []);
 
     thisModule.controller('nodesController', function($scope, pipAppBar) {
         // Show page title
@@ -81,14 +81,14 @@ Todo: Can we add the hook to resize tiles into the framework?
 
 ### Add page into the application
 
-Add **nodes** into application module references in **index.js**
+Add **nodesModule** into application module references in **index.js**
 
 ```javascript
 var app = angular.module('app', [
     ...
     
     // Sample application modules
-    'nodes'
+    'nodesModule'
 ]);
 ```
 
@@ -104,7 +104,7 @@ app.config(
             .state('nodes', { // <---- Pay attention!
                 url: '/nodes', // <---- Pay attention!
                 controller: 'nodesController', // <---- Pay attention!
-                templateUrl: 'nodes/nodes_tiles.html', // <---- Pay attention!
+                templateUrl: 'nodes/nodes.html', // <---- Pay attention!
                 auth: true
             })
             .state('events', {
@@ -115,6 +115,15 @@ app.config(
         ...
     }
 );
+```
+
+Remove old **nodesController** from **index.js**
+
+```javascript
+// Remove
+//app.controller('nodesController', function($scope) {
+//        // Todo: Add controller logic for IoT Nodes page
+//});
 ```
 
 Rebuild and reopen the application. You shall see now
