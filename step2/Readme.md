@@ -25,9 +25,7 @@ Initialize angular module in **index.js** and reference pip-webui modules
 ```javascript
 var app = angular.module('app', [
         // pipWebUI modules
-        'pipCore', 'pipRest', 'pipData', 'pipEntry', 'pipControls', 'pipLayout', 'pipNav',
-        'pipLocations', 'pipPictures', 'pipDocuments', 'pipComposite', 'pipGuidance',
-        'pipSettings', 'pipUserSettings', 'pipErrorHandling', 'pipSupport', 'pipHelp',
+        'pipRest', 'pipLayout', 'pipErrorHandling',
         
         // Application templates
         'app.Templates'
