@@ -4,7 +4,7 @@
 
 ### Add pip-webui references to CSS styles and javascript components
 
-Add links to **pip-webui** CSS styles and javascript code inside **index.html**.
+Add links to **pip-webui** and application CSS styles and javascript code inside **index.html**.
 
 In the application we are going to use Google Maps. So we'll add link to their client libraries as well.
 
@@ -12,9 +12,11 @@ In the application we are going to use Google Maps. So we'll add link to their c
 <head>
         <link rel="stylesheet" href="pip-webui-lib.css"/>
         <link rel="stylesheet" href="pip-webui.css"/>
+        <link rel="stylesheet" href="pip-webui-sample.css"/>
         <script src="pip-webui-lib.js"></script>
         <script src="pip-webui.js"></script>
         <script src="http://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyBg6cm-FDBFPWzRcn39AuSHGQSrdtVIjEo"></script>
+        <script src="pip-webui-sample.js"></script>
 </head>
 ```
 
