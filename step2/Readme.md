@@ -49,7 +49,7 @@ Then under **body** include **pip-main** and **pip-main-body** tags that designa
 ```html
 <body ng-app="app" ng-controller="appController">
   <pip-main>
-        <pip-main-body/>
+        <pip-main-body ui-view></pip-main-body>
   </pip-main>
 </body>
 ```
