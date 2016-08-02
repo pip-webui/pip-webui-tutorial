@@ -5,7 +5,7 @@
 Standard pages for **signin** and **signup** are implemented by **pipEntry** module.
 We added reference to that module into the application in [step 2](https://github.com/pip-webui/pip-webui-sample/blob/master/step2/)
 
-### Place **signout** link in Sidenav menu
+### Add link to signout
 
 To support signout, add link to **/signout** route into the Sidenav config inside application configuration section
 To go to **signin** page add **Sign Out** link with such url:**/signout** to sidenav sections
@@ -31,7 +31,7 @@ app.config(function ($mdIconProvider, pipSideNavProvider, pipAppBarProvider) {
 });
 ```
 
-### Add transition to signin state
+### Add transition to signin
 
 Now add default routing states into configuration section. 
 Unauthorized users shall see **signin** page when they open the application.
