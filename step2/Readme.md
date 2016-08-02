@@ -31,7 +31,7 @@ var app = angular.module('app', [
 ]);
 ```
 
-Below empty configuration section and application controller
+Below add empty configuration section and application controller
 
 ```javascript
 app.config(function() {
@@ -56,10 +56,10 @@ Then under **body** include **pip-main** and **pip-main-body** tags that designa
 
 ## Define two custom pages
 
-In this application we are going to have two custom pages. The first will show a list of IoT nodes that measure
+In this application we are going to have two custom pages. The first page will show a list of IoT nodes that measure
 environmental polution. On the second page we'll display events that come from those IoT nodes.
 
-Add empty controllers for nodes and events pages
+Add empty controllers for nodes and events pages inside **index.js**
 
 ```javascript
 app.controller('nodesController', function($scope) {
