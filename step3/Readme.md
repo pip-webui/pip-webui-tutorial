@@ -11,7 +11,7 @@ Add under **pip-main** tag **pip-appbar** and **pip-sidenav** components.
     <pip-main>
         <pip-appbar></pip-appbar>
         <pip-sidenav></pip-sidenav>
-        <pip-main-body></pip-main-body>
+        <pip-main-body ui-view></pip-main-body>
     </pip-main>
 </body>
 ```
