@@ -16,9 +16,9 @@ var app = angular.module('app', [
 ]);
 ```
 
-### Add navigation components into index.html
+### Add AppBar and SideNav into index.html
 
-Add under **pip-main** tag **pip-appbar** and **pip-sidenav** components.
+Place **pip-appbar** and **pip-sidenav** components under **pip-main** tag.
 
 ```html
 <body ng-app="app" ng-controller="appController">
