@@ -82,6 +82,8 @@ app.config(function ($mdIconProvider, pipAppBarProvider, pipSideNavProvider) {
 
 Rebuild and open the application
 
+Todo: Replace this picture with correct links
+
 ![Configured sidenav](artifacts/configured_sidenav.png)
 
 ### Configure AppBar for custom pages
