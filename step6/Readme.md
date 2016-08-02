@@ -4,7 +4,7 @@
 
 ### Create nodes tiles view
 
-Create **nodes** folder under **src**. Place there **nodes_tiles.html** file with the content below.
+Create **/nodes** folder under **/src**. Place there **nodes_tiles.html** file with the content below.
 It will display a tile view with IoT nodes showing their name, measurements and current location
 
 ```html
@@ -31,7 +31,7 @@ It will display a tile view with IoT nodes showing their name, measurements and 
 
 ### Create nodes controller
 
-Create **nodes.js** file under **src/nodes** folder and copy the following code there
+Create **nodes.js** file under **/src/nodes** folder and copy the following code there
 
 Todo: Each node shall have its own location!
 Todo: Can we add the hook to resize tiles into the framework?
