@@ -1,86 +1,72 @@
 # Pip.WebUI Getting Started <br/> Step 3. Add appbar and sidenav
 
-[Go to step 2](https://github.com/pip-webui/pip-webui-sample/blob/master/step2/Readme.md) to add Pip.WebUI libraries and create Angular boilerplate code in your application.
+[Go to step 2](https://github.com/pip-webui/pip-webui-sample/blob/master/step2/Readme.md) to add **pip-webui** references.
 
-### Add navigation components to your index.html
+### Add navigation components into index.html
 
-Add **pip-main** tag in body of your **index.html**
+**pip-main** tag is the container for the **pip-webui** UI.
+Under **pip-main** add **pip-appbar** and **pip-sidenav** components.
 
 ```html
-<body ng-app="pipWebUISampleModule" ng-controller="pipWebUISampleController">
-
+<body ng-app="app" ng-controller="appController">
     <pip-main>
-
+        <pip-appbar></pip-appbar>
+        <pip-sidenav></pip-sidenav>
     </pip-main>
-
 </body>
 ```
 
-Add **pip-appbar** and **pip-sidenav** tags inside **pip-main** tag
-
-```html
-<pip-main>
-        <pip-appbar></pip-appbar>
-
-        <pip-sidenav></pip-sidenav>
-</pip-main>
-```
-
-You shall see such web page:
+Rebuild the application. You shall see an empty application with toolbar and sidenav.
 
 ![navigation components](artifacts/navigation_components.png)
 
-### Configure navigation components in your index.js
+### Configure AppBar
 
-To configure appbar connect **pipAppBar** to **controller** in **index.js** and put inside code with configuration 
-
-```javascript
-thisModule.controller('pipWebUISampleController', function($scope, pipAppBar) {
-        pipAppBar.showTitleText('Sample Application'); // Show title of application or specific page
-        pipAppBar.showMenuNavIcon(); // Show button in appbar, which open sidenav
-        pipAppBar.showLocalActions(); // Show actions of your application
-});
-```
-
-To configure secondary actions of your application use code like this (here we list links to states, which we will use in [step 4](https://github.com/pip-webui/pip-webui-sample/blob/master/step4/) and [step 5](https://github.com/pip-webui/pip-webui-sample/blob/master/step5/)):
+Load default iconset and define global actions and default application title inside application configuration section
 
 ```javascript
-thisModule.config(function (pipSideNavProvider, $mdIconProvider, pipAppBarProvider) {
-    ...
+app.config(function ($mdIconProvider, pipAppBarProvider) {
+    // Load default iconset
+    $mdIconProvider.iconSet('icons', 'lib/images/icons.svg', 512);
 
+    // Define global secondary actions (for actions popup menu) 
     pipAppBarProvider.globalSecondaryActions([
         {name: 'global.settings', title: 'Settings', state: 'settings'},
         {name: 'global.signout', title: 'Sign out', state: 'signout'}
     ]);
 
-    ... 
+    // Set default application title
+    pipAppBarProvider.appTitleText('Sample Application');
 });
 ```
 
-To display navigation icon in **appbar** connect angular-material **$mdIconProvider** to **config** in your **index.js** and put inside code with configuration
+Now configure what will be shown on appbar when application loads
 
 ```javascript
-thisModule.config(function (pipSideNavProvider, $mdIconProvider, pipAppBarProvider) {
-    ...
-    
-    $mdIconProvider.iconSet('icons', 'lib/images/icons.svg', 512);
-    
-    ...
+app.controller('appController', function($scope, pipAppBar) {
+        // Show application title
+        pipAppBar.showAppTitleText('Sample Application'); 
+        // Show icon to open sidenav
+        pipAppBar.showMenuNavIcon();
+        // Show button with tree dots for secondary actions
+        pipAppBar.showLocalActions();
 });
 ```
 
-After you shall see such **appbar**:
+When you rebuild the application, you shall see the following
 
 ![Configured appbar](artifacts/configured_appbar.png)
 
-And such **secondary actions menu**:
+When you click on tree dots on the right, a popup with secondary actions shall open
 
 ![Secondary actions](artifacts/secondary_actions.png)
 
-To configure sidenav connect **pipSideNavProvider** to **config** in your **index.js** and put inside code with section configuration  
+ ### Configure SideNav
+
+Configure two links in sidenav inside application configuration section
 
 ```javascript
-thisModule.config(function (pipSideNavProvider) {
+app.config(function ($mdIconProvider, pipAppBarProvider, pipSideNavProvider) {
     ...
     
     pipSideNavProvider.sections([
@@ -91,27 +77,15 @@ thisModule.config(function (pipSideNavProvider) {
             ]
         }
     ]);
-    
-    ...
 });
 ```
 
-To open sidenav click **menu navigation button** in left corner and you shall see such **sidenav**:
+Rebuild and open the application
 
 ![Configured sidenav](artifacts/configured_sidenav.png)
 
-To configure application logo, which displayed in appbar put your application logo file to **lib/images/**and configure it in **config** in your 'index.js':
-
-```javascript
-thisModule.config(function (pipSideNavProvider, $mdIconProvider, pipAppBarProvider) {
-    ...
-
-    pipAppBarProvider.appTitleLogo('../lib/images/<your_logo_name>.<your_logo_format>');
-
-    ... 
-});
-```
-
 ### Continue
 
-[Go to step 4](https://github.com/pip-webui/pip-webui-sample/blob/master/step4/) to add sign in and sign up pages to your application.
+For more information on Appbar and SideNav, please, visit [pip-webui-nav module](https://github.com/pip-webui/pip-webui-nav)
+
+[Go to step 4](https://github.com/pip-webui/pip-webui-sample/blob/master/step4/) to add sign in and sign up pages.
