@@ -19,7 +19,7 @@ Let's get started
 - Step 2. [Include pip-webui components](step2/)
 - Step 3. [Add global navigation](step3/)
 - Step 4. [Add signin and signup pages](step4/)
-- Step 5. [Add settings, support and help pages](step5/)
+- Step 5. [Add settings, feedback and help pages](step5/)
 - Step 6. [Add Nodes page with tiles view](step6/)
 - Step 7. [Add Events page with table view](step7/)
 - Step 8. [Show notifications](step8/)
