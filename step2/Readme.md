@@ -1,61 +1,57 @@
-# Pip.WebUI Getting Started <br/> Step 2. Include pip.WebUI components
+# Pip.WebUI Getting Started <br/> Step 2. Include pip-webui components
 
-[Go to step 1](https://github.com/pip-webui/pip-webui-sample/blob/master/step1/) to create structure for your application.
+[Go to step 1](https://github.com/pip-webui/pip-webui-sample/blob/master/step1/) to create application structure.
 
-### Add Pip.WebUI libraries:
+### Add pip-webui references to CSS styles and javascript components
 
-Add links to external libraries and pip.WebUI components **.css** files in your **index.html**
+Add links to **pip-webui** CSS styles in **index.html**
 
 ```html 
 <link rel="stylesheet" href="pip-webui-lib.css"/>
 <link rel="stylesheet" href="pip-webui.css"/>
 ```
 
-Add links to external libraries and pip.WebUI components **.js** files in your **index.html**
+Below add **pip-webui** javascript files
 
 ```html
 <script src="pip-webui-lib.js"></script>
 <script src="pip-webui.js"></script>
 ```
 
-### Create Angular boilerplate code
+### Write Angular boilerplate code
 
-Initialize **angular module** in your **index.js** and add links to all pip.WebUI modules
+Initialize angular module in **index.js** and reference pip-webui modules
 
 ```javascript
-var thisModule = angular.module('pipWebUISampleModule', [
+var app = angular.module('app', [
         // pipWebUI modules
         'pipCore', 'pipRest', 'pipData', 'pipEntry', 'pipControls', 'pipLayout', 'pipNav',
         'pipLocations', 'pipPictures', 'pipDocuments', 'pipComposite', 'pipGuidance',
         'pipSettings', 'pipUserSettings', 'pipErrorHandling', 'pipSupport', 'pipHelp',
         
         // Application templates
-        'SampleApplication.Templates'
+        'app.Templates'
 ]);
 ```
 
-Add **angular config** in your **index.js**
+Below add application configuration and controller:
 
 ```javascript
-thisModule.config(function () {
-        
+app.config(function () {
+        // Todo: Add application configuration here     
+});
+
+app.controller('appController', function($scope) {
+        // Todo: Add controller logic        
 });
 ```
 
-Add **angular controller** in your **index.js**
-
-```javascript
-thisModule.controller('pipWebUISampleController', function($scope) {
-        
-});
-```
-
-Add **ng-app** and **ng-controller** attributes to **body** tag in your **index.html**
+Add **ng-app** and **ng-controller** attributes to **body** tag inside **index.html**
 
 ```html
-<body ng-app="pipWebUISampleModule" ng-controller="pipWebUISampleController">
+<body ng-app="app" ng-controller="appController">
 ```
 
 ### Continue
 
-[Go to step 3](https://github.com/pip-webui/pip-webui-sample/blob/master/step3/) to configure navigation in your application using pip.WebUI components.
+[Go to step 3](https://github.com/pip-webui/pip-webui-sample/blob/master/step3/) to add navigation into the application.
