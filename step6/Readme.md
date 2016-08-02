@@ -6,7 +6,7 @@
 
 In the **/src** create **IoT_nodes** folder and create the following tree file inside.
 
-##### IoT_nodes.html
+##### IoT_nodes_tiles.html
 
 ```html
 <pip-tiles class="layout-fill pip-no-tabs" column-width="440">
@@ -113,7 +113,7 @@ thisModule.config(
             .state('iot_nodes', { // <---- Pay attention!
                 url: '/iot_nodes', // <---- Pay attention!
                 controller: 'IoTNodesController', // <---- Pay attention!
-                templateUrl: 'IoT_nodes/IoT_nodes.html', // <---- Pay attention!
+                templateUrl: 'IoT_nodes/IoT_nodes_tiles.html', // <---- Pay attention!
                 auth: true
             })
             .state('module_2', {

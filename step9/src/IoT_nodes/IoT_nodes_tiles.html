@@ -1,0 +1,31 @@
+<pip-tiles class="layout-fill pip-no-tabs" column-width="440">
+    <div class="masonry-brick pip-tile w440-flex">
+        <div class="p24-flex">
+            <div class="pip-details-title">
+                <p class="pip-title">This is a special node</p>
+            </div>
+            <div>
+                Temperature: 28 deg
+            </div>
+            <div>
+                Radiation level: 0.11 msv
+            </div>
+        </div>
+    </div>
+
+    <div class="masonry-brick pip-tile w440-flex " ng-repeat="node in nodes">
+        <div class="p24-flex">
+            <div class="pip-details-title">
+                <p class="pip-title">{{ node.name }}</p>
+            </div>
+            <div>
+                Temperature: {{ node.temperature }}
+            </div>
+            <div>
+                Radiation level: {{ node.radiation_level }}
+            </div>
+            <pip-location-map pip-location-pos="location_point">
+            </pip-location-map>
+        </div>
+    </div>
+</pip-tiles>
