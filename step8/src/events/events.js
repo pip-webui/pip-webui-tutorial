@@ -1,8 +1,17 @@
 (function (angular) {
 
-    var thisModule = angular.module('maintenanceEventsModule', []);
+    var thisModule = angular.module('eventsModule', []);
 
-    thisModule.controller('maintenanceEventsController', function($scope, pipAppBar) {
+    thisModule.controller('eventsController', function($scope, pipAppBar, $interval) {
+
+        // Show page title
+        pipAppBar.showTitleText('Events');
+        // Show menu icon to open sidenav
+        pipAppBar.showMenuNavIcon();
+        // Show local page actions
+        pipAppBar.showLocalActions();
+        // Add shadow under the appbar
+        pipAppBar.showShadow();
 
         $scope.events = [
             {node_id: '1', description: 'Thermal shock', temperature: '42 deg', rad_level: '0.77 msv', type: 'danger'},
@@ -17,10 +26,18 @@
             {node_id: '9', description: 'Eruption', temperature: '42 deg', rad_level: '0.22 msv', type: 'danger'}
         ];
 
-        pipAppBar.showTitleText('Maintenance Events'); // Show title of application or specific page
-        pipAppBar.showMenuNavIcon(); // Show button in appbar, which open sidenav
-        pipAppBar.showLocalActions(); // Show actions of your application
-        pipAppBar.hideShadow();
+        var i = 0;
+        var stopTime = $interval(addNextToast, 10000); // use angular $interval for imitation receiving messages every 10 sec.
+
+        function addNextToast() {
+            if (i == $scope.events.length) {
+                $interval.cancel(stopTime);
+            } else {
+                // Function to display notification
+                pipToasts.showNotification('Node ' + $scope.events[i].node_id + ': ' + $scope.events[i].description);
+                i++;
+            }
+        }
     });
 
 })(window.angular);

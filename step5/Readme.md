@@ -35,7 +35,7 @@ pipSideNavProvider.sections([
             {title: 'Help', url: '/help'},
             {title: 'Feedback', url: '/feedback'}
         ]
-    }
+    },
     {
         links: [
             {title: 'Sign Out', url: '/signout'}
@@ -50,7 +50,7 @@ Rebuild and reopen the application. Now you shall see Settings, Feedback and Hel
 
 Todo: Add screenshot of the help page. We shall also implement couple default pages similar to user settings (talk to AlexM)
 
-Todo: Add screenshot of the feedback page.
+![Feedback](artifacts/feedback.png)
 
 ### Continue
 

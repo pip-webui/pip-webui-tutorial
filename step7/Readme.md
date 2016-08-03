@@ -127,7 +127,7 @@ Rebuild and reopen the application. You shall see now
 
 Resize browser windows to the size of a phone
 
-Todo: Add screenshot with small events page
+![Maintenance Events mobile](artifacts/maintenance_events_mobile.png)
 
 ### Continue
 

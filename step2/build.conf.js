@@ -1,6 +1,6 @@
 module.exports = {
     module: {
-        name: 'SampleApplication',
+        name: 'app',
         styles: 'sample'
     },
     file: {

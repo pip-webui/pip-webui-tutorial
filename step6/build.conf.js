@@ -1,7 +1,6 @@
 module.exports = {
     module: {
-        name: 'SampleApplication',
-        styles: 'sample'
+        name: 'app'
     },
     file: {
         lib: [

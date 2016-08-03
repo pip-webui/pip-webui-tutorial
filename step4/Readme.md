@@ -74,7 +74,7 @@ When you click **Sign up here**  **sign up** form will open up
 After **sign up** user will be transfered to **post sign up** form where he can enter additional details about himself.
 On **Continue** application shall open default **nodes** page.
 
-Todo: Add screen with empty nodes page
+![Empty nodes](artifacts/empty_nodes.png)
 
 ### Continue
 

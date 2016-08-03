@@ -1,7 +1,15 @@
 module.exports = {
     module: {
-        name: 'SampleApplication',
+        name: 'app',
         styles: 'sample'
+    },
+    build: {
+        js: true,
+        ts: true,
+        html: true,
+        css: true,
+        lib: true,
+        images: true
     },
     file: {
         lib: [

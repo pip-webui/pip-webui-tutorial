@@ -1,42 +1,75 @@
 (function (angular) {
-    var thisModule = angular.module('pipWebUISampleModule', [
+    var app = angular.module('app', [
         // pipWebUI modules
-        'pipCore', 'pipRest', 'pipData', 'pipEntry', 'pipControls', 'pipLayout', 'pipNav',
-        'pipLocations', 'pipPictures', 'pipDocuments', 'pipComposite', 'pipGuidance',
-        'pipSettings', 'pipUserSettings', 'pipErrorHandling', 'pipSupport', 'pipHelp',
+        'pipRest', 'pipLayout', 'pipErrorHandling', 'pipNav',
 
         // Application templates
-        'SampleApplication.Templates'
+        'app.Templates'
     ]);
     
-    thisModule.config(function (pipSideNavProvider, $mdIconProvider, pipAppBarProvider) {
-        // Configure icons of application
+    app.config(function (pipSideNavProvider, $mdIconProvider, pipAppBarProvider, pipAuthStateProvider) {
+        // Load default iconset
         $mdIconProvider.iconSet('icons', 'images/icons.svg', 512);
 
-        // Configure application logo
-        pipAppBarProvider.appTitleLogo('images/Logo.svg');
-
-        // Configure global secondary actions
+        // Define global secondary actions (for actions popup menu) 
         pipAppBarProvider.globalSecondaryActions([
             {name: 'global.settings', title: 'Settings', state: 'settings'},
             {name: 'global.signout', title: 'Sign out', state: 'signout'}
         ]);
 
+        pipAuthStateProvider
+            .state('nodes', {
+                url: '/nodes',
+                controller: 'nodesController',
+                template: '<h1>Nodes Page</h1>',
+                auth: true
+            })
+            .state('events', {
+                url: '/events',
+                controller: 'eventsController',
+                template: '<h1>Events Page</h1>',
+                auth: true
+            });
+
+        // Set default application title
+        pipAppBarProvider.appTitleText('Sample Application');
+
         // Configure sidenav sections
         pipSideNavProvider.sections([
             {
                 links: [
-                    {title: 'Module 1', url: '/module_1'},
-                    {title: 'Module 2', url: '/module_2'}
+                    {title: 'Nodes', url: '/nodes'},
+                    {title: 'Events', url: '/events'}
                 ]
             }
         ]);
     });
-    
-    thisModule.controller('pipWebUISampleController', function($scope, pipAppBar) {
-        pipAppBar.showTitleText('Sample Application'); // Show title of application or specific page
-        pipAppBar.showMenuNavIcon(); // Show button in appbar, which open sidenav
-        pipAppBar.showLocalActions(); // Show actions of your application
+
+    app.controller('appController', function($scope, pipAppBar) {
+        // Show application title
+        pipAppBar.showAppTitleText('Sample Application');
+        // Show icon to open sidenav
+        pipAppBar.showMenuNavIcon();
+        // Show button with tree dots for secondary actions
+        pipAppBar.showLocalActions();
+    });
+
+    app.controller('nodesController', function($scope, pipAppBar) {
+        // Show page title
+        pipAppBar.showTitleText('Nodes');
+        // Show menu icon to open sidenav
+        pipAppBar.showMenuNavIcon();
+        // Show local actions in secondary actions popup
+        pipAppBar.showLocalActions();
+    });
+
+    app.controller('eventsController', function($scope, pipAppBar) {
+        // Show page title
+        pipAppBar.showTitleText('Events');
+        // Show menu icon to open sidenav
+        pipAppBar.showMenuNavIcon();
+        // Show local actions in secondary actions popup
+        pipAppBar.showLocalActions();
     });
     
 })(window.angular);

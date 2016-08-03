@@ -1,8 +1,16 @@
 (function (angular) {
 
-    var thisModule = angular.module('IoTNodesModule', []);
+    var thisModule = angular.module('nodesModule', []);
 
-    thisModule.controller('IoTNodesController', function($scope, pipAppBar) {
+    thisModule.controller('nodesController', function($scope, pipAppBar) {
+        // Show page title
+        pipAppBar.showTitleText('Nodes');
+        // Show menu icon to open sidenav
+        pipAppBar.showMenuNavIcon();
+        // Show local page actions
+        pipAppBar.showLocalActions();
+        // Add shadow under the appbar
+        pipAppBar.showShadow();
 
         $scope.nodes = [
             {name: 'Node 1', temperature: '20 deg', radiation_level: '1.28 msv'},
@@ -19,18 +27,8 @@
 
         $scope.location_point = {
             type: 'Point',
-            coordinates: [32.393603, -110.982593],
-            name: 'Tucson'
+            coordinates: [32.393603, -110.982593]
         };
-        
-        $scope.resizeTiles = function() {
-            $scope.$broadcast('pipResizeLayout');
-        };
-
-        pipAppBar.showTitleText('IoT Nodes'); // Show title of application or specific page
-        pipAppBar.showMenuNavIcon(); // Show button in appbar, which open sidenav
-        pipAppBar.showLocalActions(); // Show actions of your application
-        pipAppBar.showShadow();
     });
 
 })(window.angular);

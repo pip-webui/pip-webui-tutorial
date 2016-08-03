@@ -41,7 +41,7 @@ Load default iconset and define global actions and default application title ins
 ```javascript
 app.config(function ($mdIconProvider, pipAppBarProvider) {
     // Load default iconset
-    $mdIconProvider.iconSet('icons', 'lib/images/icons.svg', 512);
+    $mdIconProvider.iconSet('icons', 'images/icons.svg', 512);
 
     // Define global secondary actions (for actions popup menu) 
     pipAppBarProvider.globalSecondaryActions([
@@ -95,8 +95,6 @@ app.config(function ($mdIconProvider, pipAppBarProvider, pipSideNavProvider) {
 ```
 
 Rebuild and open the application
-
-Todo: Replace this picture with correct links
 
 ![Configured sidenav](artifacts/configured_sidenav.png)
 

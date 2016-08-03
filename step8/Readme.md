@@ -7,7 +7,6 @@
 Here we are going to simulate incoming events and show them as toast messages.
 Add the code below into **eventsController**
 
-Todo: Fix the code to avoid clashes with the code that is already in the controller: $scope.events for instance...
 ```javascript
 thisModule.controller('eventsController', function($scope, pipAppBar, pipToasts, $interval) {
     ...

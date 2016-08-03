@@ -1,20 +1,39 @@
 (function (angular) {
-    var thisModule = angular.module('pipWebUISampleModule', [
+    var app = angular.module('app', [
         // pipWebUI modules
-        'pipCore', 'pipRest', 'pipData', 'pipEntry', 'pipControls', 'pipLayout', 'pipNav',
-        'pipLocations', 'pipPictures', 'pipDocuments', 'pipComposite', 'pipGuidance',
-        'pipSettings', 'pipUserSettings', 'pipErrorHandling', 'pipSupport', 'pipHelp',
+        'pipRest', 'pipLayout', 'pipErrorHandling',
 
         // Application templates
-        'SampleApplication.Templates'
+        'app.Templates'
     ]);
-    
-    thisModule.config(function () {
 
+    app.config(function(pipAuthStateProvider) {
+        // Configure states of application
+        pipAuthStateProvider
+            .state('nodes', {
+                url: '/nodes',
+                controller: 'nodesController',
+                template: '<h1>Nodes Page</h1>',
+                auth: true
+            })
+            .state('events', {
+                url: '/events',
+                controller: 'eventsController',
+                template: '<h1>Events Page</h1>',
+                auth: true
+            });
     });
-    
-    thisModule.controller('pipWebUISampleController', function($scope) {
 
+    app.controller('appController', function($scope) {
+        // Todo: Add controller logic for application
+    });
+
+    app.controller('nodesController', function($scope) {
+        // Todo: Add controller logic for IoT Nodes page
+    });
+
+    app.controller('eventsController', function($scope) {
+        // Todo: Add controller logic for IoT Events page
     });
     
 })(window.angular);

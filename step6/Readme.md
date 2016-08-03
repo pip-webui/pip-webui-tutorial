@@ -20,10 +20,8 @@ It will display a tile view with IoT nodes showing their name, measurements and 
             <div>
                 Radiation level: {{ node.radiation_level }}
             </div>
-            <pip-location pip-location-pos="location_point"
-                          pip-location-name="location_point.name"
-                          pip-location-resize="resizeTiles()">
-            </pip-location>
+            <pip-location-pos pip-location-pos="location_point">
+            </pip-location-pos>
         </div>
     </div>
 </pip-tiles>
@@ -66,13 +64,7 @@ Todo: Can we add the hook to resize tiles into the framework?
         
         $scope.location_point = {
             type: 'Point',
-            coordinates: [32.393603, -110.982593],
-            name: 'Tucson'
-        };
-        
-        // Hook to resize tiles
-        $scope.resizeTiles = function() {
-            $scope.$broadcast('pipResizeLayout');
+            coordinates: [32.393603, -110.982593]
         };
     });
 
@@ -134,7 +126,7 @@ Todo: Update the picture to remove that "special tile"
 
 Resize the window and see those the page responses to fit the smaller screen
 
-Todo: Add picture with the page phone size
+![IoT nodes mobile](artifacts/tiles_view_mobile.png)
 
 ### Continue
 
