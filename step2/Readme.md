@@ -83,11 +83,13 @@ app.config(function(pipAuthStateProvider) {
         .state('nodes', {
             url: '/nodes',
             controller: 'nodesController',
+            template: '<h1>Nodes Page</h1>',
             auth: true
         })
         .state('events', {
             url: '/events',
             controller: 'eventsController',
+            template: '<h1>Events Page</h1>',
             auth: true
         });
 });     
