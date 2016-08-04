@@ -2,13 +2,19 @@
 
     var thisModule = angular.module('nodesModule', []);
 
-    thisModule.controller('nodesController', function($scope, pipAppBar) {
+    thisModule.controller('nodesController', function($scope, pipAppBar, $state) {
         // Show page title
         pipAppBar.showTitleText('Nodes');
         // Show menu icon to open sidenav
         pipAppBar.showMenuNavIcon();
-        // Show local page actions
-        pipAppBar.showLocalActions();
+        // Show primary action to switch between views
+        pipAppBar.showLocalActions([
+            {
+                name: isTilesView() ? 'nodes.map': 'nodes.tiles',
+                icon: isTilesView() ? 'icons:location': 'icons:grid',
+                callback: toggleView
+            }
+        ]);
         // Add shadow under the appbar
         pipAppBar.showShadow();
 
@@ -29,6 +35,44 @@
             type: 'Point',
             coordinates: [32.393603, -110.982593]
         };
+
+        $scope.location_points = [
+            {
+                type: 'Point',
+                coordinates: [32.413603, -110.982593]
+            }, {
+                type: 'Point',
+                coordinates: [55.393603, -120.982593]
+            }, {
+                type: 'Point',
+                coordinates: [8.155443, 77.625688]
+            }, {
+                type: 'Point',
+                coordinates: [56.286074, 119.312690]
+            }, {
+                type: 'Point',
+                coordinates: [33.520236, 135.684374]
+            }, {
+                type: 'Point',
+                coordinates: [64.720681, -14.321345]
+            }
+        ];
+
+        function isTilesView() {
+            return $state.current.name === 'nodes.tiles';
+        }
+
+        function toggleView() {
+            $state.go(isTilesView() ? 'nodes.map': 'nodes.tiles');
+        }
+    });
+
+    thisModule.controller('nodesTilesController', function($scope) {
+        // Keep it empty
+    });
+
+    thisModule.controller('nodesMapController', function($scope) {
+        // Keep it empty
     });
 
 })(window.angular);

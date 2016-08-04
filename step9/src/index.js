@@ -25,11 +25,22 @@
 
             // Configure states of application
             pipAuthStateProvider
-                .state('nodes', {
-                    url: '/nodes',
-                    controller: 'nodesController',
-                    templateUrl: 'nodes/nodes.html',
-                    auth: true
+                .state('nodes', { 
+                    url: '/nodes', 
+                    template: '<ui-view class="layout-row flex w-stretch"></ui-view>', 
+                    abstract: true,
+                    controller: 'nodesController', 
+                    auth: true 
+                })
+                .state('nodes.tiles', {
+                    url: '/tiles', 
+                    controller: 'nodesTilesController', 
+                    templateUrl: 'nodes/nodes_tiles.html' 
+                })
+                .state('nodes.map', {
+                    url: '/map', 
+                    controller: 'nodesMapController', 
+                    templateUrl: 'nodes/nodes_map.html' 
                 })
                 .state('events', { 
                     url: '/events', 

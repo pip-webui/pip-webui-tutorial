@@ -10,7 +10,7 @@ Create **/src/nodes/nodes_map.html** and copy there the content below
 
 ```html
 <pip-simple class="layout-row flex">
-    <pip-location-map class="flex" pip-location-pos="location_point" pip-draggable="true" pip-stretch="true">
+    <pip-location-map class="flex" pip-location-positions="location_points" pip-draggable="true" pip-stretch="true">
     </pip-location-map>
 </pip-simple>
 ```
@@ -35,6 +35,28 @@ thisModule.controller('nodesController', function($scope, pipAppBar, $state) {
             callback: toggleView
         }
     ]);
+    
+    $scope.location_points = [
+        {
+            type: 'Point',
+            coordinates: [32.413603, -110.982593]
+        }, {
+            type: 'Point',
+            coordinates: [55.393603, -120.982593]
+        }, {
+            type: 'Point',
+            coordinates: [8.155443, 77.625688]
+        }, {
+            type: 'Point',
+            coordinates: [56.286074, 119.312690]
+        }, {
+            type: 'Point',
+            coordinates: [33.520236, 135.684374]
+        }, {
+            type: 'Point',
+            coordinates: [64.720681, -14.321345]
+        }
+    ];
 
     function isTilesView() {
         return $state.current.name === 'nodes.tiles';
@@ -96,8 +118,6 @@ app.config(
 ```
 
 After you made all the changes, rebuild the application. When you go to nodes page and toggle the view, you shall see the map with positions of IoT nodes.
-
-Todo: change the data so all nodes are shown in different places of the map
 
 ![IoT Nodes map view](artifacts/map_view.png)
 
