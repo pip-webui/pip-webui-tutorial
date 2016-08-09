@@ -48,7 +48,25 @@ Install npm dependencies by executing in command line:
 npm install
 ```
 
-Todo: Add installation of bower dependencies.
+Or create **bower.json** file in the root folder, to define bower dependencies.
+
+```javascript
+{
+  "name": "pip-webui-sample",
+  "version": "1.0.0",
+  "description": "Getting started sample for Pip.WebUI",
+  "dependencies": {
+      "pip-webui": "^1.0.0",
+      "pip-webui-tasks": "^1.0.0"
+  }
+}
+
+```
+
+Install bower dependencies by executing in command line:
+```bash
+bower install
+```
 
 ### Configure build tasks 
 
