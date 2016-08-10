@@ -81,6 +81,7 @@ require('pip-webui-tasks').all();
 gulp.task('build', ['build-dev', 'build-prod']);
 gulp.task('rebuild', ['build-dev']);
 gulp.task('clean', ['build-clean']);
+gulp.task('launch', ['app-launch']);
 
 // Set default task
 gulp.task('default', ['build']);
@@ -138,7 +139,7 @@ In the **/src** folder create the following tree file.
 ### Execute first build
 
 In command line start the build process:
-```
+```bash
 gulp build
 ```
 
@@ -146,7 +147,14 @@ If build is successful, in the root folder you can find two new folders **/lib**
 
 ![Result structure](artifacts/result_structure.png)
 
-Go to **/dist** folder, locate **index.html** file and open it in the browser.  You shall see an empty web page.
+Go to **/dist** folder, locate **index.html** file.  
+
+Open your app by executing in command line:
+```bash
+gulp launch
+```
+
+You shall see an empty web page.
 
 ![Empty web page](artifacts/empty_screen.png)
 
