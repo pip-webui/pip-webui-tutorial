@@ -56,8 +56,7 @@ Or create **bower.json** file in the root folder, to define bower dependencies.
   "version": "1.0.0",
   "description": "Getting started sample for Pip.WebUI",
   "dependencies": {
-      "pip-webui": "^1.0.0",
-      "pip-webui-tasks": "^1.0.0"
+      "pip-webui": "^1.0.0"
   }
 }
 
