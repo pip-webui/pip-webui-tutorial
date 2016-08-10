@@ -27,59 +27,50 @@ Make changes in the **/src/nodes/nodes.js** file
 thisModule.controller('nodesController', function($scope, pipAppBar, $state) {
     ...
 
-    // Show primary action to switch between views
-    pipAppBar.showLocalActions([
-        {
-            name: isTilesView() ? 'nodes.map': 'nodes.tiles',
-            icon: isTilesView() ? 'icons:location': 'icons:grid',
-            callback: toggleView
-        }
-    ]);
+    // Remove primary action configuration
     
-    $scope.location_points = [
-        {
-            type: 'Point',
-            coordinates: [32.413603, -110.982593]
-        }, {
-            type: 'Point',
-            coordinates: [55.393603, -120.982593]
-        }, {
-            type: 'Point',
-            coordinates: [8.155443, 77.625688]
-        }, {
-            type: 'Point',
-            coordinates: [56.286074, 119.312690]
-        }, {
-            type: 'Point',
-            coordinates: [33.520236, 135.684374]
-        }, {
-            type: 'Point',
-            coordinates: [64.720681, -14.321345]
-        }
-    ];
-
-    function isTilesView() {
-        return $state.current.name === 'nodes.tiles';
-    }
-
-    function toggleView() {
-        $state.go(isTiles() ? 'nodes.map': 'nodes.tiles');
-    }
+    ...
 });
 
 thisModule.controller('nodesTilesController', function($scope) {
-    // Keep it empty
+    // Configure primary actions of each view inside controller
+    
+    // Show primary action to switch between views
+    pipAppBar.showLocalActions([
+        {
+            name: 'nodes.map',
+            icon: 'icons:location',
+            callback: toMapView
+        }
+    ]);
+    
+    function toMapView() {
+        $state.go('nodes.map');
+    }
 });
 
 thisModule.controller('nodesMapController', function($scope) {
-    // Keep it empty
+    // Configure primary actions of each view inside controller
+    
+    // Show primary action to switch between views
+    pipAppBar.showLocalActions([
+        {
+            name: 'nodes.tiles',
+            icon: 'icons:grid',
+            callback: toTilesView
+        }
+    ]);
+    
+    function toTilesView() {
+        $state.go('nodes.tiles');
+    }
 });
 
 ```
 
 ## Update application routes
 
-Open **index.js** and in configuration section make changes to nodes route states
+Open **index.js** and in configuration section make changes to nodes route states and default states
 
 ```javascript
 app.config(
@@ -112,6 +103,14 @@ app.config(
                 templateUrl: 'events/events.html',
                 auth: true
             });
+            
+        // Configure default states
+        pipAuthStateProvider.unauthorizedState('signin');
+        pipAuthStateProvider.authorizedState('nodes.tiles'); // <--- Pay attention!
+        
+        $urlRouterProvider.otherwise(function ($injector, $location) {
+            return $location.$$path === '' ? '/signin' : '/nodes/tiles'; // <--- Pay attention!
+        });
          
         ...
 });

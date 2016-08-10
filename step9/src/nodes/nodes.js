@@ -7,14 +7,6 @@
         pipAppBar.showTitleText('Nodes');
         // Show menu icon to open sidenav
         pipAppBar.showMenuNavIcon();
-        // Show primary action to switch between views
-        pipAppBar.showLocalActions([
-            {
-                name: isTilesView() ? 'nodes.map': 'nodes.tiles',
-                icon: isTilesView() ? 'icons:location': 'icons:grid',
-                callback: toggleView
-            }
-        ]);
         // Add shadow under the appbar
         pipAppBar.showShadow();
 
@@ -31,48 +23,79 @@
             {name: 'Node 10', temperature: '23 deg', radiation_level: '4.57 msv'}
         ];
 
-        $scope.location_point = {
+        $scope.iconPath = 'M0,15a15,15 0 1,0 30,0a15,15 0 1,0 -30,0';
+
+        $scope.location_points = [{
             type: 'Point',
-            coordinates: [32.393603, -110.982593]
-        };
+            coordinates: [32.413603, -110.982593],
+            fill: '#FFD54F'
+        }, {
+            type: 'Point',
+            coordinates: [55.393603, -120.982593]
+        }, {
+            type: 'Point',
+            coordinates: [8.155443, 77.625688],
+            fill: '#FFD54F'
+        }, {
+            type: 'Point',
+            coordinates: [56.286074, 119.312690],
+            fill: '#8BC34A'
+        }, {
+            type: 'Point',
+            coordinates: [33.520236, 135.684374]
+        }, {
+            type: 'Point',
+            coordinates: [64.720681, -14.321345],
+            fill: '#FFD54F'
+        }, {
+            type: 'Point',
+            coordinates: [-34.673479, 19.983090]
+        }, {
+            type: 'Point',
+            coordinates: [-25.368410, 45.377503],
+            fill: '#FFD54F'
+        }, {
+            type: 'Point',
+            coordinates: [12.480935, 53.872444],
+            fill: '#8BC34A'
+        }, {
+            type: 'Point',
+            coordinates: [-42.595210, -63.641692]
+        }];
+    });
 
-        $scope.location_points = [
+    thisModule.controller('nodesTilesController', function(pipAppBar, $state) {
+        // Show primary action to switch between views
+        pipAppBar.showLocalActions([
             {
-                type: 'Point',
-                coordinates: [32.413603, -110.982593]
-            }, {
-                type: 'Point',
-                coordinates: [55.393603, -120.982593]
-            }, {
-                type: 'Point',
-                coordinates: [8.155443, 77.625688]
-            }, {
-                type: 'Point',
-                coordinates: [56.286074, 119.312690]
-            }, {
-                type: 'Point',
-                coordinates: [33.520236, 135.684374]
-            }, {
-                type: 'Point',
-                coordinates: [64.720681, -14.321345]
+                name: 'nodes.map',
+                icon: 'icons:location',
+                callback: toMapView
             }
-        ];
+        ]);
 
-        function isTilesView() {
-            return $state.current.name === 'nodes.tiles';
-        }
-
-        function toggleView() {
-            $state.go(isTilesView() ? 'nodes.map': 'nodes.tiles');
+        function toMapView() {
+            $state.go('nodes.map');
         }
     });
 
-    thisModule.controller('nodesTilesController', function($scope) {
-        // Keep it empty
-    });
+    thisModule.controller('nodesMapController', function($scope, pipAppBar, $state) {
+        setTimeout(function() {
+            //$scope.openMap = true;
+        })
 
-    thisModule.controller('nodesMapController', function($scope) {
-        // Keep it empty
+        // Show primary action to switch between views
+        pipAppBar.showLocalActions([
+            {
+                name: 'nodes.tiles',
+                icon: 'icons:grid',
+                callback: toTilesView
+            }
+        ]);
+
+        function toTilesView() {
+            $state.go('nodes.tiles');
+        }
     });
 
 })(window.angular);

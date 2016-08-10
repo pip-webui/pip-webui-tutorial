@@ -2,24 +2,36 @@
 </md-toolbar>
 
 <pip-document>
-    <div class="pip-body">
-        <table class="table table-striped table-hover ">
-            <thead>
-            <tr>
-                <th>Node id</th>
-                <th>Description</th>
-                <th>Temperature</th>
-                <th>Radiation level</th>
-            </tr>
+    <div>
+        <table class="w-stretch" style="border-collapse: collapse">
+            <thead class="color-secondary-text">
+                <tr class="h48 text-left">
+                    <th class="divider-bottom"><!--For icons--></th>
+                    <th class="divider-bottom">Time</th>
+                    <th class="divider-bottom">Node ID</th>
+                    <th class="divider-bottom">Description</th>
+                    <th class="text-right divider-bottom">Temperature</th>
+                    <th class="text-right rp16 divider-bottom">Radiation level</th>
+                </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="event in events" ng-class="event.type">
-                <td>{{ event.node_id }}</td>
-                <td>{{ event.description }}</td>
-                <td>{{ event.temperature }}</td>
-                <td>{{ event.rad_level }}</td>
-            </tr>
+                <tr class="h48 text-subhead2 divider-bottom" ng-repeat="event in events">
+                    <td class="lp16 divider-bottom">
+                        <md-icon ng-style="{color: iconColors[event.icon]}"
+                                 md-svg-icon="icons:{{ event.icon }}">
+                        </md-icon>
+                    </td>
+                    <td class="divider-bottom">00:00</td>
+                    <td class="divider-bottom">{{ event.node_id }}</td>
+                    <td class="divider-bottom">{{ event.description }}</td>
+                    <td class="text-right divider-bottom">{{ event.temperature }}</td>
+                    <td class="text-right rp16 divider-bottom">{{ event.rad_level }}</td>
+                </tr>
             </tbody>
         </table>
     </div>
+    <md-button class="md-fab md-accent md-fab-bottom-right" aria-label="refresh">
+        <md-tooltip md-direction="left">Refresh</md-tooltip>
+        <md-icon md-svg-icon="icons:reload"></md-icon>
+    </md-button>
 </pip-document>

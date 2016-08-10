@@ -13,26 +13,38 @@ Todo: Make the page responsive. Add list on phones
 </md-toolbar>
 
 <pip-document>
-    <div class="pip-body">
-        <table class="table table-striped table-hover ">
-            <thead>
-            <tr>
-                <th>Node id</th>
-                <th>Description</th>
-                <th>Temperature</th>
-                <th>Radiation level</th>
+    <div>
+        <table class="w-stretch" style="border-collapse: collapse">
+            <thead class="color-secondary-text">
+            <tr class="h48 text-left">
+                <th class="divider-bottom"><!--For icons--></th>
+                <th class="divider-bottom">Time</th>
+                <th class="divider-bottom">Node ID</th>
+                <th class="divider-bottom">Description</th>
+                <th class="text-right divider-bottom">Temperature</th>
+                <th class="text-right rp16 divider-bottom">Radiation level</th>
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="event in events" ng-class="event.type">
-                <td>{{ event.node_id }}</td>
-                <td>{{ event.description }}</td>
-                <td>{{ event.temperature }}</td>
-                <td>{{ event.rad_level }}</td>
+            <tr class="h48 text-subhead2" ng-repeat="event in events">
+                <td class="lp16 divider-bottom">
+                    <md-icon ng-style="{color: iconColors[event.icon]}"
+                             md-svg-icon="icons:{{ event.icon }}">
+                    </md-icon>
+                </td>
+                <td class="divider-bottom">00:00</td>
+                <td class="divider-bottom">{{ event.node_id }}</td>
+                <td class="divider-bottom">{{ event.description }}</td>
+                <td class="text-right divider-bottom">{{ event.temperature }}</td>
+                <td class="text-right rp16 divider-bottom">{{ event.rad_level }}</td>
             </tr>
             </tbody>
         </table>
     </div>
+    <md-button class="md-fab md-accent md-fab-bottom-right" aria-label="refresh">
+        <md-tooltip md-direction="left">Refresh</md-tooltip>
+        <md-icon md-svg-icon="icons:reload"></md-icon>
+    </md-button>
 </pip-document>
 ```
 
@@ -56,17 +68,23 @@ Create **events.js** file under **/src/events** folder and copy there the follow
         pipAppBar.showShadow();
 
         $scope.events = [
-            {node_id: '1', description: 'Thermal shock', temperature: '42 deg', rad_level: '0.77 msv', type: 'danger'},
-            {node_id: '15', description: 'Temperature change', temperature: '16 deg', rad_level: '1.35 msv', type: 'info'},
-            {node_id: '4', description: 'Radiation level increase', temperature: '22 deg', rad_level: '5.55 msv', type: 'warning'},
-            {node_id: '3', description: 'Temperature dropped significantly', temperature: '-18 deg', rad_level: '0.11 msv', type: 'warning'},
-            {node_id: '6', description: 'Eruption', temperature: '42 deg', rad_level: '0.22 msv', type: 'danger'},
-            {node_id: '7', description: 'Thermal shock', temperature: '42 deg', rad_level: '0.77 msv', type: 'danger'},
-            {node_id: '18', description: 'Temperature change', temperature: '16 deg', rad_level: '1.35 msv', type: 'info'},
-            {node_id: '2', description: 'Radiation level increase', temperature: '22 deg', rad_level: '5.55 msv', type: 'warning'},
-            {node_id: '22', description: 'Temperature dropped significantly', temperature: '-18 deg', rad_level: '0.11 msv', type: 'warning'},
-            {node_id: '9', description: 'Eruption', temperature: '42 deg', rad_level: '0.22 msv', type: 'danger'}
+            {node_id: '1', description: 'Thermal shock', temperature: '42 deg', rad_level: '0.77 msv', icon: 'warn-circle'},
+            {node_id: '15', description: 'Temperature change', temperature: '16 deg', rad_level: '1.35 msv', icon: 'info-circle-outline'},
+            {node_id: '4', description: 'Radiation level increase', temperature: '22 deg', rad_level: '5.55 msv', icon: 'warn-triangle'},
+            {node_id: '3', description: 'Temperature dropped significantly', temperature: '-18 deg', rad_level: '0.11 msv', icon: 'warn-triangle'},
+            {node_id: '6', description: 'Eruption', temperature: '42 deg', rad_level: '0.22 msv', icon: 'warn-circle'},
+            {node_id: '7', description: 'Thermal shock', temperature: '42 deg', rad_level: '0.77 msv', icon: 'warn-circle'},
+            {node_id: '18', description: 'Temperature change', temperature: '16 deg', rad_level: '1.35 msv', icon: 'info-circle-outline'},
+            {node_id: '2', description: 'Radiation level increase', temperature: '22 deg', rad_level: '5.55 msv', icon: 'warn-triangle'},
+            {node_id: '22', description: 'Temperature dropped significantly', temperature: '-18 deg', rad_level: '0.11 msv', icon: 'warn-triangle'},
+            {node_id: '9', description: 'Eruption', temperature: '42 deg', rad_level: '0.22 msv', icon: 'warn-circle'}
         ];
+        
+        $scope.iconColors = {
+            'warn-circle': '#EF5350',
+            'info-circle-outline': '#8BC34A',
+            'warn-triangle': '#FFD54F'
+        };
     });
 
 })(window.angular);

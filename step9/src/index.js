@@ -51,10 +51,10 @@
 
             // Configure default states
             pipAuthStateProvider.unauthorizedState('signin');
-            pipAuthStateProvider.authorizedState('nodes');
+            pipAuthStateProvider.authorizedState('nodes.tiles');
 
             $urlRouterProvider.otherwise(function ($injector, $location) {
-                return $location.$$path === '' ? '/signin' : '/nodes';
+                return $location.$$path === '' ? '/signin' : '/nodes/tiles';
             });
 
             pipAppBarProvider.appTitleText('Sample Application');
@@ -63,7 +63,7 @@
             pipSideNavProvider.sections([
                 {
                     links: [
-                        {title: 'Nodes', url: '/nodes'},
+                        {title: 'Nodes', url: '/nodes/tiles'},
                         {title: 'Events', url: '/events'}
                     ]
                 },

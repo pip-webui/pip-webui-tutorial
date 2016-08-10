@@ -1,17 +1,26 @@
 <pip-tiles class="layout-fill pip-no-tabs" column-width="440">
     <div class="masonry-brick pip-tile w440-flex " ng-repeat="node in nodes">
-        <div class="p24-flex">
-            <div class="pip-details-title">
-                <p class="pip-title">{{ node.name }}</p>
+        <div class="p16">
+            <h2 class="pip-title tm0">{{ node.name }}</h2>
+            <div class="layout-row">
+                <div class="layout-column flex">
+                    <div class="flex color-secondary-text">Temperature</div>
+                    <div class="flex text-subhead2">{{ node.temperature }}</div>
+                </div>
+                <div class="layout-column flex">
+                    <div class="flex color-secondary-text">Radiation level</div>
+                    <div class="flex text-subhead2">{{ node.radiation_level }}</div>
+                </div>
             </div>
-            <div>
-                Temperature: {{ node.temperature }}
-            </div>
-            <div>
-                Radiation level: {{ node.radiation_level }}
-            </div>
-            <pip-location-map pip-location-pos="location_point">
+        </div>
+        <div class="pip-tile-location-container">
+            <pip-location-map pip-location-pos="location_points[$index]" pip-icon-path="iconPath"
+                              pip-stretch="true" class="h-stretch">
             </pip-location-map>
         </div>
     </div>
 </pip-tiles>
+<md-button class="md-fab md-accent md-fab-bottom-right" aria-label="refresh">
+    <md-tooltip md-direction="left">Refresh</md-tooltip>
+    <md-icon md-svg-icon="icons:reload"></md-icon>
+</md-button>

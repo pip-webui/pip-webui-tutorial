@@ -1,4 +1,11 @@
 <pip-simple class="layout-row flex">
-    <pip-location-map class="flex" pip-location-positions="location_points" pip-draggable="true" pip-stretch="true">
+    <pip-location-map class="flex" pip-location-positions="location_points"
+                      pip-rebind="true"
+                      pip-icon-path="iconPath"
+                      pip-draggable="true" pip-stretch="true">
     </pip-location-map>
+    <md-button class="md-fab md-accent md-fab-bottom-right" aria-label="refresh">
+    	<md-tooltip md-direction="left">Refresh</md-tooltip>
+    	<md-icon md-svg-icon="icons:reload"></md-icon>
+	</md-button>
 </pip-simple>

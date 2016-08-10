@@ -10,21 +10,30 @@ It will display a tile view with IoT nodes showing their name, measurements and 
 ```html
 <pip-tiles class="layout-fill pip-no-tabs" column-width="440">
     <div class="masonry-brick pip-tile w440-flex " ng-repeat="node in nodes">
-        <div class="p24-flex">
-            <div class="pip-details-title">
-                <p class="pip-title">{{ node.name }}</p>
+        <div class="p16">
+            <h2 class="pip-title tm0">{{ node.name }}</h2>
+            <div class="layout-row">
+                <div class="layout-column flex">
+                    <div class="flex color-secondary-text">Temperature</div>
+                    <div class="flex text-subhead2">{{ node.temperature }}</div>
+                </div>
+                <div class="layout-column flex">
+                    <div class="flex color-secondary-text">Radiation level</div>
+                    <div class="flex text-subhead2">{{ node.radiation_level }}</div>
+                </div>
             </div>
-            <div>
-                Temperature: {{ node.temperature }}
-            </div>
-            <div>
-                Radiation level: {{ node.radiation_level }}
-            </div>
-            <pip-location-pos pip-location-pos="location_point">
-            </pip-location-pos>
+        </div>
+        <div class="pip-tile-location-container">
+            <pip-location-map pip-location-pos="location_points[$index]" pip-icon-path="iconPath"
+                              pip-stretch="true" class="h-stretch">
+            </pip-location-map>
         </div>
     </div>
 </pip-tiles>
+<md-button class="md-fab md-accent md-fab-bottom-right" aria-label="refresh">
+    <md-tooltip md-direction="left">Refresh</md-tooltip>
+    <md-icon md-svg-icon="icons:reload"></md-icon>
+</md-button>
 ```
 
 ### Create nodes controller
@@ -62,10 +71,45 @@ Todo: Can we add the hook to resize tiles into the framework?
             {name: 'Node 10', temperature: '23 deg', radiation_level: '4.57 msv'}
         ];
         
-        $scope.location_point = {
+        $scope.iconPath = 'M0,15a15,15 0 1,0 30,0a15,15 0 1,0 -30,0';
+        
+        $scope.location_points = [{
             type: 'Point',
-            coordinates: [32.393603, -110.982593]
-        };
+            coordinates: [32.413603, -110.982593],
+            fill: '#FFD54F'
+        }, {
+            type: 'Point',
+            coordinates: [55.393603, -120.982593]
+        }, {
+            type: 'Point',
+            coordinates: [8.155443, 77.625688],
+            fill: '#FFD54F'
+        }, {
+            type: 'Point',
+            coordinates: [56.286074, 119.312690],
+            fill: '#8BC34A'
+        }, {
+            type: 'Point',
+            coordinates: [33.520236, 135.684374]
+        }, {
+            type: 'Point',
+            coordinates: [64.720681, -14.321345],
+            fill: '#FFD54F'
+        }, {
+            type: 'Point',
+            coordinates: [-34.673479, 19.983090]
+        }, {
+            type: 'Point',
+            coordinates: [-25.368410, 45.377503],
+            fill: '#FFD54F'
+        }, {
+            type: 'Point',
+            coordinates: [12.480935, 53.872444],
+            fill: '#8BC34A'
+        }, {
+            type: 'Point',
+            coordinates: [-42.595210, -63.641692]
+        }];
     });
 
 })(window.angular);

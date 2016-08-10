@@ -25,10 +25,45 @@
             {name: 'Node 10', temperature: '23 deg', radiation_level: '4.57 msv'}
         ];
 
-        $scope.location_point = {
+        $scope.iconPath = 'M0,15a15,15 0 1,0 30,0a15,15 0 1,0 -30,0';
+
+        $scope.location_points = [{
             type: 'Point',
-            coordinates: [32.393603, -110.982593]
-        };
+            coordinates: [32.413603, -110.982593],
+            fill: '#FFD54F'
+        }, {
+            type: 'Point',
+            coordinates: [55.393603, -120.982593]
+        }, {
+            type: 'Point',
+            coordinates: [8.155443, 77.625688],
+            fill: '#FFD54F'
+        }, {
+            type: 'Point',
+            coordinates: [56.286074, 119.312690],
+            fill: '#8BC34A'
+        }, {
+            type: 'Point',
+            coordinates: [33.520236, 135.684374]
+        }, {
+            type: 'Point',
+            coordinates: [64.720681, -14.321345],
+            fill: '#FFD54F'
+        }, {
+            type: 'Point',
+            coordinates: [-34.673479, 19.983090]
+        }, {
+            type: 'Point',
+            coordinates: [-25.368410, 45.377503],
+            fill: '#FFD54F'
+        }, {
+            type: 'Point',
+            coordinates: [12.480935, 53.872444],
+            fill: '#8BC34A'
+        }, {
+            type: 'Point',
+            coordinates: [-42.595210, -63.641692]
+        }];
     });
 
 })(window.angular);
