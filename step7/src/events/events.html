@@ -2,8 +2,8 @@
 </md-toolbar>
 
 <pip-document>
-    <div>
-        <table class="w-stretch" style="border-collapse: collapse">
+    <div ng-show="$mdMedia('gt-xs')">
+        <table class="w-stretch">
             <thead class="color-secondary-text">
             <tr class="h48 text-left">
                 <th class="divider-bottom"><!--For icons--></th>
@@ -29,6 +29,26 @@
             </tr>
             </tbody>
         </table>
+    </div>
+    <div ng-show="$mdMedia('xs')">
+        <div ng-repeat="event in events" class="layout-row layout-align-start-center">
+            <div class="flex-fixed lp16 rp16">
+                <md-icon ng-style="{color: iconColors[event.icon]}"
+                         md-svg-icon="icons:{{ event.icon }}">
+                </md-icon>
+            </div>
+            <div class="flex layout-column layout-align-start-start divider-bottom color-secondary-text tp16 bp16">
+                <div class="flex text-subhead2 w-stretch">
+                    <span >Node {{ event.node_id }}</span> ⦁
+                    <span >{{ event.description }}</span>
+                </div>
+                <div class="flex w-stretch">
+                    <span >00:00</span> ⦁
+                    <span >{{ event.temperature }}</span> ⦁
+                    <span >{{ event.rad_level }}</span>
+                </div>
+            </div>
+        </div>
     </div>
     <md-button class="md-fab md-accent md-fab-bottom-right" aria-label="refresh">
         <md-tooltip md-direction="left">Refresh</md-tooltip>

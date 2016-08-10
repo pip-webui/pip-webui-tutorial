@@ -2,7 +2,7 @@
 
     var thisModule = angular.module('eventsModule', []);
 
-    thisModule.controller('eventsController', function($scope, pipAppBar) {
+    thisModule.controller('eventsController', function($scope, pipAppBar, $mdMedia) {
 
         // Show page title
         pipAppBar.showTitleText('Events');
@@ -12,6 +12,9 @@
         pipAppBar.showLocalActions();
         // Add shadow under the appbar
         pipAppBar.hideShadow();
+
+        // Initialize service for changing layouts when the screen size changed
+        $scope.$mdMedia = $mdMedia;
 
         $scope.events = [
             {node_id: '1', description: 'Thermal shock', temperature: '42 deg', rad_level: '0.77 msv', icon: 'warn-circle'},

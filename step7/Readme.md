@@ -13,33 +13,53 @@ Todo: Make the page responsive. Add list on phones
 </md-toolbar>
 
 <pip-document>
-    <div>
-        <table class="w-stretch" style="border-collapse: collapse">
+    <div ng-show="$mdMedia('gt-xs')">
+        <table class="w-stretch">
             <thead class="color-secondary-text">
-            <tr class="h48 text-left">
-                <th class="divider-bottom"><!--For icons--></th>
-                <th class="divider-bottom">Time</th>
-                <th class="divider-bottom">Node ID</th>
-                <th class="divider-bottom">Description</th>
-                <th class="text-right divider-bottom">Temperature</th>
-                <th class="text-right rp16 divider-bottom">Radiation level</th>
-            </tr>
+                <tr class="h48 text-left">
+                    <th class="divider-bottom"><!--For icons--></th>
+                    <th class="divider-bottom">Time</th>
+                    <th class="divider-bottom">Node ID</th>
+                    <th class="divider-bottom">Description</th>
+                    <th class="text-right divider-bottom">Temperature</th>
+                    <th class="text-right rp16 divider-bottom">Radiation level</th>
+                </tr>
             </thead>
             <tbody>
-            <tr class="h48 text-subhead2" ng-repeat="event in events">
-                <td class="lp16 divider-bottom">
-                    <md-icon ng-style="{color: iconColors[event.icon]}"
-                             md-svg-icon="icons:{{ event.icon }}">
-                    </md-icon>
-                </td>
-                <td class="divider-bottom">00:00</td>
-                <td class="divider-bottom">{{ event.node_id }}</td>
-                <td class="divider-bottom">{{ event.description }}</td>
-                <td class="text-right divider-bottom">{{ event.temperature }}</td>
-                <td class="text-right rp16 divider-bottom">{{ event.rad_level }}</td>
-            </tr>
+                <tr class="h48 text-subhead2 divider-bottom" ng-repeat="event in events">
+                    <td class="lp16 divider-bottom">
+                        <md-icon ng-style="{color: iconColors[event.icon]}"
+                                 md-svg-icon="icons:{{ event.icon }}">
+                        </md-icon>
+                    </td>
+                    <td class="divider-bottom">00:00</td>
+                    <td class="divider-bottom">{{ event.node_id }}</td>
+                    <td class="divider-bottom">{{ event.description }}</td>
+                    <td class="text-right divider-bottom">{{ event.temperature }}</td>
+                    <td class="text-right rp16 divider-bottom">{{ event.rad_level }}</td>
+                </tr>
             </tbody>
         </table>
+    </div>
+    <div ng-show="$mdMedia('xs')">
+        <div ng-repeat="event in events" class="layout-row layout-align-start-center">
+            <div class="flex-fixed lp16 rp16">
+                <md-icon ng-style="{color: iconColors[event.icon]}"
+                         md-svg-icon="icons:{{ event.icon }}">
+                </md-icon>
+            </div>
+            <div class="flex layout-column layout-align-start-start divider-bottom color-secondary-text tp16 bp16">
+                <div class="flex text-subhead2 w-stretch">
+                    <span >Node {{ event.node_id }}</span> ⦁
+                    <span >{{ event.description }}</span>
+                </div>
+                <div class="flex w-stretch">
+                    <span >00:00</span> ⦁
+                    <span >{{ event.temperature }}</span> ⦁
+                    <span >{{ event.rad_level }}</span>
+                </div>
+            </div>
+        </div>
     </div>
     <md-button class="md-fab md-accent md-fab-bottom-right" aria-label="refresh">
         <md-tooltip md-direction="left">Refresh</md-tooltip>
@@ -57,7 +77,7 @@ Create **events.js** file under **/src/events** folder and copy there the follow
 
     var thisModule = angular.module('eventsModule', []);
 
-    thisModule.controller('eventsController', function($scope, pipAppBar) {
+    thisModule.controller('eventsController', function($scope, pipAppBar, $mdMedia) {
         // Show page title
         pipAppBar.showTitleText('Events');
         // Show menu icon to open sidenav
@@ -66,7 +86,10 @@ Create **events.js** file under **/src/events** folder and copy there the follow
         pipAppBar.showLocalActions();
         // Add shadow under the appbar
         pipAppBar.showShadow();
-
+        
+        // Initialize service for changing layouts when the screen size changed
+        $scope.$mdMedia = $mdMedia;
+        
         $scope.events = [
             {node_id: '1', description: 'Thermal shock', temperature: '42 deg', rad_level: '0.77 msv', icon: 'warn-circle'},
             {node_id: '15', description: 'Temperature change', temperature: '16 deg', rad_level: '1.35 msv', icon: 'info-circle-outline'},
