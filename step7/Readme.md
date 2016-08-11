@@ -12,7 +12,7 @@ The page will show events from IoT nodes as a table on Desktop and Table and as 
 </md-toolbar>
 
 <pip-document>
-    <div ng-show="$mdMedia('gt-xs')">
+    <div ng-show="$mdMedia('gt-xs')" class="scrolled-container">
         <table class="w-stretch">
             <thead class="color-secondary-text">
                 <tr class="h48 text-left">
@@ -40,7 +40,7 @@ The page will show events from IoT nodes as a table on Desktop and Table and as 
             </tbody>
         </table>
     </div>
-    <div ng-show="$mdMedia('xs')">
+    <div ng-show="$mdMedia('xs')" class="scrolled-container">
         <div ng-repeat="event in events" class="layout-row layout-align-start-center">
             <div class="flex-fixed lp16 rp16">
                 <md-icon ng-style="{color: iconColors[event.icon]}"
@@ -158,7 +158,9 @@ table {
 }
 
 .pip-document {
-  overflow: auto;
+  .scrolled-container {
+    overflow: auto;
+  }
 }
 ```
 
