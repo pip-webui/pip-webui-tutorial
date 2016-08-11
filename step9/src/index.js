@@ -1,7 +1,7 @@
 (function (angular) {
     var app = angular.module('app', [
         // pipWebUI modules
-        'pipRest', 'pipErrorHandling', 'pipWebuiTests', 'pipLayout', 'pipNav', 'pipEntry',
+        'pipRest', 'pipErrorHandling', 'pipWebuiTest', 'pipLayout', 'pipNav', 'pipEntry',
         'pipSettings', 'pipUserSettings', 'pipSupport', 'pipHelp',
 
         // Application templates
@@ -13,7 +13,7 @@
     
     app.config(
         function (pipSideNavProvider, $mdIconProvider, pipAppBarProvider, pipAuthStateProvider, 
-                  pipSettingsProvider, pipHelpProvider, $urlRouterProvider) {
+                  pipSettingsProvider, pipHelpProvider, $urlRouterProvider, pipRestProvider) {
             // Configure icons of application
             $mdIconProvider.iconSet('icons', 'images/icons.svg', 512);
 
@@ -22,6 +22,9 @@
                 {name: 'global.settings', title: 'Settings', state: 'settings'},
                 {name: 'global.signout', title: 'Sign out', state: 'signout'}
             ]);
+
+            // Configure server url
+            pipRestProvider.serverUrl('http://fakeserver.net');
 
             // Configure states of application
             pipAuthStateProvider
@@ -82,7 +85,9 @@
             ]);
     });
 
-    app.controller('appController', function($scope, pipAppBar, pipTestDataService) {
+    app.controller('appController', function($scope, pipAppBar, pipTestDataService, pipWebuiTest) {
+        // run fake server
+        pipWebuiTest.runFakeServer('http://fakeserver.net');        
         // Show application title
         pipAppBar.showAppTitleText('Sample Application');
         // Show icon to open sidenav
