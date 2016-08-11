@@ -7,7 +7,6 @@
 Create **/events** folder under **/src**. Place there events.html file with the content presented below. 
 The page will show events from IoT nodes as a table on Desktop and Table and as a list on Phones.
 
-Todo: Make the page responsive. Add list on phones
 ```html
 <md-toolbar class="pip-appbar-ext">
 </md-toolbar>
