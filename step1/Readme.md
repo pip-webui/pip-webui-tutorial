@@ -92,7 +92,8 @@ Create **build.conf.js** file in the root folder and define configuration for th
 ```javascript
 module.exports = {
     module: {
-        name: 'app'
+        name: 'app',
+        styles: 'styles'
     },
     file: {
         lib: [

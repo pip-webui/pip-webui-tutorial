@@ -16,18 +16,8 @@
         // Initialize service for changing layouts when the screen size changed
         $scope.$mdMedia = $mdMedia;
 
-        $scope.events = [
-            {node_id: '1', description: 'Thermal shock', temperature: '42 deg', rad_level: '0.77 msv', icon: 'warn-circle'},
-            {node_id: '15', description: 'Temperature change', temperature: '16 deg', rad_level: '1.35 msv', icon: 'info-circle-outline'},
-            {node_id: '4', description: 'Radiation level increase', temperature: '22 deg', rad_level: '5.55 msv', icon: 'warn-triangle'},
-            {node_id: '3', description: 'Temperature dropped significantly', temperature: '-18 deg', rad_level: '0.11 msv', icon: 'warn-triangle'},
-            {node_id: '6', description: 'Eruption', temperature: '42 deg', rad_level: '0.22 msv', icon: 'warn-circle'},
-            {node_id: '7', description: 'Thermal shock', temperature: '42 deg', rad_level: '0.77 msv', icon: 'warn-circle'},
-            {node_id: '18', description: 'Temperature change', temperature: '16 deg', rad_level: '1.35 msv', icon: 'info-circle-outline'},
-            {node_id: '2', description: 'Radiation level increase', temperature: '22 deg', rad_level: '5.55 msv', icon: 'warn-triangle'},
-            {node_id: '22', description: 'Temperature dropped significantly', temperature: '-18 deg', rad_level: '0.11 msv', icon: 'warn-triangle'},
-            {node_id: '9', description: 'Eruption', temperature: '42 deg', rad_level: '0.22 msv', icon: 'warn-circle'}
-        ];
+        // Get test data
+        $scope.events = $scope.dataSet.get('EventsTestCollection').getAll();
 
         $scope.iconColors = {
             'warn-circle': '#EF5350',

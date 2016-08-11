@@ -1,7 +1,7 @@
 module.exports = {
     module: {
         name: 'app',
-        styles: 'sample'
+        styles: 'styles'
     },
     build: {
         js: true,

@@ -1,7 +1,7 @@
 module.exports = {
     module: {
         name: 'app',
-        index: 'sample'
+        styles: 'styles'
     },
     build: {
         js: true,
@@ -12,7 +12,7 @@ module.exports = {
         images: true
     },
     file: {
-        import: [
+        lib: [
             'node_modules/pip-webui/dist/**/*'
         ]
     }

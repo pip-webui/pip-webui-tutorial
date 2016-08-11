@@ -27,7 +27,7 @@ Initialize angular module in **index.js** and reference pip-webui modules
 ```javascript
 var app = angular.module('app', [
         // pipWebUI modules
-        'pipRest', 'pipLayout', 'pipErrorHandling',
+        'pipRest', 'pipLayout', 'pipErrorHandling', 'pipWebuiTests',
         
         // Application templates
         'app.Templates'
@@ -41,8 +41,9 @@ app.config(function() {
         // Todo: Add configuration for the application
 });
 
-app.controller('appController', function($scope) {
-        // Todo: Add controller logic for application
+app.controller('appController', function($scope, pipTestDataService) {
+        // Create test data using pipWebUI services
+        $scope.dataSet = pipTestDataService.createTestDataset();
 });
 ```
 

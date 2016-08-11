@@ -1,7 +1,7 @@
 (function (angular) {
     var app = angular.module('app', [
         // pipWebUI modules
-        'pipRest', 'pipLayout', 'pipErrorHandling', 'pipNav',
+        'pipRest', 'pipLayout', 'pipErrorHandling', 'pipWebuiTests', 'pipNav',
 
         // Application templates
         'app.Templates'
@@ -52,6 +52,8 @@
         pipAppBar.showMenuNavIcon();
         // Show button with tree dots for secondary actions
         pipAppBar.showLocalActions();
+        // Create test data using pipWebUI services
+        $scope.dataSet = pipTestDataService.createTestDataset();
     });
 
     app.controller('nodesController', function($scope, pipAppBar) {
