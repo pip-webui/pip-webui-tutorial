@@ -1,7 +1,7 @@
 (function (angular) {
     var app = angular.module('app', [
         // pipWebUI modules
-        'pipRest', 'pipLayout', 'pipErrorHandling', 'pipWebuiTests',
+        'pipRest', 'pipLayout', 'pipErrorHandling', 'pipWebuiTest',
 
         // Application templates
         'app.Templates'
