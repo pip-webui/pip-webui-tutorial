@@ -70,7 +70,7 @@
             ]);
     });
 
-    app.controller('appController', function($scope, pipAppBar) {
+    app.controller('appController', function($scope, pipAppBar, pipTestDataService) {
         // Show application title
         pipAppBar.showAppTitleText('Sample Application');
         // Show icon to open sidenav
