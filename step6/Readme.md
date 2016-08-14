@@ -43,6 +43,8 @@ Create **nodes.js** file under **/src/nodes** folder and copy the following code
 Todo: Each node shall have its own location!
 Todo: Can we add the hook to resize tiles into the framework?
 
+We receive data from the dataset. Use '$scope.dataSet.get('NodesTestCollection').getAll()' to read data from a set of 'NodesTestCollection'.
+
 ```javascript
 (function (angular) {
 
@@ -120,8 +122,8 @@ Remove old **nodesController** from **index.js**
 
 ```javascript
 // Remove
-//app.controller('nodesController', function($scope) {
-//        // Todo: Add controller logic for IoT Nodes page
+//app.controller('nodesController', function($scope, pipAppBar) {
+//   ....
 //});
 ```
 

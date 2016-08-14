@@ -9,7 +9,7 @@ Add **pipSettings**, **pipUserSettings**, **pipSupport** and **pipHelp** into th
 ```javascript
 var app = angular.module('app', [
         // pipWebUI modules
-        'pipRest', 'pipErrorHandling', 'pipLayout', 'pipNav', 'pipEntry',
+        'pipRest', 'pipLayout', 'pipErrorHandling', 'pipWebuiTests', 'pipNav', 'pipEntry',
         'pipSettings', 'pipUserSettings', 'pipSupport', 'pipHelp',
         
         // Application templates
