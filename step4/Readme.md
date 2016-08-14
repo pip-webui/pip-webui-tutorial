@@ -9,7 +9,7 @@ Add **pipEntry** into the application module references
 ```javascript
 var app = angular.module('app', [
         // pipWebUI modules
-        'pipRest', 'pipErrorHandling', 'pipLayout', 'pipNav', 'pipEntry',
+        'pipRest', 'pipLayout', 'pipErrorHandling', 'pipWebuiTests', 'pipNav', 'pipEntry',
 
         // Application templates
         'app.Templates'
@@ -21,9 +21,10 @@ var app = angular.module('app', [
 Now add default routing states into configuration section. 
 Unauthorized users shall see **signin** page when they open the application.
 After successful signin they shall switch to **nodes** page.
+We can use default user for sigin **(email: test@sample.net, password: any password)**.
 
 ```javascript
-app.config(function ($mdIconProvider, $urlRouterProvider, pipSideNavProvider, pipAppBarProvider) {
+app.config(function (pipAuthStateProvider, $mdIconProvider, pipAppBarProvider, pipSideNavProvider) {
     ...
      // Configure default states
      pipAuthStateProvider.unauthorizedState('signin');
@@ -43,7 +44,7 @@ To go to **signin** page add **Sign Out** link with such url:**/signout** to sid
 It will look like this:
 
 ```javascript
-app.config(function ($mdIconProvider, pipSideNavProvider, pipAppBarProvider) {
+app.config(function (pipAuthStateProvider, $mdIconProvider, pipAppBarProvider, pipSideNavProvider) {
     ...
     pipSideNavProvider.sections([
         {

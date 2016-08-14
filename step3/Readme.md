@@ -9,7 +9,7 @@ Add reference to **pipNav** in application module references
 ```javascript
 var app = angular.module('app', [
         // pipWebUI modules
-        'pipRest', 'pipLayout', 'pipErrorHandling', 'pipNav',
+        'pipRest', 'pipLayout', 'pipErrorHandling', 'pipWebuiTests', 'pipNav',
 
         // Application templates
         'app.Templates'
@@ -36,10 +36,12 @@ Rebuild the application. You shall see an empty application with toolbar and sid
 
 ### Configure AppBar
 
-Load default iconset and define global actions and default application title inside application configuration section
+Load default iconset, define global actions and default application title inside application configuration section.
+
+We will create a page for the global actions later, you can currently see an routing error page if you try go to them.
 
 ```javascript
-app.config(function ($mdIconProvider, pipAppBarProvider) {
+app.config(function (pipAuthStateProvider, $mdIconProvider, pipAppBarProvider) {
     // Load default iconset
     $mdIconProvider.iconSet('icons', 'images/icons.svg', 512);
 
@@ -49,21 +51,29 @@ app.config(function ($mdIconProvider, pipAppBarProvider) {
         {name: 'global.signout', title: 'Sign out', state: 'signout'}
     ]);
 
+    // Configure states of application
+    ....
+
     // Set default application title
     pipAppBarProvider.appTitleText('Sample Application');
 });
 ```
 
-Now configure what will be shown on appbar when application loads
+Now configure what will be shown on appbar when application loads. 
+Also, run fake server for our data and create test dataset.
 
 ```javascript
-app.controller('appController', function($scope, pipAppBar) {
+app.controller('appController', function($scope, pipAppBar, pipWebuiTest, pipTestDataService) {
+        // run fake server
+        pipWebuiTest.runFakeServer('http://fakeserver.net');        
         // Show application title
         pipAppBar.showAppTitleText('Sample Application'); 
         // Show icon to open sidenav
         pipAppBar.showMenuNavIcon();
         // Show button with tree dots for secondary actions
         pipAppBar.showLocalActions();
+        // Create test data using pipWebUI services
+        $scope.dataSet = pipTestDataService.createTestDataset();        
 });
 ```
 
@@ -80,7 +90,7 @@ When you click on tree dots on the right, a popup with secondary actions shall o
 Configure two links in sidenav inside application configuration section
 
 ```javascript
-app.config(function ($mdIconProvider, pipAppBarProvider, pipSideNavProvider) {
+app.config(function (pipAuthStateProvider, $mdIconProvider, pipAppBarProvider, pipSideNavProvider) {
     ...
     
     pipSideNavProvider.sections([
