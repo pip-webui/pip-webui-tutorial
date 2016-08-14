@@ -49,6 +49,8 @@
                 $interval.cancel(stopTime);
             });
 
+        $scope.onReload = onReload;
+        
         return;
 
         function addNextToast() {
@@ -78,6 +80,19 @@
                 i++;
             }
         }
+
+        function onReload() {
+            var req = {method: 'GET', url: 'http://fakeserver.net' + '/api/events'};
+            
+            $http(req)
+                .success(function (result) {
+                    $scope.events = result;
+                })
+                .error(function (error) {
+                    console.log('Error: get events error! ', error); 
+                });  
+        }
+
     });
 
 })(window.angular);

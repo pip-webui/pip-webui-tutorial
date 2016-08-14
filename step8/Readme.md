@@ -161,9 +161,53 @@ Add the code below into **eventsController**
     });
 ```
 
-Rebuild the application. Now every 10 seconds you shall see a toast with event in the left bottom corner
+Rebuild the application. Now every 10 seconds you shall see a toast with event in the left bottom corner.
 
 ![Notification](artifacts/notification.png)
+
+Add rereading data from the server after you click 'Reload Button'. 
+
+![Reload button](artifacts/reload_button.png)
+
+Add this code to **eventsController**.
+
+```javascript
+ thisModule.controller('eventsController', function($scope, $interval, $mdMedia, $http, pipAppBar, pipToasts) {
+ 
+        ... 
+
+        Scope.onREload = onReload;
+
+        return;
+
+        ...
+
+        function onReload() {
+            var req = {method: 'GET', url: 'http://fakeserver.net' + '/api/events'};
+
+            $http(req)
+                .success(function (result) {
+                    $scope.events = result;
+                })
+                .error(function (error) {
+                    console.log('Error: get events error! ', error); 
+                });  
+        }
+        
+    });
+```
+
+Change ./src/events/events.html.
+
+```html
+ ...
+    <md-button class="md-fab md-accent md-fab-bottom-right" aria-label="refresh"
+        ng-click="onReload()">  <!-- Pay attention!  -->
+        <md-tooltip md-direction="left">Refresh</md-tooltip>
+        <md-icon md-svg-icon="icons:reload"></md-icon>
+    </md-button>
+ ...
+```
 
 ### Continue
 
