@@ -19,6 +19,7 @@ The page will show events from IoT nodes as a table on Desktop and Table and as 
                     <th class="divider-bottom"><!--For icons--></th>
                     <th class="divider-bottom">Time</th>
                     <th class="divider-bottom">Node ID</th>
+                    <th class="divider-bottom">Node Name</th>
                     <th class="divider-bottom">Description</th>
                     <th class="text-right divider-bottom">Temperature</th>
                     <th class="text-right rp16 divider-bottom">Radiation level</th>
@@ -33,6 +34,7 @@ The page will show events from IoT nodes as a table on Desktop and Table and as 
                     </td>
                     <td class="divider-bottom">00:00</td>
                     <td class="divider-bottom">{{ event.node_id }}</td>
+                    <td class="divider-bottom">{{ event.node_name }}</td>
                     <td class="divider-bottom">{{ event.description }}</td>
                     <td class="text-right divider-bottom">{{ event.temperature }}</td>
                     <td class="text-right rp16 divider-bottom">{{ event.rad_level }}</td>
@@ -49,7 +51,7 @@ The page will show events from IoT nodes as a table on Desktop and Table and as 
             </div>
             <div class="flex layout-column layout-align-start-start divider-bottom color-secondary-text tp16 bp16">
                 <div class="flex text-subhead2 w-stretch">
-                    <span >Node {{ event.node_id }}</span> ⦁
+                    <span >Node {{ event.node_name }}</span> ⦁
                     <span >{{ event.description }}</span>
                 </div>
                 <div class="flex w-stretch">
@@ -84,7 +86,7 @@ Create **events.js** file under **/src/events** folder and copy there the follow
         // Show local page actions
         pipAppBar.showLocalActions();
         // Add shadow under the appbar
-        pipAppBar.showShadow();
+        pipAppBar.hideShadow();
         
         // Initialize service for changing layouts when the screen size changed
         $scope.$mdMedia = $mdMedia;
@@ -119,7 +121,7 @@ Make changes to the routing states in configuration section
 
 ```javascript
 app.config(
-    function (pipSideNavProvider, $mdIconProvider, pipAppBarProvider, pipAuthStateProvider, 
+    function (pipAuthStateProvider, $mdIconProvider, pipAppBarProvider, pipSideNavProvider,  
               pipSettingsProvider, pipHelpProvider, $urlRouterProvider) {
         ...
 
@@ -146,8 +148,8 @@ Remove old **eventsController** from **index.js**
 
 ```javascript
 // Remove
-//app.controller('eventsController', function($scope) {
-//        // Todo: Add controller logic for IoT Events page
+//app.controller('eventsController', function($scope, pipAppBar) {
+//       ....
 //});
 ```
 

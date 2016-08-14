@@ -43,7 +43,7 @@ Create **nodes.js** file under **/src/nodes** folder and copy the following code
 Todo: Each node shall have its own location!
 Todo: Can we add the hook to resize tiles into the framework?
 
-We receive data from the dataset. Use '$scope.dataSet.get('NodesTestCollection').getAll()' to read data from a set of 'NodesTestCollection'.
+We receive data from the dataset. Use `$scope.dataSet.get('NodesTestCollection').getAll()` to read data from a set of 'NodesTestCollection'.
 
 ```javascript
 (function (angular) {
@@ -97,7 +97,7 @@ Make changes to the routing states in configuration section
 
 ```javascript
 app.config(
-    function (pipSideNavProvider, $mdIconProvider, pipAppBarProvider, pipAuthStateProvider, 
+    function (pipAuthStateProvider, $mdIconProvider, pipAppBarProvider, pipSideNavProvider,  
               pipSettingsProvider, pipHelpProvider, $urlRouterProvider) {
         ...
         // Configure routing states
