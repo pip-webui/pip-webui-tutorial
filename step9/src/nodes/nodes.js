@@ -2,7 +2,7 @@
 
     var thisModule = angular.module('nodesModule', []);
 
-    thisModule.controller('nodesController', function($scope, $state, $http, pipAppBar) {
+    thisModule.controller('nodesController', function($scope, $http, pipAppBar) {
         
         var req;
 
@@ -57,10 +57,6 @@
     });
 
     thisModule.controller('nodesMapController', function($scope, pipAppBar, $state) {
-        setTimeout(function() {
-            //$scope.openMap = true;
-        })
-
         // Show primary action to switch between views
         pipAppBar.showLocalActions([
             {

@@ -24,15 +24,15 @@ Make changes in the **/src/nodes/nodes.js** file
 
 ```javascript
 
-thisModule.controller('nodesController', function($scope, pipAppBar, $state) {
+thisModule.controller('nodesController', function($scope, $http, pipAppBar) {
     ...
 
-    // Remove primary action configuration
-    
+    // Remove primary action configuration: pipAppBar.showLocalActions();
+
     ...
 });
 
-thisModule.controller('nodesTilesController', function($scope) {
+thisModule.controller('nodesTilesController', function($scope, $state, pipAppBar) {
     // Configure primary actions of each view inside controller
     
     // Show primary action to switch between views
@@ -49,7 +49,7 @@ thisModule.controller('nodesTilesController', function($scope) {
     }
 });
 
-thisModule.controller('nodesMapController', function($scope) {
+thisModule.controller('nodesMapController', function($scope, $state, pipAppBar) {
     // Configure primary actions of each view inside controller
     
     // Show primary action to switch between views
