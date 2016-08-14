@@ -121,8 +121,8 @@ Make changes to the routing states in configuration section
 
 ```javascript
 app.config(
-    function (pipAuthStateProvider, $mdIconProvider, pipAppBarProvider, pipSideNavProvider,  
-              pipSettingsProvider, pipHelpProvider, $urlRouterProvider) {
+    function (pipSideNavProvider, $mdIconProvider, pipAppBarProvider, pipAuthStateProvider, 
+                  pipSettingsProvider, pipHelpProvider, $urlRouterProvider, pipRestProvider) {
         ...
 
         // Configure states of application

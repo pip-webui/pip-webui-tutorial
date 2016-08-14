@@ -44,6 +44,10 @@
             'info-circle-outline': '#8BC34A',
             'warn-triangle': '#FFD54F'
         };
+        
+            $scope.$on('$destroy', function() {
+                $interval.cancel(stopTime);
+            });
 
         return;
 

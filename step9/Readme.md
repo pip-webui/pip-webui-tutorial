@@ -75,7 +75,7 @@ Open **index.js** and in configuration section make changes to nodes route state
 ```javascript
 app.config(
         function (pipSideNavProvider, $mdIconProvider, pipAppBarProvider, pipAuthStateProvider, 
-                  pipSettingsProvider, pipHelpProvider, $urlRouterProvider) {
+                  pipSettingsProvider, pipHelpProvider, $urlRouterProvider, pipRestProvider) {
         ...
         
         // Configure application route states
@@ -116,9 +116,32 @@ app.config(
 });
 ```
 
-After you made all the changes, rebuild the application. When you go to nodes page and toggle the view, you shall see the map with positions of IoT nodes.
+* After you made all the changes, rebuild the application. When you go to nodes page and toggle the view, you shall see the map with positions of IoT nodes.
 
 ![IoT Nodes map view](artifacts/map_view.png)
+
+
+* Go to the events page, and then go back to the nodes. We continue to receive toast messages about incoming events. Fix this. Add this code into **eventsController**. 
+
+
+```javascript
+ thisModule.controller('eventsController', function($scope, $interval, $mdMedia, $http, pipAppBar, pipToasts) {
+
+        ...
+
+            $scope.$on('$destroy', function() {
+                $interval.cancel(stopTime);
+            });
+
+        return;
+
+        ...
+
+    });
+```
+
+* After you made all the changes, rebuild the application. Verify that the events reading stops after the transition to nodes.
+
 
 ### Continue
 

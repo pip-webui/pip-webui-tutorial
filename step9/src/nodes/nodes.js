@@ -14,7 +14,6 @@
         pipAppBar.showShadow();
 
         // Get test data
-        // $scope.nodes = $scope.dataSet.get('NodesTestCollection').getAll();
         req = {method: 'GET', url: 'http://fakeserver.net' + '/api/nodes'};
 
         $http(req)

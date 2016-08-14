@@ -10,7 +10,7 @@
         // Show local page actions
         pipAppBar.showLocalActions();
         // Add shadow under the appbar
-        pipAppBar.showShadow();
+        pipAppBar.hideShadow();
 
         // Get test data
         $scope.nodes = $scope.dataSet.get('NodesTestCollection').getAll();
