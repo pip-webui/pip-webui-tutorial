@@ -45,12 +45,12 @@
             'warn-triangle': '#FFD54F'
         };
         
-            $scope.$on('$destroy', function() {
-                $interval.cancel(stopTime);
-            });
+        $scope.$on('$destroy', function() {
+            $interval.cancel(stopTime);
+        });
 
         $scope.onReload = onReload;
-        
+
         return;
 
         function addNextToast() {
