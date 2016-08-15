@@ -68,6 +68,24 @@
                     ]
                 }
             ]);
+            
+            // Register custom help page
+            pipHelpProvider.addTab({
+                state: 'help',
+                title: 'Help page',
+                stateConfig: {
+                    controller: function($timeout) {
+                        $timeout(function() {
+                            $('pre code').each(function(i, block) {
+                                Prism.highlightElement(block);
+                            });
+                        });
+                    },
+                    url: '/help',
+                    auth: false,
+                    templateUrl: 'help/help.html'
+                }
+            });            
     });
 
     app.controller('appController', function($scope, pipAppBar, pipTestDataService) {
