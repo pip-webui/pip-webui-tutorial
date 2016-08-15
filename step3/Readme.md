@@ -18,7 +18,7 @@ var app = angular.module('app', [
 
 ### Add AppBar and SideNav into index.html
 
-Place **pip-appbar** and **pip-sidenav** components under **pip-main** tag.
+Place **pip-appbar** and **pip-sidenav** components under **pip-main** tag. Delet text **'Nothing here yet!'** from **pip-main-body** container.
 
 ```html
 <body ng-app="app" ng-controller="appController">

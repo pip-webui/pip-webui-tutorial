@@ -127,13 +127,13 @@ In the **/src** folder create the following tree file.
     <script src="index.js"></script>
 </head>
 <body>
-
+Nothing here yet!
 </body>
 </html>
 ```
 
 ##### styles.less
-```css
+```
 // Todo: add styles here
 ```
 
