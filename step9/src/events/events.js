@@ -2,7 +2,7 @@
 
     var thisModule = angular.module('eventsModule', []);
 
-    thisModule.controller('eventsController', function($scope, $interval, $mdMedia, $http, pipAppBar, pipToasts) {
+ thisModule.controller('eventsController', function($scope, $interval, $mdMedia, $http, pipAppBar, pipToasts) {
 
         var req,
             stopTime,
@@ -17,39 +17,37 @@
         pipAppBar.showLocalActions();
         // Add shadow under the appbar
         pipAppBar.hideShadow();
-
         // Initialize service for changing layouts when the screen size changed
         $scope.$mdMedia = $mdMedia;
         
         // Get test data 
         events = $scope.dataSet.get('EventsTestCollection');
 
-        // $scope.events = $scope.dataSet.get('EventsTestCollection').getAll();
-
         // Prepare request 
         req = {method: 'GET', url: 'http://fakeserver.net' + '/api/events'};
+
         // Get data from the server
         $http(req)
-        .success(function (result) {
-            $scope.events = result;
+            .success(function (result) {
+                $scope.events = result;
 
-            stopTime = $interval(addNextToast, 10000); // use angular $interval for imitation receiving messages every 10 sec.            
-        })
-        .error(function (error) {
-            console.log('Error: get events error! ', error); 
-        });    
+                stopTime = $interval(addNextToast, 10000); // use angular $interval for imitation receiving messages every 10 sec.            
+            })
+            .error(function (error) {
+                console.log('Error: get events error! ', error); 
+            });    
 
         $scope.iconColors = {
             'warn-circle': '#EF5350',
             'info-circle-outline': '#8BC34A',
             'warn-triangle': '#FFD54F'
         };
-        
+
+        $scope.onReload = onReload;
+
         $scope.$on('$destroy', function() {
             $interval.cancel(stopTime);
         });
-
-        $scope.onReload = onReload;
 
         return;
 
@@ -68,12 +66,12 @@
                 req = {method: 'GET', url: 'http://fakeserver.net' + '/api/events/' + event.id};
                 // Get data from the server
                 $http(req)
-                .success(function (result) {
-                    $scope.events.push(result);
-                })
-                .error(function (error) {
-                    console.log('Error: get events error! ', error); 
-                }); 
+                    .success(function (result) {
+                        $scope.events.push(result);
+                    })
+                    .error(function (error) {
+                        console.log('Error: get events error! ', error); 
+                    }); 
 
                 // Function to display notification
                 pipToasts.showNotification('Node ' + event.node_name + ' (' + event.node_id + '): ' + event.description);
@@ -81,12 +79,14 @@
             }
         }
 
+
         function onReload() {
             var req = {method: 'GET', url: 'http://fakeserver.net' + '/api/events'};
-            
+
             $http(req)
                 .success(function (result) {
                     $scope.events = result;
+                    pipToasts.showNotification('Events data are reloaded!');
                 })
                 .error(function (error) {
                     console.log('Error: get events error! ', error); 

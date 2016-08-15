@@ -109,14 +109,11 @@ app.config(
 );
 ```
 
-
 Rebuild and reopen the application. Now you shall see Help pages with default content.
 Help page.
 ![Feedback](artifacts/help_page.png)
 
-
 Todo: Add screenshot of the help page. We shall also implement couple default pages similar to user settings (talk to AlexM)
-
 
 ### Continue
 

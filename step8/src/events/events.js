@@ -1,7 +1,8 @@
 (function (angular) {
 
     var thisModule = angular.module('eventsModule', []);
-thisModule.controller('eventsController', function($scope, $interval, $mdMedia, $http, pipAppBar, pipToasts) {
+
+ thisModule.controller('eventsController', function($scope, $interval, $mdMedia, $http, pipAppBar, pipToasts) {
 
         var req,
             stopTime,
@@ -42,8 +43,8 @@ thisModule.controller('eventsController', function($scope, $interval, $mdMedia, 
             'warn-triangle': '#FFD54F'
         };
 
-        Scope.onREload = onReload;
-        
+        $scope.onReload = onReload;
+
         return;
 
         function addNextToast() {
@@ -74,17 +75,20 @@ thisModule.controller('eventsController', function($scope, $interval, $mdMedia, 
             }
         }
 
+
         function onReload() {
             var req = {method: 'GET', url: 'http://fakeserver.net' + '/api/events'};
 
             $http(req)
                 .success(function (result) {
                     $scope.events = result;
+                    pipToasts.showNotification('Events data are reloaded!');
                 })
                 .error(function (error) {
                     console.log('Error: get events error! ', error); 
                 });  
-        }        
+        }
+
     });
 
 })(window.angular);

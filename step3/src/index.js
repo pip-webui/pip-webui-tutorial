@@ -1,13 +1,13 @@
-(function (angular) {
+(function () {
     var app = angular.module('app', [
-        // pipWebUI modules
-        'pipRest', 'pipLayout', 'pipErrorHandling', 'pipWebuiTests', 'pipNav',
+            // pipWebUI modules
+            'pipRest', 'pipLayout', 'pipErrorHandling', 'pipWebuiTests', 'pipNav',
 
-        // Application templates
-        'app.Templates'
+            // Application templates
+            'app.Templates'
     ]);
-    
-    app.config(function (pipSideNavProvider, $mdIconProvider, pipAppBarProvider, pipAuthStateProvider) {
+
+    app.config(function(pipAuthStateProvider, $mdIconProvider, pipAppBarProvider, pipSideNavProvider) {
         // Load default iconset
         $mdIconProvider.iconSet('icons', 'images/icons.svg', 512);
 
@@ -17,6 +17,7 @@
             {name: 'global.signout', title: 'Sign out', state: 'signout'}
         ]);
 
+        // Configure states of application
         pipAuthStateProvider
             .state('nodes', {
                 url: '/nodes',
@@ -32,9 +33,8 @@
             });
 
         // Set default application title
-        pipAppBarProvider.appTitleText('Sample Application');
+        pipAppBarProvider.appTitleText('Sample Application');     
 
-        // Configure sidenav sections
         pipSideNavProvider.sections([
             {
                 links: [
@@ -42,18 +42,20 @@
                     {title: 'Events', url: '/events'}
                 ]
             }
-        ]);
-    });
+        ]);               
+    });  
 
-    app.controller('appController', function($scope, pipAppBar, pipTestDataService) {
-        // Show application title
-        pipAppBar.showAppTitleText('Sample Application');
-        // Show icon to open sidenav
-        pipAppBar.showMenuNavIcon();
-        // Show button with tree dots for secondary actions
-        pipAppBar.showLocalActions();
-        // Create test data using pipWebUI services
-        $scope.dataSet = pipTestDataService.createTestDataset();
+    app.controller('appController', function($scope, pipAppBar, pipWebuiTest, pipTestDataService) {
+            // run fake server
+            pipWebuiTest.runFakeServer('http://fakeserver.net');        
+            // Show application title
+            pipAppBar.showAppTitleText('Sample Application'); 
+            // Show icon to open sidenav
+            pipAppBar.showMenuNavIcon();
+            // Show button with tree dots for secondary actions
+            pipAppBar.showLocalActions();
+            // Create test data using pipWebUI services
+            $scope.dataSet = pipTestDataService.createTestDataset();        
     });
 
     app.controller('nodesController', function($scope, pipAppBar) {
@@ -73,5 +75,5 @@
         // Show local actions in secondary actions popup
         pipAppBar.showLocalActions();
     });
-    
-})(window.angular);
+
+})();

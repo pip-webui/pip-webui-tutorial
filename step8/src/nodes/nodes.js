@@ -3,6 +3,9 @@
     var thisModule = angular.module('nodesModule', []);
 
     thisModule.controller('nodesController', function($scope, pipAppBar) {
+
+         var req;
+         
         // Show page title
         pipAppBar.showTitleText('Nodes');
         // Show menu icon to open sidenav
@@ -13,11 +16,19 @@
         pipAppBar.hideShadow();
 
         // Get test data
-        $scope.nodes = $scope.dataSet.get('NodesTestCollection').getAll();
+        req = {method: 'GET', url: 'http://fakeserver.net' + '/api/nodes'};
 
-        $scope.iconPath = 'M0,15a15,15 0 1,0 30,0a15,15 0 1,0 -30,0';
+        $http(req)
+            .success(function (result) {
+                $scope.nodes = result;
 
-        $scope.location_points = getLocations();
+                $scope.iconPath = 'M0,15a15,15 0 1,0 30,0a15,15 0 1,0 -30,0';
+
+                $scope.location_points = getLocations();            
+            })
+            .error(function (error) {
+                console.log('Error: get nodes error! ', error); 
+            }); 
 
         function getLocations() {
             var points = [];

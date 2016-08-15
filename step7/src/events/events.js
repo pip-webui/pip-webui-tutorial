@@ -3,7 +3,6 @@
     var thisModule = angular.module('eventsModule', []);
 
     thisModule.controller('eventsController', function($scope, pipAppBar, $mdMedia) {
-
         // Show page title
         pipAppBar.showTitleText('Events');
         // Show menu icon to open sidenav
@@ -12,13 +11,13 @@
         pipAppBar.showLocalActions();
         // Add shadow under the appbar
         pipAppBar.hideShadow();
-
+        
         // Initialize service for changing layouts when the screen size changed
         $scope.$mdMedia = $mdMedia;
-
+        
         // Get test data
         $scope.events = $scope.dataSet.get('EventsTestCollection').getAll();
-
+        
         $scope.iconColors = {
             'warn-circle': '#EF5350',
             'info-circle-outline': '#8BC34A',

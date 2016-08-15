@@ -1,18 +1,21 @@
-(function (angular) {
+(function () {
     var app = angular.module('app', [
-        // pipWebUI modules
-        'pipRest', 'pipErrorHandling', 'pipWebuiTests', 'pipLayout', 'pipNav', 'pipEntry',
-        'pipSettings', 'pipUserSettings', 'pipSupport', 'pipHelp',
-
-        // Application templates
-        'app.Templates'
+            // pipWebUI modules
+            'pipRest', 'pipLayout', 'pipErrorHandling', 'pipWebuiTests', 'pipNav', 'pipEntry',
+            'pipSettings', 'pipUserSettings', 'pipSupport', 'pipHelp',
+            
+            // Application templates
+            'app.Templates'
     ]);
 
-    app.config(function ($mdIconProvider, pipAuthStateProvider, $urlRouterProvider, pipSideNavProvider, pipAppBarProvider) {
-        // Configure icons of application
+app.config(
+    function (pipSideNavProvider, $mdIconProvider, pipAppBarProvider, pipAuthStateProvider, 
+                  pipSettingsProvider, pipHelpProvider, $urlRouterProvider, pipRestProvider) {
+
+        // Load default iconset
         $mdIconProvider.iconSet('icons', 'images/icons.svg', 512);
 
-        // Configure global secondary actions
+        // Define global secondary actions (for actions popup menu) 
         pipAppBarProvider.globalSecondaryActions([
             {name: 'global.settings', title: 'Settings', state: 'settings'},
             {name: 'global.signout', title: 'Sign out', state: 'signout'}
@@ -33,17 +36,9 @@
                 auth: true
             });
 
-        // Configure default states
-        pipAuthStateProvider.unauthorizedState('signin');
-        pipAuthStateProvider.authorizedState('nodes');
+        // Set default application title
+        pipAppBarProvider.appTitleText('Sample Application');     
 
-        $urlRouterProvider.otherwise(function ($injector, $location) {
-            return $location.$$path === '' ? '/signin' : '/nodes';
-        });
-
-        pipAppBarProvider.appTitleText('Sample Application');
-
-        // Configure sidenav sections
         pipSideNavProvider.sections([
             {
                 links: [
@@ -63,18 +58,47 @@
                     {title: 'Sign Out', url: '/signout'}
                 ]
             }
-        ]);
-    });
+        ]); 
 
-    app.controller('appController', function($scope, pipAppBar, pipTestDataService) {
-        // Show application title
-        pipAppBar.showAppTitleText('Sample Application');
-        // Show icon to open sidenav
-        pipAppBar.showMenuNavIcon();
-        // Show button with tree dots for secondary actions
-        pipAppBar.showLocalActions();
-        // Create test data using pipWebUI services
-        $scope.dataSet = pipTestDataService.createTestDataset();
+        // Configure default states
+        pipAuthStateProvider.unauthorizedState('signin');
+        pipAuthStateProvider.authorizedState('nodes');
+        
+        $urlRouterProvider.otherwise(function ($injector, $location) {
+            return $location.$$path === '' ? '/signin' : '/nodes';
+        });
+
+            // Register custom help page
+            pipHelpProvider.addTab({
+                state: 'help',
+                title: 'Help page',
+                stateConfig: {
+                    controller: function($timeout) {
+                        $timeout(function() {
+                            $('pre code').each(function(i, block) {
+                                Prism.highlightElement(block);
+                            });
+                        });
+                    },
+                    url: '/help',
+                    auth: false,
+                    templateUrl: 'help/help.html'
+                }
+            });
+            
+    });  
+
+    app.controller('appController', function($scope, pipAppBar, pipWebuiTest, pipTestDataService) {
+            // run fake server
+            pipWebuiTest.runFakeServer('http://fakeserver.net');        
+            // Show application title
+            pipAppBar.showAppTitleText('Sample Application'); 
+            // Show icon to open sidenav
+            pipAppBar.showMenuNavIcon();
+            // Show button with tree dots for secondary actions
+            pipAppBar.showLocalActions();
+            // Create test data using pipWebUI services
+            $scope.dataSet = pipTestDataService.createTestDataset();        
     });
 
     app.controller('nodesController', function($scope, pipAppBar) {
@@ -95,4 +119,4 @@
         pipAppBar.showLocalActions();
     });
 
-})(window.angular);
+})();
