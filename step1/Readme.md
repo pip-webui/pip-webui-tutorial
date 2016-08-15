@@ -2,7 +2,7 @@
 
 ### Setup development environment
 
-If you don't have node.js installed on your computer, download and install it from https://nodejs.org/en/download/
+If you don't have node.js installed on your computer, download and install it from [https://nodejs.org/en/download/](https://nodejs.org/en/download/).
 
 Verify that you are running at least node v4.x.x and npm 3.x.x or older by running node -v and npm -v in a terminal/console window.
 

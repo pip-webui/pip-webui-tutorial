@@ -133,9 +133,9 @@ app.config(
                 templateUrl: 'nodes/nodes.html',
                 auth: true
             })
-            .state('events', { // <---- Pay attention!
-                url: '/events', // <---- Pay attention!
-                controller: 'eventsController', // <---- Pay attention!
+            .state('events', { 
+                url: '/events', 
+                controller: 'eventsController', 
                 templateUrl: 'events/events.html', // <---- Pay attention!
                 auth: true
             });

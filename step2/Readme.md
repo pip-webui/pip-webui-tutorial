@@ -10,6 +10,8 @@ In the application we are going to use Google Maps. So we'll add link to their c
 
 ```html 
 <head>
+        <meta charset="UTF-8">
+        <title>Pip.WebUI Getting Started</title>
         <link rel="stylesheet" href="pip-webui-lib.css"/>
         <link rel="stylesheet" href="pip-webui.css"/>
         <link rel="stylesheet" href="pip-webui-sample.css"/>

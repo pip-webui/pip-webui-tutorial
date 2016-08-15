@@ -20,7 +20,7 @@ Create **/src/nodes/nodes_map.html** and copy there the content below
 After we splitted the Nodes page into tile and map views the  **nodesController** will become a parent controller for all views.
 Then we need to add two more child controllers **nodesTilesController** and **nodesMapController** for each view.
 
-Make changes in the **/src/nodes/nodes.js** file
+Make changes in the **/src/nodes/nodes.js** file. Change **nodesController** and add **nodesTilesController** and **nodesMapController**.
 
 ```javascript
 
@@ -116,12 +116,12 @@ app.config(
 });
 ```
 
-* After you made all the changes, rebuild the application. When you go to nodes page and toggle the view, you shall see the map with positions of IoT nodes.
+After you made all the changes, rebuild the application. When you go to nodes page and toggle the view, you shall see the map with positions of IoT nodes.
 
 ![IoT Nodes map view](artifacts/map_view.png)
 
 
-* Go to the events page, and then go back to the nodes. We continue to receive toast messages about incoming events. Fix this. Add this code into **eventsController**. 
+Go to the events page, and then go back to the nodes. We continue to receive toast messages about incoming events. Fix this. Add this code into **eventsController**. 
 
 
 ```javascript
@@ -140,7 +140,7 @@ app.config(
     });
 ```
 
-* After you made all the changes, rebuild the application. Verify that the events reading stops after the transition to nodes.
+After you made all the changes, rebuild the application. Verify that the events reading stops after the transition to nodes.
 
 
 ### Continue

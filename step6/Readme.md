@@ -102,15 +102,16 @@ app.config(
         ...
         // Configure routing states
         pipAuthStateProvider
-            .state('nodes', { // <---- Pay attention!
-                url: '/nodes', // <---- Pay attention!
-                controller: 'nodesController', // <---- Pay attention!
+            .state('nodes', { 
+                url: '/nodes', 
+                controller: 'nodesController', 
                 templateUrl: 'nodes/nodes.html', // <---- Pay attention!
                 auth: true
             })
             .state('events', {
                 url: '/events',
                 controller: 'eventsController',
+                template: '<h1>Events Page</h1>',
                 auth: true
             });
         ...

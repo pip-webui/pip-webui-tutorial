@@ -21,10 +21,11 @@ var app = angular.module('app', [
 Now add default routing states into configuration section. 
 Unauthorized users shall see **signin** page when they open the application.
 After successful signin they shall switch to **nodes** page.
+
 We can use default user for sigin **(email: test@sample.net, password: any password)**.
 
 ```javascript
-app.config(function (pipAuthStateProvider, $mdIconProvider, pipAppBarProvider, pipSideNavProvider) {
+app.config(function (pipAuthStateProvider, $mdIconProvider, pipAppBarProvider, pipSideNavProvider, $urlRouterProvider) {
     ...
      // Configure default states
      pipAuthStateProvider.unauthorizedState('signin');
@@ -44,7 +45,7 @@ To go to **signin** page add **Sign Out** link with such url:**/signout** to sid
 It will look like this:
 
 ```javascript
-app.config(function (pipAuthStateProvider, $mdIconProvider, pipAppBarProvider, pipSideNavProvider) {
+app.config(function (pipAuthStateProvider, $mdIconProvider, pipAppBarProvider, pipSideNavProvider, $urlRouterProvider) {
     ...
     pipSideNavProvider.sections([
         {

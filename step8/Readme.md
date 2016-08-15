@@ -4,12 +4,12 @@
 
 ### Show notifactions as toast messages
 
-* For a start, we realize the reading of data from the server instead of the dataset. We use for this our fakeserver, 
+For a start, we realize the reading of data from the server instead of the dataset. We use for this our fakeserver, 
 but you can easily replace it with any real server with the necessary REST API.
 
-* Open filre ./src/events/events.js and replace `/ $scope.events = $scope.dataSet.get('EventsTestCollection').getAll();` by ` var events = $scope.dataSet.get('EventsTestCollection');`
+Open filre ./src/events/events.js and replace `/ $scope.events = $scope.dataSet.get('EventsTestCollection').getAll();` by ` var events = $scope.dataSet.get('EventsTestCollection');`
 
-* Make a request to the server, and display the result
+Make a request to the server, and display the result
 
 ```javascript
 thisModule.controller('eventsController', function($scope, pipAppBar, $mdMedia, $http) {
@@ -35,15 +35,20 @@ thisModule.controller('eventsController', function($scope, pipAppBar, $mdMedia, 
             })
             .error(function (error) {
                 console.log('Error: get events error! ', error); 
-            });    
+            });   
 
+        $scope.iconColors = {
+            'warn-circle': '#EF5350',
+            'info-circle-outline': '#8BC34A',
+            'warn-triangle': '#FFD54F'
+        };
 });
 ```
 
-* Change the code in node.js
+Change the code in node.js
 
 ```javascript
-    thisModule.controller('nodesController', function($scope, pipAppBar) {
+    thisModule.controller('nodesController', function($scope, $http, pipAppBar) {
 
          var req;
          
@@ -83,7 +88,9 @@ thisModule.controller('eventsController', function($scope, pipAppBar, $mdMedia, 
     });
 ```
 
-* Here we are going to simulate incoming events and show them as toast messages.
+Rebuild the application and test it. 
+
+Here we are going to simulate incoming events and show them as toast messages.
 
 Add the code below into **eventsController**
 
@@ -176,7 +183,7 @@ Add this code to **eventsController**.
  
         ... 
 
-        Scope.onREload = onReload;
+        $scope..onReload = onReload;
 
         return;
 
@@ -188,10 +195,11 @@ Add this code to **eventsController**.
             $http(req)
                 .success(function (result) {
                     $scope.events = result;
+                    pipToasts.showNotification('Events data are reloaded!');
                 })
                 .error(function (error) {
                     console.log('Error: get events error! ', error); 
-                });  
+                }); 
         }
         
     });
@@ -201,13 +209,14 @@ Change ./src/events/events.html.
 
 ```html
  ...
-    <md-button class="md-fab md-accent md-fab-bottom-right" aria-label="refresh"
-        ng-click="onReload()">  <!-- Pay attention!  -->
+    <md-button class="md-fab md-accent md-fab-bottom-right" aria-label="refresh" ng-click="onReload()"> 
         <md-tooltip md-direction="left">Refresh</md-tooltip>
         <md-icon md-svg-icon="icons:reload"></md-icon>
     </md-button>
  ...
 ```
+Rebuild the application. Click on reload button. Now you shall see a toast with message: 'Events data are reloaded!' on left bottom corner.
+![Reload notification](artifacts/reload_notification.png) 
 
 ### Continue
 
