@@ -4,12 +4,11 @@
 
 ### Show notifactions as toast messages
 
-For a start, we realize the reading of data from the server instead of the dataset. We use for this our fakeserver, 
-but you can easily replace it with any real server with the necessary REST API.
+For a start, we implement reading of data from our "fakeserver" mock, but you can easily replace it with any real server with the necessary REST API.
 
-Open filre ./src/events/events.js and replace `/ $scope.events = $scope.dataSet.get('EventsTestCollection').getAll();` by ` var events = $scope.dataSet.get('EventsTestCollection');`
+Open file ./src/events/events.js and replace `/ $scope.events = $scope.dataSet.get('EventsTestCollection').getAll();` by ` var events = $scope.dataSet.get('EventsTestCollection');`
 
-Make a request to the server, and display the result
+Make a request to the server, and display the result:
 
 ```javascript
 thisModule.controller('eventsController', function($scope, pipAppBar, $mdMedia, $http) {
@@ -45,7 +44,7 @@ thisModule.controller('eventsController', function($scope, pipAppBar, $mdMedia, 
 });
 ```
 
-Change the code in node.js
+Change the code in node.js:
 
 ```javascript
     thisModule.controller('nodesController', function($scope, $http, pipAppBar) {
@@ -92,7 +91,7 @@ Rebuild the application and test it.
 
 Here we are going to simulate incoming events and show them as toast messages.
 
-Add the code below into **eventsController**
+Add the code below into **eventsController**:
 
 ```javascript
  thisModule.controller('eventsController', function($scope, $interval, $mdMedia, $http, pipAppBar, pipToasts) {
@@ -168,15 +167,15 @@ Add the code below into **eventsController**
     });
 ```
 
-Rebuild the application. Now every 10 seconds you shall see a toast with event in the left bottom corner.
+Rebuild the application. Now every 10 seconds you shall see a toast with an event in the left bottom corner:
 
 ![Notification](artifacts/notification.png)
 
-Add rereading data from the server after you click 'Reload Button'. 
+Add re-reading data from the server after you click 'Reload Button':
 
 ![Reload button](artifacts/reload_button.png)
 
-Add this code to **eventsController**.
+Add this code to **eventsController**:
 
 ```javascript
  thisModule.controller('eventsController', function($scope, $interval, $mdMedia, $http, pipAppBar, pipToasts) {
@@ -205,7 +204,7 @@ Add this code to **eventsController**.
     });
 ```
 
-Change ./src/events/events.html.
+Change ./src/events/events.html:
 
 ```html
  ...
@@ -215,7 +214,7 @@ Change ./src/events/events.html.
     </md-button>
  ...
 ```
-Rebuild the application. Click on reload button. Now you shall see a toast with message: 'Events data are reloaded!' on left bottom corner.
+Rebuild the application. Click on the reload button. Now you will see a toast with message: 'Events data are reloaded!' on left bottom corner.
 ![Reload notification](artifacts/reload_notification.png) 
 
 ### Continue

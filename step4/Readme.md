@@ -1,10 +1,10 @@
-# Pip.WebUI Getting Started <br/> Step 4. Add sign in and sign up pages
+# Pip.WebUI Getting Started <br/> Step 4. Add sign-in and sign-up pages
 
 [Go to step 3](https://github.com/pip-webui/pip-webui-sample/blob/master/step3/) to add global application configuration.
 
 ### Include entry pages into the application
 
-Add **pipEntry** into the application module references
+Add **pipEntry** into the application module references:
 
 ```javascript
 var app = angular.module('app', [
@@ -16,13 +16,13 @@ var app = angular.module('app', [
 ]);
 ```
 
-### Configure routing to signin page
+### Configure routing to sign-in page
 
-Now add default routing states into configuration section. 
-Unauthorized users shall see **signin** page when they open the application.
-After successful signin they shall switch to **nodes** page.
+Now add default routing states into the configuration section. 
+Unauthorized users will see **signin** page when they open the application.
+After a successful signin, they the user will see the **nodes** page.
 
-We can use default user for sigin **(email: test@sample.net, password: any password)**.
+In this example, we will use a test user for the sign-in **(email: test@sample.net, password: any password)**.
 
 ```javascript
 app.config(function (pipAuthStateProvider, $mdIconProvider, pipAppBarProvider, pipSideNavProvider, $urlRouterProvider) {
@@ -38,11 +38,11 @@ app.config(function (pipAuthStateProvider, $mdIconProvider, pipAppBarProvider, p
 ```
 
 
-### Add link to signout
+### Add a link to sign-out
 
-To support signout, add link to **/signout** route into the Sidenav config inside application configuration section
-To go to **signin** page add **Sign Out** link with such url:**/signout** to sidenav sections
-It will look like this:
+To support signout, add a link to **/signout** route into the Sidenav config inside the application configuration section.
+To go to the **signin** page, add **Sign Out** link with such url:**/signout** to SideNav sections.
+It should look like this:
 
 ```javascript
 app.config(function (pipAuthStateProvider, $mdIconProvider, pipAppBarProvider, pipSideNavProvider, $urlRouterProvider) {
@@ -64,17 +64,16 @@ app.config(function (pipAuthStateProvider, $mdIconProvider, pipAppBarProvider, p
 });
 ```
 
-
-Rebuild the application. Now you shall see **sing in** when you open application in the browser
+Rebuild the application. Now you shall see **sing in** when you open the application in the browser:
 
 ![Sign in page](artifacts/sign_in_page.png)
 
-When you click **Sign up here**  **sign up** form will open up
+When you click **Sign up here** the **sign up** form will open up:
 
 ![Sign up form](artifacts/sign_up_form.png)
 
-After **sign up** user will be transfered to **post sign up** form where he can enter additional details about himself.
-On **Continue** application shall open default **nodes** page.
+After a successful **sign up**, the user will be taken to the **post sign up** form where they can enter additional details about themselves.
+On **Continue** the application will open the default **nodes** page:
 
 ![Empty nodes](artifacts/empty_nodes.png)
 

@@ -4,7 +4,7 @@
 
 ### Include navigation components into the application
 
-Add reference to **pipNav** in application module references
+Add reference to **pipNav** in application module references:
 
 ```javascript
 var app = angular.module('app', [
@@ -18,7 +18,7 @@ var app = angular.module('app', [
 
 ### Add AppBar and SideNav into index.html
 
-Place **pip-appbar** and **pip-sidenav** components under **pip-main** tag. Delet text **'Nothing here yet!'** from **pip-main-body** container.
+Place **pip-appbar** and **pip-sidenav** components under **pip-main** tag. Delete text **'Nothing here yet!'** from **pip-main-body** container:
 
 ```html
 <body ng-app="app" ng-controller="appController">
@@ -30,15 +30,15 @@ Place **pip-appbar** and **pip-sidenav** components under **pip-main** tag. Dele
 </body>
 ```
 
-Rebuild the application. You shall see an empty application with toolbar and sidenav.
+Rebuild the application. You shall see an empty application with a toolbar and sidenav.
 
 ![navigation components](artifacts/navigation_components.png)
 
 ### Configure AppBar
 
-Load default iconset, define global actions and default application title inside application configuration section.
+Load the default iconset, define global actions and default application title inside the application configuration section.
 
-We will create a page for the global actions later, you can currently see an routing error page if you try go to them.
+We will create a page for the global actions later. For now, you can see a routing error page if you try to trigger them.
 
 ```javascript
 app.config(function (pipAuthStateProvider, $mdIconProvider, pipAppBarProvider) {
@@ -59,8 +59,8 @@ app.config(function (pipAuthStateProvider, $mdIconProvider, pipAppBarProvider) {
 });
 ```
 
-Now configure what will be shown on appbar when application loads. 
-Also, run fake server for our data and create test dataset.
+Now configure what will be shown on the AppBar when the application loads. 
+Also, we will run a fake (mock) server to test our requests locally.
 
 ```javascript
 app.controller('appController', function($scope, pipAppBar, pipWebuiTest, pipTestDataService) {
@@ -77,17 +77,17 @@ app.controller('appController', function($scope, pipAppBar, pipWebuiTest, pipTes
 });
 ```
 
-When you rebuild the application, you shall see the following
+When you rebuild the application, you will see the following:
 
 ![Configured appbar](artifacts/configured_appbar.png)
 
-When you click on tree dots on the right, a popup with secondary actions shall open
+When you click on tree dots on the right, a popup with secondary actions will open:
 
 ![Secondary actions](artifacts/secondary_actions.png)
 
 ### Configure SideNav
 
-Configure two links in sidenav inside application configuration section
+Configure two links in SideNav inside the application configuration section:
 
 ```javascript
 app.config(function (pipAuthStateProvider, $mdIconProvider, pipAppBarProvider, pipSideNavProvider) {
@@ -104,13 +104,13 @@ app.config(function (pipAuthStateProvider, $mdIconProvider, pipAppBarProvider, p
 });
 ```
 
-Rebuild and open the application
+Rebuild and open the application:
 
 ![Configured sidenav](artifacts/configured_sidenav.png)
 
 ### Configure AppBar for custom pages
 
-Add code to configure appbar inside page controllers
+Add code to configure the AppBar inside page controllers:
 ```javascript
 app.controller('nodesController', function($scope, pipAppBar) {
     // Show page title

@@ -4,8 +4,8 @@
 
 ### Create events table view
 
-Create **/events** folder under **/src**. Place there events.html file with the content presented below. 
-The page will show events from IoT nodes as a table on Desktop and Table and as a list on Phones.
+Create **/events** folder under **/src**. Place events.html in there with the content presented below. 
+The page will show events from IoT nodes as a table on the Desktop and Table and as a list on Phones.
 
 ```html
 <md-toolbar class="pip-appbar-ext">
@@ -71,7 +71,7 @@ The page will show events from IoT nodes as a table on Desktop and Table and as 
 
 ### Create events controller
 
-Create **events.js** file under **/src/events** folder and copy there the following code
+Create **events.js** file under **/src/events** folder and copy there the following code:
 
 ```javascript
 (function (angular) {
@@ -106,7 +106,7 @@ Create **events.js** file under **/src/events** folder and copy there the follow
 
 ### Add page into the application
 
-Add **eventsModule** into application module references in index.js
+Add **eventsModule** into application module references in index.js:
 
 ```javascript
 var app = angular.module('app', [
@@ -117,7 +117,7 @@ var app = angular.module('app', [
 ]);
 ```
 
-Make changes to the routing states in configuration section
+Make changes to the routing states in configuration section:
 
 ```javascript
 app.config(
@@ -144,7 +144,7 @@ app.config(
 );
 ```
 
-Remove old **eventsController** from **index.js**
+Remove old **eventsController** from **index.js**:
 
 ```javascript
 // Remove
@@ -166,11 +166,11 @@ table {
 }
 ```
 
-Rebuild and reopen the application. You shall see now
+Rebuild and reopen the application. You shall see now:
 
 ![Maintenance Events](artifacts/maintenance_events.png)
 
-Resize browser windows to the size of a phone
+Resize browser windows to the size of a phone:
 
 ![Maintenance Events mobile](artifacts/maintenance_events_mobile.png)
 
