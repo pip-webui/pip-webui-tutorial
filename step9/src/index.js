@@ -11,8 +11,9 @@
     ]);
 
 app.config(
-    function (pipSideNavProvider, $mdIconProvider, pipAppBarProvider, pipAuthStateProvider, 
-                  pipSettingsProvider, pipHelpProvider, $urlRouterProvider, pipRestProvider) {
+    function (pipSideNavProvider, $mdIconProvider, pipAppBarProvider, pipAuthStateProvider,  
+                  pipSettingsProvider, pipHelpProvider, $urlRouterProvider, pipRestProvider,
+                  $httpProvider) {
 
         // Load default iconset
         $mdIconProvider.iconSet('icons', 'images/icons.svg', 512);
@@ -22,6 +23,8 @@ app.config(
             {name: 'global.settings', title: 'Settings', state: 'settings'},
             {name: 'global.signout', title: 'Sign out', state: 'signout'}
         ]);
+        
+        pipRestProvider.serverUrl('http://fakeserver.net');
 
         // Configure application route states
         pipAuthStateProvider

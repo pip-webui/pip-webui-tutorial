@@ -23,6 +23,9 @@ app.config(
             {name: 'global.signout', title: 'Sign out', state: 'signout'}
         ]);
 
+        // Define application REST API server
+        pipRestProvider.serverUrl('http://fakeserver.net');
+
         // Configure states of application
         pipAuthStateProvider
             .state('nodes', {

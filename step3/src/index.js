@@ -7,7 +7,7 @@
             'app.Templates'
     ]);
 
-    app.config(function(pipAuthStateProvider, $mdIconProvider, pipAppBarProvider, pipSideNavProvider) {
+    app.config(function(pipAuthStateProvider, $mdIconProvider, pipAppBarProvider, pipSideNavProvider, pipRestProvider) {
         // Load default iconset
         $mdIconProvider.iconSet('icons', 'images/icons.svg', 512);
 
@@ -16,6 +16,9 @@
             {name: 'global.settings', title: 'Settings', state: 'settings'},
             {name: 'global.signout', title: 'Sign out', state: 'signout'}
         ]);
+
+        // Define application REST API server
+        pipRestProvider.serverUrl('http://fakeserver.net');
 
         // Configure states of application
         pipAuthStateProvider
