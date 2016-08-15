@@ -1,12 +1,12 @@
 # Pip.WebUI Getting Started <br/> Step 2. Include pip-webui components
 
-[Go to step 1](https://github.com/pip-webui/pip-webui-sample/blob/master/step1/) to create application structure.
+[Go to step 1](https://github.com/pip-webui/pip-webui-sample/blob/master/step1/) to create the application structure.
 
 ### Add pip-webui references to CSS styles and javascript components
 
-Add links to **pip-webui** and application CSS styles and javascript code inside **index.html**.
+Add links to **pip-webui**, application CSS styles and javascript code inside **index.html**.
 
-In the application we are going to use Google Maps. So we'll add link to their client libraries as well.
+In the application we are going to use Google Maps. So we'll add a link to Google Maps libraries as well:
 
 ```html 
 <head>
@@ -25,7 +25,7 @@ In the application we are going to use Google Maps. So we'll add link to their c
 
 ### Write Angular boilerplate code
 
-Initialize angular module in **index.js** and reference pip-webui modules
+Initialize angular module in **index.js** and reference pip-webui modules:
 
 ```javascript
 var app = angular.module('app', [
@@ -37,7 +37,7 @@ var app = angular.module('app', [
 ]);
 ```
 
-Below add empty configuration section and application controller
+Below add the following empty configuration section and application controller:
 
 ```javascript
 app.config(function() {
@@ -50,8 +50,8 @@ app.controller('appController', function($scope, pipTestDataService) {
 });
 ```
 
-Add **ng-app** and **ng-controller** attributes to **body** tag inside **index.html**.
-Then under **body** include **pip-main** and **pip-main-body** tags that designate the main application containers.
+Add **ng-app** and **ng-controller** attributes to **body** tag inside **index.html** and under **body** include **pip-main** and **pip-main-body** tags 
+that designate the main application containers:
 
 ```html
 <body ng-app="app" ng-controller="appController">
@@ -68,7 +68,7 @@ Then under **body** include **pip-main** and **pip-main-body** tags that designa
 In this application we are going to have two custom pages. The first page will show a list of IoT nodes that measure
 environmental polution. On the second page we'll display events that come from those IoT nodes.
 
-Add empty controllers for nodes and events pages inside **index.js**
+Add empty controllers for nodes and events pages inside **index.js**:
 
 ```javascript
 app.controller('nodesController', function($scope) {
@@ -80,7 +80,7 @@ app.controller('eventsController', function($scope) {
 });
 ```
 
-Configure routing states for the pages inside configuration section
+Configure routing states for the pages inside the configuration section:
 
 ```javascript
 app.config(function(pipAuthStateProvider) {

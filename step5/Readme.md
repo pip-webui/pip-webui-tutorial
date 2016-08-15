@@ -1,10 +1,10 @@
 # Pip.WebUI Getting Started <br/> Step 5. Add settings, feedback and help pages
 
-[Go to step 4](https://github.com/pip-webui/pip-webui-sample/blob/master/step4/) to add sign in and sign up pages.
+[Go to step 4](https://github.com/pip-webui/pip-webui-sample/blob/master/step4/) to add sign-in and sign-up pages.
 
 ### Include entry pages into the application
 
-Add **pipSettings**, **pipUserSettings**, **pipSupport** and **pipHelp** into the application module references
+Add **pipSettings**, **pipUserSettings**, **pipSupport** and **pipHelp** into the application module references:
 
 ```javascript
 var app = angular.module('app', [
@@ -19,7 +19,7 @@ var app = angular.module('app', [
 
 ### Add page links to SideNav
 
-Inside application configuration section add links to settings, help and feedback pages
+Inside the application configuration section add links to settings, help and feedback pages:
 
 ```javascript
 app.config(
@@ -52,21 +52,19 @@ app.config(
 );
 ```
 
-Rebuild and reopen the application. Now you shall see Settings and Feedbackpages with default content.
+Rebuild and reopen the application. Now you will see Settings and Feedback pages with default content:
 
 
-Settings page.
+Settings page:
 ![Settings standard tabs](artifacts/settings_standard_tab.png)
 
-Feedback page.
+Feedback page:
 ![Feedback](artifacts/feedback.png)
 
 
 ### Add help page.
 
-Now we implement a help page. If you want you can do  some pages.
-Create **./src/help** folder. Place there **help.html** file with the content below.
-It will display a under constaraction page.
+Now we will implement a sample help page. Create **./src/help** folder and place there a new file **help.html** with the content below.
 
 ```html
 <div>
@@ -78,7 +76,8 @@ It will display a under constaraction page.
         </div>
 </div> 
 ```
-Inside application configuration section add help page.
+
+Inside the application configuration section add help page:
 
 ```javascript
 app.config(
@@ -109,11 +108,12 @@ app.config(
 );
 ```
 
-Rebuild and reopen the application. Now you shall see Help pages with default content.
-Help page.
+Rebuild and reopen the application. Now you will see Help pages with default content.
+
+Help page:
 ![Feedback](artifacts/help_page.png)
 
-Todo: Add screenshot of the help page. We shall also implement couple default pages similar to user settings (talk to AlexM)
+Todo: Add a screenshot of the help page. We shall also implement couple default pages similar to user settings (talk to AlexM)
 
 ### Continue
 

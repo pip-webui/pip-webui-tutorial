@@ -4,9 +4,9 @@
 
 If you don't have node.js installed on your computer, download and install it from [https://nodejs.org/en/download/](https://nodejs.org/en/download/).
 
-Verify that you are running at least node v4.x.x and npm 3.x.x or older by running node -v and npm -v in a terminal/console window.
+Verify that you are running at least node v4.x.x and npm 3.x.x by running node -v and npm -v in a terminal/console window.
 
-Install required build tools.
+Install build tools:
 ```bash
 npm install bower -g
 npm install gulp-cli -g
@@ -26,7 +26,7 @@ npm install gulp-cli -g
 
 ### Install dependencies
 
-Create **package.json** file in the root folder, to define npm dependencies.
+Create **package.json** file in the root folder, to define npm dependencies:
 
 ```javascript
 {
@@ -43,12 +43,12 @@ Create **package.json** file in the root folder, to define npm dependencies.
 
 ```
 
-Install npm dependencies by executing in command line:
+Install npm dependencies by executing the command line:
 ```bash
 npm install
 ```
 
-Or create **bower.json** file in the root folder, to define bower dependencies.
+Or create **bower.json** file in the root folder, to define bower dependencies:
 
 ```javascript
 {
@@ -62,14 +62,14 @@ Or create **bower.json** file in the root folder, to define bower dependencies.
 
 ```
 
-Install bower dependencies by executing in command line:
+Install bower dependencies by executing the command line:
 ```bash
 bower install
 ```
 
 ### Configure build tasks 
 
-Create **gulpfile.js** file in the root folder, and define their build tasks using tasks provided **pip-webui-tasks** module.
+Create **gulpfile.js** file in the root folder, and define their build tasks using tasks provided **pip-webui-tasks** module:
 
 ```javascript
 var gulp = require('gulp');
@@ -87,7 +87,7 @@ gulp.task('launch', ['app-launch']);
 gulp.task('default', ['build']);
 ```
 
-Create **build.conf.js** file in the root folder and define configuration for the build tasks.
+Create **build.conf.js** file in the root folder and define configuration for the build tasks:
 
 ```javascript
 module.exports = {
@@ -107,7 +107,7 @@ For more information on build tasks and configuration see [pip-webui-tasks modul
 
 ### Create stubs for application source files
 
-In the **/src** folder create the following tree file.
+In the **/src** folder create the following files:
 
 ##### index.js
 ```javascript
@@ -150,12 +150,12 @@ If build is successful, in the root folder you can find two new folders **/lib**
 
 Go to **/dist** folder, locate **index.html** file.  
 
-Open your app by executing in command line:
+Open your app by executing the command line:
 ```bash
 gulp launch
 ```
 
-You shall see an empty web page.
+You should see an empty web page.
 
 ![Empty web page](artifacts/empty_screen.png)
 

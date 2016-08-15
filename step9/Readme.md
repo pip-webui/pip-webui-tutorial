@@ -6,7 +6,7 @@
 
 Rename **/src/nodes/nodes.html** file to **/src/nodes/nodes_tiles.html**
 
-Create **/src/nodes/nodes_map.html** and copy there the content below
+Create **/src/nodes/nodes_map.html** and copy there the content below:
 
 ```html
 <pip-simple class="layout-row flex">
@@ -17,10 +17,10 @@ Create **/src/nodes/nodes_map.html** and copy there the content below
 
 ### Create nodes tiles controller
 
-After we splitted the Nodes page into tile and map views the  **nodesController** will become a parent controller for all views.
+After we split the Nodes page into tile and map views the  **nodesController** will become a parent controller for all views.
 Then we need to add two more child controllers **nodesTilesController** and **nodesMapController** for each view.
 
-Make changes in the **/src/nodes/nodes.js** file. Change **nodesController** and add **nodesTilesController** and **nodesMapController**.
+Make changes in the **/src/nodes/nodes.js** file. Change **nodesController** and add **nodesTilesController** and **nodesMapController**:
 
 ```javascript
 
@@ -70,7 +70,7 @@ thisModule.controller('nodesMapController', function($scope, $state, pipAppBar) 
 
 ## Update application routes
 
-Open **index.js** and in configuration section make changes to nodes route states and default states
+Open **index.js** and in the configuration section make changes to nodes route states and default states:
 
 ```javascript
 app.config(
@@ -116,13 +116,11 @@ app.config(
 });
 ```
 
-After you made all the changes, rebuild the application. When you go to nodes page and toggle the view, you shall see the map with positions of IoT nodes.
+After you make all the changes, rebuild the application. When you go to the nodes page and toggle the view, you shall see a map with positions of IoT nodes:
 
 ![IoT Nodes map view](artifacts/map_view.png)
 
-
-Go to the events page, and then go back to the nodes. We continue to receive toast messages about incoming events. Fix this. Add this code into **eventsController**. 
-
+Go to the events page, and then go back to the nodes. We continue to receive toast messages about incoming events. Fix this. Add this code into **eventsController**: 
 
 ```javascript
  thisModule.controller('eventsController', function($scope, $interval, $mdMedia, $http, pipAppBar, pipToasts) {

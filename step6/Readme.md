@@ -4,8 +4,8 @@
 
 ### Create nodes tiles view
 
-Create **/nodes** folder under **/src**. Place there **nodes.html** file with the content below.
-It will display a tile view with IoT nodes showing their name, measurements and current location
+Create **/nodes** folder under **/src** and place there **nodes.html** file with the following content.
+It will display a tile view with IoT nodes showing their name, measurements and current location:
 
 ```html
 <pip-tiles class="layout-fill pip-no-tabs" column-width="440">
@@ -38,12 +38,12 @@ It will display a tile view with IoT nodes showing their name, measurements and 
 
 ### Create nodes controller
 
-Create **nodes.js** file under **/src/nodes** folder and copy the following code there
-
 Todo: Each node shall have its own location!
 Todo: Can we add the hook to resize tiles into the framework?
 
-We receive data from the dataset. Use `$scope.dataSet.get('NodesTestCollection').getAll()` to read data from a set of 'NodesTestCollection'.
+Create **nodes.js** file under **/src/nodes** folder and copy the following code there:
+
+We will receive data our test dataset. Use `$scope.dataSet.get('NodesTestCollection').getAll()` to read data from a set of 'NodesTestCollection'.
 
 ```javascript
 (function (angular) {
@@ -82,7 +82,7 @@ We receive data from the dataset. Use `$scope.dataSet.get('NodesTestCollection')
 
 ### Add page into the application
 
-Add **nodesModule** into application module references in **index.js**
+Add **nodesModule** into the application module references in **index.js**:
 
 ```javascript
 var app = angular.module('app', [
@@ -93,7 +93,7 @@ var app = angular.module('app', [
 ]);
 ```
 
-Make changes to the routing states in configuration section
+Make changes to the routing states in the configuration section:
 
 ```javascript
 app.config(
@@ -119,7 +119,7 @@ app.config(
 );
 ```
 
-Remove old **nodesController** from **index.js**
+Remove old **nodesController** from **index.js**:
 
 ```javascript
 // Remove
@@ -128,13 +128,13 @@ Remove old **nodesController** from **index.js**
 //});
 ```
 
-Rebuild and reopen the application. You shall see now
+Rebuild and reopen the application. You will see now:
 
-Todo: Update the picture to remove that "special tile"
+Todo: Update the picture to remove that "special tile":
 
 ![IoT nodes](artifacts/tiles_view.png)
 
-Resize the window and see those the page responses to fit the smaller screen
+Resize the window and see those the page responses to fit a smaller screen:
 
 ![IoT nodes mobile](artifacts/tiles_view_mobile.png)
 
