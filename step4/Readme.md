@@ -25,7 +25,8 @@ After a successful signin, they the user will see the **nodes** page.
 In this example, we will use a test user for the sign-in **(email: test@sample.net, password: any password)**.
 
 ```javascript
-app.config(function (pipAuthStateProvider, $mdIconProvider, pipAppBarProvider, pipSideNavProvider, $urlRouterProvider) {
+app.config(function (pipAuthStateProvider, $mdIconProvider, pipAppBarProvider, pipSideNavProvider, 
+    pipRestProvider, $urlRouterProvider) {
     ...
      // Configure default states
      pipAuthStateProvider.unauthorizedState('signin');
@@ -45,7 +46,8 @@ To go to the **signin** page, add **Sign Out** link with such url:**/signout** t
 It should look like this:
 
 ```javascript
-app.config(function (pipAuthStateProvider, $mdIconProvider, pipAppBarProvider, pipSideNavProvider, $urlRouterProvider) {
+app.config(function (pipAuthStateProvider, $mdIconProvider, pipAppBarProvider, pipSideNavProvider, 
+    pipRestProvider, $urlRouterProvider) {
     ...
     pipSideNavProvider.sections([
         {

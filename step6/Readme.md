@@ -43,7 +43,7 @@ Todo: Can we add the hook to resize tiles into the framework?
 
 Create **nodes.js** file under **/src/nodes** folder and copy the following code there:
 
-We will receive data our test dataset. Use `$scope.dataSet.get('NodesTestCollection').getAll()` to read data from a set of 'NodesTestCollection'.
+We will receive data from our test dataset. Use `$scope.dataSet.get('NodesTestCollection').getAll()` to read data from a set of 'NodesTestCollection'.
 
 ```javascript
 (function (angular) {

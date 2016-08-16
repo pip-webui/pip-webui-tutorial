@@ -59,13 +59,10 @@ app.config(function (pipAuthStateProvider, $mdIconProvider, pipAppBarProvider) {
 });
 ```
 
-Now configure what will be shown on the AppBar when the application loads. 
-Also, we will run a fake (mock) server to test our requests locally.
+Now configure what will be shown on the AppBar when the application loads.
 
 ```javascript
 app.controller('appController', function($scope, pipAppBar, pipWebuiTest, pipTestDataService) {
-        // run fake server
-        pipWebuiTest.runFakeServer('http://fakeserver.net');        
         // Show application title
         pipAppBar.showAppTitleText('Sample Application'); 
         // Show icon to open sidenav
@@ -76,6 +73,49 @@ app.controller('appController', function($scope, pipAppBar, pipWebuiTest, pipTes
         $scope.dataSet = pipTestDataService.createTestDataset();        
 });
 ```
+
+Такие действия как signIn, signOut, signUp, чтения и редактирования users settings обычно осуществляются пр работе с сервером приложения. 
+Мы будем использовать вместо такого сервера не настоящие сервер основанный на mock-object. 
+Вы можете почитать детально об этом [тут](https://docs.angularjs.org/api/ngMockE2E/service/$httpBackend).
+
+Also, we will run a fake server to test our requests locally `pipWebuiTest.runFakeServer('http://fakeserver.net');`. 
+
+Вы можете создать fakeServer для любого адреса, мы выбрали 'http://fakeserver.net'. 
+Добавим определение сервера приложения в **app.config**.
+
+```javascript
+app.config(function (pipAuthStateProvider, $mdIconProvider, pipAppBarProvider, pipRestProvider) {
+    // Load default iconset
+    $mdIconProvider.iconSet('icons', 'images/icons.svg', 512);
+
+    // Define global secondary actions (for actions popup menu) 
+    pipAppBarProvider.globalSecondaryActions([
+        {name: 'global.settings', title: 'Settings', state: 'settings'},
+        {name: 'global.signout', title: 'Sign out', state: 'signout'}
+    ]);
+
+    // Define application REST API server
+    pipRestProvider.serverUrl('http://fakeserver.net');
+
+    ...
+
+});
+```
+
+Добавим запуск нашего fake server в **appController**.  
+
+```javascript
+app.controller('appController', function($scope, pipAppBar, pipWebuiTest, pipTestDataService) {
+    // run fake server
+    pipWebuiTest.runFakeServer('http://fakeserver.net');        
+
+    ...
+
+});
+```
+
+Теперь нам будет доступна функциональность, которая требует работы с сервером, 
+например signIn и SignUp, которые мы добавим на следующем шаге.
 
 When you rebuild the application, you will see the following:
 
@@ -90,7 +130,7 @@ When you click on tree dots on the right, a popup with secondary actions will op
 Configure two links in SideNav inside the application configuration section:
 
 ```javascript
-app.config(function (pipAuthStateProvider, $mdIconProvider, pipAppBarProvider, pipSideNavProvider) {
+app.config(function (pipAuthStateProvider, $mdIconProvider, pipAppBarProvider, pipRestProvider, pipSideNavProvider) {
     ...
     
     pipSideNavProvider.sections([

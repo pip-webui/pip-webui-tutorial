@@ -84,9 +84,8 @@ app.config(
     function (pipSideNavProvider, $mdIconProvider, pipAppBarProvider, pipAuthStateProvider, 
                   pipSettingsProvider, pipHelpProvider, $urlRouterProvider, pipRestProvider) {
         
-        ...
+            ...
         
-
             // Register custom help page
             pipHelpProvider.addTab({
                 state: 'help',
