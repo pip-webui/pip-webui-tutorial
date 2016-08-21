@@ -43,13 +43,14 @@ Below add the following empty configuration section and application controller:
 app.config(function() {
         // Todo: Add configuration for the application
 });
+```
 
 In this application we are going to have two custom pages. The first page will show a list of IoT nodes that measure
 environmental polution. On the second page we'll display events that come from those IoT nodes.
 
-Нам нужно получть данные о nodes and events. В pipWebuiTests есть генераторы данных, кторые позволят нам получить нужные данные. 
-Для этого создадим набор данных $scope.dataSet = pipTestDataService.createTestDataset().
-После этого в $scope.dataSet будут созданы две нужные нам коллекции: 'NodesTestCollection' и 'EventsTestCollection'.
+We need to get data on nodes and events. In pipWebuiTests have data generators that will allow us to obtain the necessary data.
+To do this, create a data set $ scope.dataSet = pipTestDataService.createTestDataset ().
+After that, we require two collections (**'NodesTestCollection' and 'EventsTestCollection'**) will be created in the $scope.dataSet.
 
 app.controller('appController', function($scope, pipTestDataService) {
         // Create test data using pipWebUI services
@@ -71,8 +72,6 @@ that designate the main application containers:
 ```
 
 ## Define two custom pages
-
-
 
 Add empty controllers for nodes and events pages inside **index.js**:
 

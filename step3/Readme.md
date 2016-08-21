@@ -74,14 +74,14 @@ app.controller('appController', function($scope, pipAppBar, pipWebuiTest, pipTes
 });
 ```
 
-Такие действия как signIn, signOut, signUp, чтения и редактирования users settings обычно осуществляются пр работе с сервером приложения. 
-Мы будем использовать вместо такого сервера не настоящие сервер основанный на mock-object. 
-Вы можете почитать детально об этом [тут](https://docs.angularjs.org/api/ngMockE2E/service/$httpBackend).
+Such actions as signIn, signOut, signUp, users settings reading and editing, etc. are usually carried out with the application server.
+We will not use a real server instead of the server (fake server) based on the mock-object.
+You can read details about this [here](https://docs.angularjs.org/api/ngMockE2E/service/$httpBackend).
 
 Also, we will run a fake server to test our requests locally `pipWebuiTest.runFakeServer('http://fakeserver.net');`. 
 
-Вы можете создать fakeServer для любого адреса, мы выбрали 'http://fakeserver.net'. 
-Добавим определение сервера приложения в **app.config**.
+You can create fakeServer to any address, we chose **http://fakeserver.net**. 
+Add the application server definition ** app.config **.
 
 ```javascript
 app.config(function (pipAuthStateProvider, $mdIconProvider, pipAppBarProvider, pipRestProvider) {
