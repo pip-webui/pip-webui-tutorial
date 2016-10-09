@@ -36,7 +36,7 @@ Create **package.json** file in the root folder, to define npm dependencies:
   "dependencies": {
   },
   "devDependencies": {
-    "pip-webui": "^1.0.0",
+    "pip-webui-all": "^1.0.0",
     "pip-webui-tasks": "^1.6.1"
   }
 }
@@ -97,7 +97,7 @@ module.exports = {
     },
     file: {
         lib: [
-            'node_modules/pip-webui/dist/**/*'
+            'node_modules/pip-webui-all/dist/**/*'
         ]
     }
 };
