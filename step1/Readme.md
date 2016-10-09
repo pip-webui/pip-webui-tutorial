@@ -37,7 +37,7 @@ Create **package.json** file in the root folder, to define npm dependencies:
   },
   "devDependencies": {
     "pip-webui": "^1.0.0",
-    "pip-webui-tasks": "^1.0.0"
+    "pip-webui-tasks": "^1.6.1"
   }
 }
 
@@ -75,7 +75,7 @@ Create **gulpfile.js** file in the root folder, and define their build tasks usi
 var gulp = require('gulp');
 
 // Add all standard tasks    
-require('pip-webui-tasks').all();
+require('pip-webui-tasks').all(gulp);
 
 // Define build tasks        
 gulp.task('build', ['build-dev', 'build-prod']);
