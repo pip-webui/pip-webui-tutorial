@@ -78,9 +78,9 @@ var gulp = require('gulp');
 require('pip-webui-tasks').all(gulp);
 
 // Define build tasks        
-gulp.task('build', ['build-dev', 'build-prod']);
-gulp.task('rebuild', ['build-dev']);
-gulp.task('clean', ['build-clean']);
+gulp.task('build', ['app-build']);
+gulp.task('rebuild', ['app-build']);
+gulp.task('clean', ['app-clean']);
 gulp.task('launch', ['app-launch']);
 
 // Set default task
