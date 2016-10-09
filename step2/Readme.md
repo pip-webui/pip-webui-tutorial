@@ -52,6 +52,7 @@ We need to get data on nodes and events. In pipWebuiTests have data generators t
 To do this, create a data set $ scope.dataSet = pipTestDataService.createTestDataset ().
 After that, we require two collections (**'NodesTestCollection' and 'EventsTestCollection'**) will be created in the $scope.dataSet.
 
+```javascript
 app.controller('appController', function($scope, pipTestDataService) {
         // Create test data using pipWebUI services
         $scope.dataSet = pipTestDataService.createTestDataset();
