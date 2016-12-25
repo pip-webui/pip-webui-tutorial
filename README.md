@@ -16,8 +16,8 @@ Todo: Add picture(s) that demonstrate the main application screens
 Let's get started
 
 - Step 1. [Create application structure](step1/)
-- Step 2. [Add angular](step2/)
-- Step 3. [Add angular-material and pip-webui](step3/)
+- Step 2. [Add angular components](step2/)
+- Step 3. [Add pip-webui components](step3/)
 - Step 4. [Add signin and signup pages](step4/)
 - Step 5. [Add settings, feedback and help pages](step5/)
 - Step 6. [Add Nodes page with tiles view](step6/)
