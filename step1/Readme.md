@@ -120,9 +120,7 @@ In the **/src** folder create the following files:
 
 ##### index.js
 ```javascript
-(function () {
-    
-})();
+// Todo: add logic here
 ```
 
 ##### index.html
@@ -132,8 +130,8 @@ In the **/src** folder create the following files:
 <head>
     <meta charset="UTF-8">
     <title>Pip.WebUI Getting Started</title>
-    <link rel="stylesheet" href="styles.css"/>
-    <script src="index.js"></script>
+    <link rel="stylesheet" href="pip-webui-sample.css"/>
+    <script src="pip-webui-sample.js"></script>
 </head>
 <body>
 Nothing here yet!
