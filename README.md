@@ -1,9 +1,9 @@
 # <img src="https://github.com/pip-webui/pip-webui/raw/master/doc/Logo.png" alt="Pip.WebUI Logo" style="max-width:30%"> <br/> Getting Started
 
-This sample demonstrates step-by-step creation of non-trivial Line-of-Business application
-using [Pip.WebUI framework](http://www.github.com/pip-webui/pip-webui). 
+This tutorial demonstrates step-by-step creation of non-trivial Line-of-Business application
+using [Pip.WebUI framework](http://www.github.com/pip-webui/pip-webui). It was updated for Pip.WebUI version 1.5 and Typescript.
 
-The application pretends to provide a tool to manage IoT nodes that measure air polution in certain area, like a plant.
+The sample application pretends to provide a tool to manage IoT nodes that measure air polution in certain area, like a plant.
 It contains only 2 screens:
 * List of IoT nodes with their location and status information
 * Latest events occured with the IoT nodes: changing locations, on/off events, low battery warnings, critical failures/no data
