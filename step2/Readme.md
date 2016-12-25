@@ -22,6 +22,21 @@ In the application we are going to use Google Maps. So we'll add a link to Googl
 </head>
 ```
 
+### Add typescript definitions
+
+To support typescript compilation add definitions for angular, angular material and other modules:
+
+```bash
+tsd init
+tsd install angular --save
+tsd install angular-material --save
+```
+
+Open **typings/tsd.d.ts** and add the following line:
+```javascript
+/// <reference path="../node_modules/pip-webui-all/dist/pip-webui.d.ts" />
+```
+
 ### Write Angular boilerplate code
 
 Add angular module, configuration and controller into **index.ts**:
