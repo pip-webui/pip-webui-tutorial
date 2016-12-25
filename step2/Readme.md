@@ -28,8 +28,13 @@ To support typescript compilation add definitions for angular, angular material 
 
 ```bash
 tsd init
+tsd install jquery --save
+tsd install lodash --save
+tsd install async --save
 tsd install angular --save
 tsd install angular-material --save
+tsd install angular-resource --save
+tsd install angular-ui-router --save
 ```
 
 Open **typings/tsd.d.ts** and add the following line:
