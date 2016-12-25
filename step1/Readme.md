@@ -144,6 +144,31 @@ Nothing here yet!
 // Todo: add styles here
 ```
 
+### Configure Typescript
+
+Create **tsconfig.json** file in the root folder and define configuration for typescript build tasks:
+
+```javascript
+{
+    "compilerOptions": {
+		"declaration": true,
+        "module": "commonjs",
+        "target": "es5",
+        "noImplicitAny": false,
+        "outDir": "obj",
+        "rootDir": ".",
+        "sourceMap": true
+    },
+    "exclude": [
+        "node_modules",
+        "lib",
+        "dist",
+        "obj",
+        "temp"
+    ]
+}
+```
+
 ### Execute first build
 
 In command line start the build process:
