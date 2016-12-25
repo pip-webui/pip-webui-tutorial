@@ -15,7 +15,7 @@ Todo: Add picture(s) that demonstrate the main application screens
 
 Let's get started
 
-- Step 1. [Create application structure](step1/)
+- Step 1. [Create basic Angular application](step1/)
 - Step 2. [Include pip-webui components](step2/)
 - Step 3. [Add global navigation](step3/)
 - Step 4. [Add signin and signup pages](step4/)
