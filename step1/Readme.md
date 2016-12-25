@@ -36,8 +36,8 @@ Create **package.json** file in the root folder, to define npm dependencies:
   "dependencies": {
   },
   "devDependencies": {
-    "pip-webui-all": "^1.0.0",
-    "pip-webui-tasks": "^1.6.1"
+    "pip-webui-all": "git+https://github.com/pip-webui/pip-webui-all.git",
+    "pip-webui-tasks": "git+https://github.com/pip-webui/pip-webui-tasks.git"
   }
 }
 
@@ -56,7 +56,7 @@ Or create **bower.json** file in the root folder, to define bower dependencies:
   "version": "1.0.0",
   "description": "Getting started sample for Pip.WebUI",
   "dependencies": {
-      "pip-webui": "^1.0.0"
+      "pip-webui": "^1.5.0"
   }
 }
 
@@ -73,14 +73,23 @@ Create **gulpfile.js** file in the root folder, and define their build tasks usi
 
 ```javascript
 var gulp = require('gulp');
+var runSequence = require('run-sequence');
 
 // Add all standard tasks    
 require('pip-webui-tasks').all(gulp);
 
-// Define build tasks        
-gulp.task('build', ['app-build']);
-gulp.task('rebuild', ['app-build']);
-gulp.task('clean', ['app-clean']);
+// Define build tasks
+gulp.task('build', function (callback) {
+    runSequence('build-html-dev', ['build-bundle-dev', 'build-less-dev', 'build-lib', 'build-res'], 'build-dist', callback);
+});
+
+gulp.task('rebuild', function (callback) {
+    runSequence('build-html-dev', ['build-bundle-dev', 'build-less-dev'], 'build-dist', callback);
+});
+
+gulp.task('clean', ['build-clean']);
+gulp.task('watch', ['build-watch']);
+gulp.task('lint', ['less-lint', 'js-lint']);
 gulp.task('launch', ['app-launch']);
 
 // Set default task
