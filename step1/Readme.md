@@ -168,4 +168,4 @@ You should see an empty web page.
 
 ### Continue
 
-[Go to step 2](https://github.com/pip-webui/pip-webui-sample/blob/master/step2/) to add Pip.WebUI libraries and create Angular boilerplate code in your application.
+[Go to step 2](https://github.com/pip-webui/pip-webui-sample/blob/master/step2/) to create Angular boilerplate code in your application.
