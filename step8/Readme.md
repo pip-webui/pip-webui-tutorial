@@ -164,8 +164,10 @@ Rebuild the application and you will see:
 
 ![Notifications](artifacts/notifications.png) 
 
+Badge in application bar:
 ![Badge in application bar](artifacts/appbar_badge.png)
 
+Badge in side navigation menu:
 ![Badge in side navigation menu](artifacts/sidenav_badge.png) 
 
 ### Continue
