@@ -28,7 +28,7 @@ function configureNodeRoutes(
     });
 }
 
-class NodesController {
+export class NodesController {
     public constructor(
         pipBreadcrumb: pip.nav.IBreadcrumbService
     ) {
@@ -141,6 +141,7 @@ function configureApp(
     $mdIconProvider: ng.material.IIconProvider, 
     $urlRouterProvider,
     pipSideNavProvider: pip.nav.ISideNavProvider, 
+    pipNavHeaderProvider: pip.nav.INavHeaderProvider,
     pipNavMenuProvider: pip.nav.INavMenuProvider, 
     pipAppBarProvider: pip.nav.IAppBarProvider, 
     pipNavIconProvider: pip.nav.INavIconProvider,
