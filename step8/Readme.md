@@ -164,6 +164,10 @@ Rebuild the application and you will see:
 
 ![Notifications](artifacts/notifications.png) 
 
+![Badge in application bar](artifacts/appbar_badge.png)
+
+![Badge in side navigation menu](artifacts/sidenav_badge.png) 
+
 ### Continue
 
 [Go to step 9](https://github.com/pip-webui/pip-webui-sample/blob/master/step9/) to add map view to Nodes page.
