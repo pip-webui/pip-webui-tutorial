@@ -108,7 +108,7 @@ class EventsController {
 
         this.events = [
             {
-                icon: 'tr-errors',
+                icon: 'warn-circle',
                 node_id: '111',
                 node_name: 'Node 1',
                 description: 'Raised temperature',
@@ -116,7 +116,7 @@ class EventsController {
                 rad_level: 100
             },
             {
-                icon: 'info-circle',
+                icon: 'info-circle-outline',
                 node_id: '111',
                 node_name: 'Node 1',
                 description: 'Lowered temperature',
@@ -168,4 +168,3 @@ Resize browser windows to the size of a phone:
 ### Continue
 
 [Go to step 8](https://github.com/pip-webui/pip-webui-sample/blob/master/step8/) to show notifications.
-
