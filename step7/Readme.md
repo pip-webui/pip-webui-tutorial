@@ -89,7 +89,7 @@ function configureEventRoutes(
     });
 }
 
-class IoTEvent {
+export class IoTEvent {
     public icon: string;
     public node_id: string;
     public node_name: string;
@@ -98,7 +98,7 @@ class IoTEvent {
     public rad_level: number;
 }
 
-class EventsController {
+export class EventsController {
     public constructor(
         pipBreadcrumb: pip.nav.IBreadcrumbService,
         pipMedia: pip.layouts.IMediaService
