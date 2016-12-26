@@ -79,10 +79,33 @@ Add **ng-app** and **ng-controller** attributes to **body** tag inside **index.h
 </body>
 ```
 
+Open **build.conf.js** and add the following code:
+
+```javascript
+build: {
+        js: false,
+        ts: false,
+        bundle: true,
+        html: true,
+        less: true,    
+        sass: false,    
+        lib: true,
+        images: true,
+        dist: true
+    },
+
+browserify: {
+        entries: [ 
+            './src/index.ts'
+        ]
+    }
+```
+
 #### Rebuild and launch the application
 
 ```bash
-bash install
+gulp build
+gulp launch
 ```
 
 You should see the following web page:
