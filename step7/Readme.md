@@ -11,7 +11,7 @@ Replace content of **events.html** page with the content below. The page will sh
 </md-toolbar>
 
 <pip-document>
-    <div ng-show="$mdMedia('gt-xs')" class="scrolled-container">
+    <div ng-show="vm.pipMedia('gt-sm')" class="scrolled-container">
         <table class="w-stretch">
             <thead class="color-secondary-text">
                 <tr class="h48 text-left">
@@ -41,7 +41,7 @@ Replace content of **events.html** page with the content below. The page will sh
             </tbody>
         </table>
     </div>
-    <div ng-show="$mdMedia('xs')" class="scrolled-container">
+    <div ng-show="!vm.pipMedia('gt-sm')" class="scrolled-container">
         <div ng-repeat="event in vm.events" class="layout-row layout-align-start-center">
             <div class="flex-fixed lp16 rp16">
                 <md-icon ng-style="{color: iconColors[event.icon]}"
@@ -100,13 +100,15 @@ class IoTEvent {
 
 class EventsController {
     public constructor(
-        pipBreadcrumb: pip.nav.IBreadcrumbService
+        pipBreadcrumb: pip.nav.IBreadcrumbService,
+        pipMedia: pip.layouts.IMediaService
     ) {
         pipBreadcrumb.text = "Events";
+        this.pipMedia = pipMedia;
 
         this.events = [
             {
-                icon: 'error',
+                icon: 'tr-errors',
                 node_id: '111',
                 node_name: 'Node 1',
                 description: 'Raised temperature',
@@ -114,7 +116,7 @@ class EventsController {
                 rad_level: 100
             },
             {
-                icon: 'info',
+                icon: 'info-circle',
                 node_id: '111',
                 node_name: 'Node 1',
                 description: 'Lowered temperature',
@@ -132,6 +134,7 @@ class EventsController {
         ];
     }
 
+    public pipMedia: pip.layouts.IMediaService;
     public events: IoTEvent[] = [];
 }
 
@@ -165,3 +168,4 @@ Resize browser windows to the size of a phone:
 ### Continue
 
 [Go to step 8](https://github.com/pip-webui/pip-webui-sample/blob/master/step8/) to show notifications.
+
