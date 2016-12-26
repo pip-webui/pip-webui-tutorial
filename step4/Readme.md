@@ -28,7 +28,7 @@ function configureNodeRoutes(
     });
 }
 
-export class NodesController {
+class NodesController {
     public constructor(
         pipBreadcrumb: pip.nav.IBreadcrumbService
     ) {
@@ -87,7 +87,7 @@ angular
 
 ### Include compiled HTML templates
 
-Add reference to **./temp/pip-webui-sample-html.js** file that contains html pages compiled into javascript templates.
+Open **build.conf.js** and add reference to **./temp/pip-webui-sample-html.js** file that contains html pages compiled into javascript templates.
 Later this step can be removed and done automatically.
 
 ```javascript
@@ -141,7 +141,6 @@ function configureApp(
     $mdIconProvider: ng.material.IIconProvider, 
     $urlRouterProvider,
     pipSideNavProvider: pip.nav.ISideNavProvider, 
-    pipNavHeaderProvider: pip.nav.INavHeaderProvider,
     pipNavMenuProvider: pip.nav.INavMenuProvider, 
     pipAppBarProvider: pip.nav.IAppBarProvider, 
     pipNavIconProvider: pip.nav.INavIconProvider,
