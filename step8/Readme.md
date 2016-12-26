@@ -127,6 +127,8 @@ class EventsController {
     ) {
         ...
 
+        this.notificationService = notificationService;
+
         notificationService.data([
             this.events[0].node_name + ': ' + this.events[0].description,
             this.events[1].node_name + ': ' + this.events[1].description,
