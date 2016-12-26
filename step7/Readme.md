@@ -4,8 +4,7 @@
 
 ### Create events table view
 
-Create **/events** folder under **/src**. Place events.html in there with the content presented below. 
-The page will show events from IoT nodes as a table on the Desktop and Table and as a list on Phones.
+Replace content of **events.html** page with the content below. The page will show events from IoT nodes as a table on the Desktop and Table and as a list on Phones.
 
 ```html
 <md-toolbar class="pip-appbar-ext">
@@ -26,7 +25,7 @@ The page will show events from IoT nodes as a table on the Desktop and Table and
                 </tr>
             </thead>
             <tbody>
-                <tr class="h48 text-subhead2 divider-bottom" ng-repeat="event in events">
+                <tr class="h48 text-subhead2 divider-bottom" ng-repeat="event in vm.events">
                     <td class="lp16 divider-bottom">
                         <md-icon ng-style="{color: iconColors[event.icon]}"
                                  md-svg-icon="icons:{{ event.icon }}">
@@ -43,7 +42,7 @@ The page will show events from IoT nodes as a table on the Desktop and Table and
         </table>
     </div>
     <div ng-show="$mdMedia('xs')" class="scrolled-container">
-        <div ng-repeat="event in events" class="layout-row layout-align-start-center">
+        <div ng-repeat="event in vm.events" class="layout-row layout-align-start-center">
             <div class="flex-fixed lp16 rp16">
                 <md-icon ng-style="{color: iconColors[event.icon]}"
                          md-svg-icon="icons:{{ event.icon }}">
@@ -69,88 +68,77 @@ The page will show events from IoT nodes as a table on the Desktop and Table and
 </pip-document>
 ```
 
-### Create events controller
+### Update events controller
 
-Create **events.js** file under **/src/events** folder and copy there the following code:
+Update **events.ts** file with the following code:
 
 ```javascript
-(function (angular) {
+'use strict';
 
-    var thisModule = angular.module('eventsModule', []);
+function configureEventRoutes(
+    $stateProvider: ng.ui.IStateProvider
+) {
+    "ngInject";
 
-    thisModule.controller('eventsController', function($scope, pipAppBar, $mdMedia) {
-        // Show page title
-        pipAppBar.showTitleText('Events');
-        // Show menu icon to open sidenav
-        pipAppBar.showMenuNavIcon();
-        // Show local page actions
-        pipAppBar.showLocalActions();
-        // Add shadow under the appbar
-        pipAppBar.hideShadow();
-        
-        // Initialize service for changing layouts when the screen size changed
-        $scope.$mdMedia = $mdMedia;
-        
-        // Get test data
-        $scope.events = $scope.dataSet.get('EventsTestCollection').getAll();
-        
-        $scope.iconColors = {
-            'warn-circle': '#EF5350',
-            'info-circle-outline': '#8BC34A',
-            'warn-triangle': '#FFD54F'
-        };
+    // Configure module routes
+    $stateProvider.state('events', {
+        url: '/events',
+        controller: EventsController,
+        controllerAs: 'vm',
+        templateUrl: 'events.html'
     });
+}
 
-})(window.angular);
-```
+class IoTEvent {
+    public icon: string;
+    public node_id: string;
+    public node_name: string;
+    public description: string;
+    public temperature: number;
+    public rad_level: number;
+}
 
-### Add page into the application
+class EventsController {
+    public constructor(
+        pipBreadcrumb: pip.nav.IBreadcrumbService
+    ) {
+        pipBreadcrumb.text = "Events";
 
-Add **eventsModule** into application module references in index.js:
-
-```javascript
-var app = angular.module('app', [
-    ...
-    
-    // Sample application modules
-    'nodesModule', 'eventsModule'
-]);
-```
-
-Make changes to the routing states in configuration section:
-
-```javascript
-app.config(
-    function (pipSideNavProvider, $mdIconProvider, pipAppBarProvider, pipAuthStateProvider, 
-                  pipSettingsProvider, pipHelpProvider, $urlRouterProvider, pipRestProvider) {
-        ...
-
-        // Configure states of application
-        pipAuthStateProvider
-            .state('nodes', {
-                url: '/nodes',
-                controller: 'nodesController',
-                templateUrl: 'nodes/nodes.html',
-                auth: true
-            })
-            .state('events', { 
-                url: '/events', 
-                controller: 'eventsController', 
-                templateUrl: 'events/events.html', // <---- Pay attention!
-                auth: true
-            });
-        ...
+        this.events = [
+            {
+                icon: 'error',
+                node_id: '111',
+                node_name: 'Node 1',
+                description: 'Raised temperature',
+                temperature: 24.5,
+                rad_level: 100
+            },
+            {
+                icon: 'info',
+                node_id: '111',
+                node_name: 'Node 1',
+                description: 'Lowered temperature',
+                temperature: 23,
+                rad_level: 101
+            },
+            {
+                icon: 'location',
+                node_id: '222',
+                node_name: 'Node 2',
+                description: 'Location changed',
+                temperature: 24,
+                rad_level: 104
+            }
+        ];
     }
-);
-```
 
-Remove old **eventsController** from **index.js**:
+    public events: IoTEvent[] = [];
+}
 
-```javascript
-// Remove
-//app.controller('eventsController', function($scope, pipAppBar) {
-//       ....
-//});
+angular
+    .module('app.Events', [ ])
+    .config(configureEventRoutes)
+    .controller('eventsController', EventsController);
 ```
 
 Add styles to **styles.less** in root folder
