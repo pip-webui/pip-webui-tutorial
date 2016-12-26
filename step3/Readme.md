@@ -66,11 +66,11 @@ function configApp(
     pipBreadcrumbProvider: pip.nav.IBreadcrumbProvider, 
  ) {
     $mdIconProvider.iconSet('icons', 'images/icons.svg', 512);
+    
+    // Configure sidenav
     pipSideNavProvider.type = 'popup';
-
     pipNavHeaderProvider.title = "Sample application";
     pipNavHeaderProvider.subtitle = "Learn how to use pip-webui";
-
     pipNavMenuProvider.sections = [
         {
             name: 'main',
@@ -90,16 +90,14 @@ function configApp(
 
     // Configure appbar    
     pipBreadcrumbProvider.text = "Sample application";
-    pipNavIconProvider.setMenu();
+    pipNavIconProvider.setMenu();    
     pipActionsProvider.primaryGlobalActions = [
             { name: 'global.notifications', icon: 'icons:bell', count: 0, event: 'appNotificationsClicked', subActions: []  }
     ];
-
     pipActionsProvider.secondaryGlobalActions = [
         { name: 'global.settings', title: 'Settings', state: 'settings', subActions: [] },
         { name: 'global.signout', title: 'Sign out', event: 'appSignout', subActions: [] }
     ];
-    pipAppBarProvider.parts = {icon: true, title: 'breadcrumb', actions: 'primary', menu: true };
 }
 ```
 
