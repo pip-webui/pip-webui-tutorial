@@ -14,7 +14,7 @@ Then add **nodes.ts** file with controller and route configuration:
 ```javascript
 'use strict';
 
-export function configureNodeRoutes(
+function configureNodeRoutes(
     $stateProvider: ng.ui.IStateProvider
 ) {
     "ngInject";
@@ -57,7 +57,7 @@ Add **events.ts** file:
 ```javascript
 'use strict';
 
-export function configureEventRoutes(
+function configureEventRoutes(
     $stateProvider: ng.ui.IStateProvider
 ) {
     "ngInject";
