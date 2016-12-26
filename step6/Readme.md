@@ -41,7 +41,7 @@ It will display a tile view with IoT nodes showing their name, measurements and 
 Todo: Each node shall have its own location!
 Todo: Can we add the hook to resize tiles into the framework?
 
-Update **nodes.js** file with the following code:
+Update **nodes.ts** file with the following code:
 
 ```javascript
 'use strict';
