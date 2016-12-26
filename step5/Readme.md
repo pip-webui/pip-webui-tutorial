@@ -69,6 +69,7 @@ angular
         'pipTheme',
         'pipSettings',
         'pipButtons',
+        'pipLoactions',
 
         'app.Templates',
         'app.Events',
