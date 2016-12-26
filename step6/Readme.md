@@ -4,7 +4,7 @@
 
 ### Create nodes tiles view
 
-Replace content of **node.html** file with the following below.
+Replace content of **node.html** file with the content below.
 It will display a tile view with IoT nodes showing their name, measurements and current location:
 
 ```html
