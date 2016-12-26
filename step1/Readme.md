@@ -102,13 +102,35 @@ Create **build.conf.js** file in the root folder and define configuration for th
 module.exports = {
     module: {
         name: 'app',
-        styles: 'styles'
+        styles: 'styles',
+        standalone: 'app',
+        export: 'app'
     },
+
     file: {
         lib: [
             'node_modules/pip-webui-all/dist/**/*'
         ]
+    },
+
+    build: {
+        js: false,
+        ts: false,
+        bundle: true,
+        html: true,
+        less: true,    
+        sass: false,    
+        lib: true,
+        images: true,
+        dist: true
+    },
+
+    browserify: {
+        entries: [ 
+            './src/index.ts'
+        ]
     }
+
 };
 ```
 
