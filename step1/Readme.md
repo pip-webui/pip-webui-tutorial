@@ -22,6 +22,7 @@ npm install gulp-cli -g
 ├── package.json
 ├── gulpfile.js
 ├── build.conf.js
+├── tsconfig.json
 ```
 
 ### Install dependencies
@@ -102,35 +103,13 @@ Create **build.conf.js** file in the root folder and define configuration for th
 module.exports = {
     module: {
         name: 'app',
-        styles: 'styles',
-        standalone: 'app',
-        export: 'app'
+        styles: 'styles'
     },
-
     file: {
         lib: [
             'node_modules/pip-webui-all/dist/**/*'
         ]
-    },
-
-    build: {
-        js: false,
-        ts: false,
-        bundle: true,
-        html: true,
-        less: true,    
-        sass: false,    
-        lib: true,
-        images: true,
-        dist: true
-    },
-
-    browserify: {
-        entries: [ 
-            './src/index.ts'
-        ]
     }
-
 };
 ```
 
@@ -201,8 +180,6 @@ gulp build
 If build is successful, in the root folder you can find two new folders **/lib** and **/dist**
 
 ![Result structure](artifacts/result_structure.png)
-
-Go to **/dist** folder, locate **index.html** file.  
 
 Open your app by executing the command line:
 ```bash
