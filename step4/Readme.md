@@ -125,6 +125,7 @@ angular
         'pipTheme',
         'pipSettings',
         'pipButtons',
+        'pipLocations',
 
         'app.Templates',
         'app.Events',
