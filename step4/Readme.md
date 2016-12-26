@@ -4,12 +4,12 @@
 
 ### Add notes page
 
-Add **nodes.html** file into **/src** folder:
+Add **nodes.html** file into **/src/nodes** folder:
 
 ```html
 <h1>Welcome to Nodes page!</h1>
 ```
-Then add **nodes.ts** file with controller and route configuration:
+Then add **nodes.ts** file into **/src/nodes** with controller and route configuration:
 
 ```javascript
 'use strict';
@@ -24,7 +24,7 @@ function configureNodeRoutes(
         url: '/nodes',
         controller: NodesController,
         controllerAs: 'vm',
-        templateUrl: 'nodes.html'
+        templateUrl: 'nodes/nodes.html'
     });
 }
 
@@ -46,13 +46,13 @@ angular
 
 Similar to nodes, add files for events page.
 
-Add **events.html** file:
+Add **events.html** file into **/src/events** folder:
 
 ```html
 <h1>Welcome to Events page!</h1>
 ```
 
-Add **events.ts** file:
+Add **events.ts** file into **/src/events** folder:
 
 ```javascript
 'use strict';
@@ -67,7 +67,7 @@ function configureEventRoutes(
         url: '/events',
         controller: EventsController,
         controllerAs: 'vm',
-        templateUrl: 'events.html'
+        templateUrl: 'events/events.html'
     });
 }
 
@@ -106,8 +106,8 @@ Open **index.ts** file and import files containing code of nodes and events page
 ```javascript
 'use strict'
 
-import './nodes.ts';
-import './events.ts';
+import './nodes/nodes.ts';
+import './events/events.ts';
 ```
 
 Add references to page modules into the main module:
