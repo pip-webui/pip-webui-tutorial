@@ -60,19 +60,19 @@ function configureNodeRoutes(
     });
 }
 
-class Point {
+export class Point {
     type: string;
     coordinates: number[];
 }
 
-class IoTNode {
+export class IoTNode {
     public name: string;
     public temperature: number;
     public radiation_level: number;
     public location: Point;
 }
 
-class NodesController {
+export class NodesController {
     public constructor(
         pipBreadcrumb: pip.nav.IBreadcrumbService
     ) {
