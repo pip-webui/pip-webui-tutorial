@@ -4,13 +4,13 @@
 
 ### Add settings page
 
-Add **settings_sample.html** file with settings tab view into **/src** folder:
+Add **settings_sample.html** file with settings tab view into **/src/settings** folder:
 
 ```html
 <h1>Welcome to Settings sample tab!</h1>
 ```
 
-Add configuration and settings tab controller into **settings_sample.ts** file:
+Add configuration and settings tab controller into **settings_sample.ts** file into **/src/settings**:
 
 ```javascript
 'use strict';
@@ -24,7 +24,7 @@ function configureSampleTab(
         auth: true,
         stateConfig: {
             url: '/sample',
-            templateUrl: 'settings_sample.html',
+            templateUrl: 'settings/settings_sample.html',
             controller: SettingsSampleController,
             controllerAs: 'vm'
         }
@@ -51,9 +51,9 @@ Open **index.ts** file and import files containing code of settings page:
 ```javascript
 'use strict';
 
-import './nodes';
-import './events';
-import './settings_sample';
+import './nodes/nodes';
+import './events/events';
+import './settings/settings_sample';
 
 ...
 
