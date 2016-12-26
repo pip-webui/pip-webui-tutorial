@@ -4,7 +4,7 @@
 
 ### Create nodes tiles view
 
-Replace content of **node.html** file with the content below.
+Replace content of **nodes.html** file with the content below.
 It will display a tile view with IoT nodes showing their name, measurements and current location:
 
 ```html
@@ -61,8 +61,8 @@ function configureNodeRoutes(
 }
 
 class Point {
-    latitude: number;
-    longitude: number;
+    type: string;
+    coordinates: number[];
 }
 
 class IoTNode {
@@ -83,19 +83,19 @@ class NodesController {
                 name: 'Node 1', 
                 temperature: 24, 
                 radiation_level: 100,  
-                location: { latitude: 100, longitude: 100 }
+                location: { type: 'Point', coordinates: [32.393603, 110.982593] }
             },
             { 
                 name: 'Node 1', 
                 temperature: 24.5, 
                 radiation_level: 104,  
-                location: { latitude: 105, longitude: 100 }
+                location: { type: 'Point', coordinates: [32.393603, -121.982593] }
             },
             { 
                 name: 'Node 3', 
                 temperature: 23, 
                 radiation_level: 99,  
-                location: { latitude: 100, longitude: 105 }
+                location: { type: 'Point', coordinates: [32.393603, 120.982593] }
             }
         ];
     }
