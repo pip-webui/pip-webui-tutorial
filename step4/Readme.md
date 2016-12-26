@@ -159,4 +159,4 @@ When you rebuild and reopen the application you shall see the following result:
 
 ### Continue
 
-[Go to step 5](https://github.com/pip-webui/pip-webui-sample/blob/master/step5/) to add settings and help pages.
+[Go to step 5](https://github.com/pip-webui/pip-webui-sample/blob/master/step5/) to add settings page.
