@@ -74,6 +74,14 @@ Add **ng-app** and **ng-controller** attributes to **body** tag inside **index.h
 </body>
 ```
 
+#### Rebuild and launch the application
+
+```bash
+bash install
+```
+
+![Page 2](artifacts/page2.png)
+
 ### Continue
 
 [Go to step 3](https://github.com/pip-webui/pip-webui-sample/blob/master/step3/) to add pip-webui components.
