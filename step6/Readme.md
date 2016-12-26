@@ -86,7 +86,7 @@ export class NodesController {
                 location: { type: 'Point', coordinates: [32.393603, 110.982593] }
             },
             { 
-                name: 'Node 1', 
+                name: 'Node 2', 
                 temperature: 24.5, 
                 radiation_level: 104,  
                 location: { type: 'Point', coordinates: [32.393603, -121.982593] }
