@@ -2,9 +2,9 @@
 
 [Go to step 7](https://github.com/pip-webui/pip-webui-sample/blob/master/step7/) to add Events page with table view.
 
-### Show notifactions as toast messages
+### Show notifications as toast messages
 
-Add new service to application. Create file **notifications.ts** in **/src** and add the following code:
+Add new service to application. Create file **notifications.ts** in **/src/notifications** and add the following code:
 
 ```javascript
 export interface INotificationService {
@@ -17,7 +17,7 @@ export class NotificationAction {
     static Ok: string = "OK";
 }
 
-class NotificationService implements INotificationService {
+export class NotificationService implements INotificationService {
     private _$interval: angular.IIntervalService;
     private _stopTime: any;
     private _showCount: number = 0;
@@ -84,7 +84,7 @@ Import **notifications.ts** and add notifications module in **index.ts**:
  'use strict';
 
 ...
-import './notifications';
+import './notifications/notifications';
 ...
 
 angular
@@ -104,7 +104,7 @@ angular
         'app.Events',
         'app.Nodes',
         'app.Settings.Sample',
-        'app.Notifications' <------ Pay attention!
+        'app.Notifications' //<------ Pay attention!
     ])
     .config(configApp)
     .controller('appController', AppController);
@@ -115,7 +115,7 @@ Import **notification service interface** and update **events controller**:
 ```javascript
 'use strict';
 
-import { INotificationService } from './notifications';
+import { INotificationService } from '../notifications/notifications';
 
 ...
 
@@ -143,7 +143,7 @@ class EventsController {
     
     public pipMedia: pip.layouts.IMediaService;
     public events: IoTEvent[] = [];
-    public notificationService: INotificationService; <------ Pay attention!
+    public notificationService: INotificationService; //<------ Pay attention!
 }
 
 ...
