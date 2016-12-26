@@ -1,30 +1,43 @@
-# Pip.WebUI Getting Started <br/> Step 3. Add global navigation
+# Pip.WebUI Getting Started <br/> Step 3. Add pip-webui components
 
-[Go to step 2](https://github.com/pip-webui/pip-webui-sample/blob/master/step2/Readme.md) to add **pip-webui** references.
+[Go to step 2](https://github.com/pip-webui/pip-webui-sample/blob/master/step2/Readme.md) to add **angular** components.
 
 ### Include navigation components into the application
 
-Add reference to **pipNav** in application module references:
+Add references to **angular-material** and **pip-webui** into module references:
 
 ```javascript
-var app = angular.module('app', [
-        // pipWebUI modules
-        'pipRest', 'pipLayout', 'pipErrorHandling', 'pipWebuiTests', 'pipNav',
-
-        // Application templates
-        'app.Templates'
-]);
+angular
+    .module('app', [
+        'ngMaterial',
+        'pipLayout', 
+        'pipNav', 
+        'pipControls',
+        'pipBehaviors',
+        'pipServices', 
+        'pipTheme',
+        'pipSettings',
+        'pipButtons'
+    ])
 ```
 
 ### Add AppBar and SideNav into index.html
 
-Place **pip-appbar** and **pip-sidenav** components under **pip-main** tag. Delete text **'Nothing here yet!'** from **pip-main-body** container:
+Place **pip-appbar** and **pip-sidenav** components under **pip-main** tag.
 
 ```html
-<body ng-app="app" ng-controller="appController">
+<body ng-app="app" ng-controller="appController as vm">
     <pip-main>
-        <pip-appbar></pip-appbar>
-        <pip-sidenav></pip-sidenav>
+        <pip-appbar>
+            <pip-nav-icon></pip-nav-icon>
+            <pip-breadcrumb></pip-breadcrumb>
+            <div class="flex"></div>
+            <pip-primary-actions class="flex-fixed"></pip-primary-actions>
+            <pip-secondary-actions class="flex-fixed"></pip-secondary-actions>
+        </pip-appbar>
+        <pip-sidenav>
+            <pip-nav-menu></pip-nav-menu>
+        </pip-sidenav>
         <pip-main-body ui-view></pip-main-body>
     </pip-main>
 </body>
@@ -34,145 +47,63 @@ Rebuild the application. You shall see an empty application with a toolbar and s
 
 ![navigation components](artifacts/navigation_components.png)
 
-### Configure AppBar
+### Configure application
 
 Load the default iconset, define global actions and default application title inside the application configuration section.
 
 We will create a page for the global actions later. For now, you can see a routing error page if you try to trigger them.
 
 ```javascript
-app.config(function (pipAuthStateProvider, $mdIconProvider, pipAppBarProvider) {
-    // Load default iconset
+function configApp(
+    $mdIconProvider: ng.material.IIconProvider, 
+    pipSideNavProvider: pip.nav.ISideNavProvider, 
+    pipNavMenuProvider: pip.nav.INavMenuProvider, 
+    pipAppBarProvider: pip.nav.IAppBarProvider, 
+    pipNavIconProvider: pip.nav.INavIconProvider,
+    pipActionsProvider: pip.nav.IActionsProvider, 
+    pipBreadcrumbProvider: pip.nav.IBreadcrumbProvider, 
+ ) {
     $mdIconProvider.iconSet('icons', 'images/icons.svg', 512);
+    pipSideNavProvider.type = 'popup';
 
-    // Define global secondary actions (for actions popup menu) 
-    pipAppBarProvider.globalSecondaryActions([
-        {name: 'global.settings', title: 'Settings', state: 'settings'},
-        {name: 'global.signout', title: 'Sign out', state: 'signout'}
-    ]);
+    pipNavMenuProvider.sections = [
+        {
+            name: 'main',
+            links: [
+                { name: 'nodes', icon: 'icons:dashboard', title: 'Nodes', state: 'nodes' },
+                { name: 'events', icon: 'icons:event', title: 'Events', state: 'events' },
+                { name: 'settings', icon: 'icons:config', title: 'Settings', state: 'settings.appearance', parentState: 'settings' }
+            ]
+        },
+        {
+            name: 'signout',
+            links: [
+                { name: 'signout', icon: 'icons:exit', title: 'Sign out', event: 'appSignout' }
+            ]
+        }
+    ];
 
-    // Configure states of application
-    ....
+    // Configure appbar    
+    pipBreadcrumbProvider.text = "Sample Application";
+    pipNavIconProvider.setMenu();
+    pipActionsProvider.primaryGlobalActions = [
+            { name: 'global.notifications', icon: 'icons:bell', count: 0, event: 'appNotificationsClicked', subActions: []  }
+    ];
 
-    // Set default application title
-    pipAppBarProvider.appTitleText('Sample Application');
-});
+    pipActionsProvider.secondaryGlobalActions = [
+        { name: 'global.settings', title: 'Settings', state: 'settings', subActions: [] },
+        { name: 'global.signout', title: 'Sign out', event: 'appSignout', subActions: [] }
+    ];
+    pipAppBarProvider.parts = {icon: true, title: 'breadcrumb', actions: 'primary', menu: true };
+}
 ```
-
-Now configure what will be shown on the AppBar when the application loads.
-
-```javascript
-app.controller('appController', function($scope, pipAppBar, pipWebuiTest, pipTestDataService) {
-        // Show application title
-        pipAppBar.showAppTitleText('Sample Application'); 
-        // Show icon to open sidenav
-        pipAppBar.showMenuNavIcon();
-        // Show button with tree dots for secondary actions
-        pipAppBar.showLocalActions();
-        // Create test data using pipWebUI services
-        $scope.dataSet = pipTestDataService.createTestDataset();        
-});
-```
-
-Such actions as signIn, signOut, signUp, users settings reading and editing, etc. are usually carried out with the application server.
-We will not use a real server instead of the server (fake server) based on the mock-object.
-You can read details about this [here](https://docs.angularjs.org/api/ngMockE2E/service/$httpBackend).
-
-Also, we will run a fake server to test our requests locally `pipWebuiTest.runFakeServer('http://fakeserver.net');`. 
-
-You can create fakeServer to any address, we chose **http://fakeserver.net**. 
-Add the application server definition ** app.config **.
-
-```javascript
-app.config(function (pipAuthStateProvider, $mdIconProvider, pipAppBarProvider, pipRestProvider) {
-    // Load default iconset
-    $mdIconProvider.iconSet('icons', 'images/icons.svg', 512);
-
-    // Define global secondary actions (for actions popup menu) 
-    pipAppBarProvider.globalSecondaryActions([
-        {name: 'global.settings', title: 'Settings', state: 'settings'},
-        {name: 'global.signout', title: 'Sign out', state: 'signout'}
-    ]);
-
-    // Define application REST API server
-    pipRestProvider.serverUrl('http://fakeserver.net');
-
-    ...
-
-});
-```
-
-Добавим запуск нашего fake server в **appController**.  
-
-```javascript
-app.controller('appController', function($scope, pipAppBar, pipWebuiTest, pipTestDataService) {
-    // run fake server
-    pipWebuiTest.runFakeServer('http://fakeserver.net');        
-
-    ...
-
-});
-```
-
-Теперь нам будет доступна функциональность, которая требует работы с сервером, 
-например signIn и SignUp, которые мы добавим на следующем шаге.
 
 When you rebuild the application, you will see the following:
 
-![Configured appbar](artifacts/configured_appbar.png)
-
-When you click on tree dots on the right, a popup with secondary actions will open:
-
-![Secondary actions](artifacts/secondary_actions.png)
-
-### Configure SideNav
-
-Configure two links in SideNav inside the application configuration section:
-
-```javascript
-app.config(function (pipAuthStateProvider, $mdIconProvider, pipAppBarProvider, pipRestProvider, pipSideNavProvider) {
-    ...
-    
-    pipSideNavProvider.sections([
-        {
-            links: [
-                {title: 'Nodes', url: '/nodes'},
-                {title: 'Events', url: '/events'}
-            ]
-        }
-    ]);
-});
-```
-
-Rebuild and open the application:
-
-![Configured sidenav](artifacts/configured_sidenav.png)
-
-### Configure AppBar for custom pages
-
-Add code to configure the AppBar inside page controllers:
-```javascript
-app.controller('nodesController', function($scope, pipAppBar) {
-    // Show page title
-    pipAppBar.showTitleText('Nodes');
-    // Show menu icon to open sidenav
-    pipAppBar.showMenuNavIcon();
-    // Show local actions in secondary actions popup
-    pipAppBar.showLocalActions();
-});
-
-app.controller('eventsController', function($scope, pipAppBar) {
-    // Show page title
-    pipAppBar.showTitleText('Events');
-    // Show menu icon to open sidenav
-    pipAppBar.showMenuNavIcon();
-    // Show local actions in secondary actions popup
-    pipAppBar.showLocalActions();
-});
-```
+![Page 3](artifacts/page3.png)
 
 ### Continue
 
 For more information on Appbar and SideNav, please, visit [pip-webui-nav module](https://github.com/pip-webui/pip-webui-nav)
 
-[Go to step 4](https://github.com/pip-webui/pip-webui-sample/blob/master/step4/) to add sign in and sign up pages.
+[Go to step 4](https://github.com/pip-webui/pip-webui-sample/blob/master/step4/) to add pages and navigation.
