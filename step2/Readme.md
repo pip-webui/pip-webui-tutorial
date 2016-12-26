@@ -27,14 +27,13 @@ In the application we are going to use Google Maps. So we'll add a link to Googl
 To support typescript compilation add definitions for angular, angular material and other modules:
 
 ```bash
-tsd init
-tsd install jquery --save
-tsd install lodash --save
-tsd install async --save
-tsd install angular --save
-tsd install angular-material --save
-tsd install angular-resource --save
-tsd install angular-ui-router --save
+typings install dt~jquery --save --global
+typings install lodash --save
+typings install async --save
+typings install dt~angular --save
+typings install dt~angular-resource --save
+typings install dt~angular-material --save
+typings install dt~angular-ui-router --save
 ```
 
 Open **typings/tsd.d.ts** and add the following line:
