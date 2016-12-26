@@ -11,7 +11,7 @@ Install build tools:
 npm install bower -g
 npm install gulp-cli -g
 npm install typescript -g
-npm install typings -g
+npm install typings@1.x -g
 ```
 
 ### Create project folder structure
