@@ -41,6 +41,11 @@ Open **typings/tsd.d.ts** and add the following line:
 /// <reference path="../node_modules/pip-webui-all/dist/pip-webui.d.ts" />
 ```
 
+Note: currently dt~angular typings have issues. As a temporary workaround install angular typings using tsd and change path in index.d.ts accordingly:
+```bash
+tsd install angular
+```
+
 ### Write Angular boilerplate code
 
 Add angular module, configuration and controller into **index.ts**:
