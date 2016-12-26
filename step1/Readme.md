@@ -10,6 +10,8 @@ Install build tools:
 ```bash
 npm install bower -g
 npm install gulp-cli -g
+npm install typescript -g
+npm install tsd -g
 ```
 
 ### Create project folder structure
