@@ -80,6 +80,8 @@ Add **ng-app** and **ng-controller** attributes to **body** tag inside **index.h
 bash install
 ```
 
+You should see the following web page:
+
 ![Page 2](artifacts/page2.png)
 
 ### Continue
