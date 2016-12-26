@@ -47,30 +47,35 @@ Open **typings/tsd.d.ts** and add the following line:
 Add angular module, configuration and controller into **index.ts**:
 
 ```javascript
-var app = angular.module('app', [
-    // Add references here
-]);
+'use strict';
 
-app.config(function() {
+function configApp() {
     // Todo: Add application configuration
-});
+}
 
-app.controller('appController', function($scope) {
-    $scope.greeting = "";
+class AppController {
+    public greeting: string = "";
     
-    $scope.saySomething = function() {
-        $scope.greeting = "Hello world!";
+    public saySomething(): void {
+        this.greeting = "Hello world!";
     }
-});
+};
+
+angular
+    .module('app', [
+        // Add references here
+    ])
+    .config(configApp)
+    .controller('appController', AppController);
 ```
 
 Add **ng-app** and **ng-controller** attributes to **body** tag inside **index.html**. Inside body place the following tags:
 
 ```html
-<body ng-app="app" ng-controller="appController">
-    <button ng-click="saySomething()">Say something</button>
+<body ng-app="app" ng-controller="appController as vm">
+    <button ng-click="vm.saySomething()">Say something</button>
     <p/>
-    {{greeting}}
+    {{vm.greeting}}
 </body>
 ```
 
