@@ -4,218 +4,165 @@
 
 ### Show notifactions as toast messages
 
-For a start, we implement reading of data from our "fakeserver" mock, but you can easily replace it with any real server with the necessary REST API.
-
-Open file ./src/events/events.js and replace `/ $scope.events = $scope.dataSet.get('EventsTestCollection').getAll();` by ` var events = $scope.dataSet.get('EventsTestCollection');`
-
-Make a request to the server, and display the result:
+Add new service to application. Create file **notifications.ts** in **/src** and add the following code:
 
 ```javascript
-thisModule.controller('eventsController', function($scope, pipAppBar, $mdMedia, $http) {
-    
-        // Show page title
-        pipAppBar.showTitleText('Events');
-        // Show menu icon to open sidenav
-        pipAppBar.showMenuNavIcon();
-        // Show local page actions
-        pipAppBar.showLocalActions();
-        // Add shadow under the appbar
-        pipAppBar.hideShadow();
-        // Initialize service for changing layouts when the screen size changed
-        $scope.$mdMedia = $mdMedia;
+export interface INotificationService {
+    start(): void;
+    stop(): void;
+    data(data: string[]): void;
+}
 
-        var events = $scope.dataSet.get('EventsTestCollection');
-        var req = {method: 'GET', url: 'http://fakeserver.net' + '/api/events'};
-       
-        // Get data from the server
-        $http(req)
-            .success(function (result) {
-                $scope.events = result;  // <---- Pay attention!
-            })
-            .error(function (error) {
-                console.log('Error: get events error! ', error); 
-            });   
+export class NotificationAction {
+    static Ok: string = "OK";
+}
 
-        $scope.iconColors = {
-            'warn-circle': '#EF5350',
-            'info-circle-outline': '#8BC34A',
-            'warn-triangle': '#FFD54F'
-        };
-});
+class NotificationService implements INotificationService {
+    private _$interval: angular.IIntervalService;
+    private _stopTime: any;
+    private _showCount: number = 0;
+    private _interval: number = 20000;
+    private _pipNavService: pip.nav.INavService;
+    private _pipToasts: any;
+    private _data: string[] = [];
+
+    constructor(
+        $interval: angular.IIntervalService,
+        pipNavService: pip.nav.INavService,
+        pipToasts: any
+    ) {
+        "ngInject";
+
+        this._$interval = $interval;
+        this._pipNavService = pipNavService;
+        this._pipToasts = pipToasts;
+    }
+
+    private show () {
+        let index;
+
+        this._showCount++;
+        index = this._data.length > this._showCount ? this._showCount: this._showCount % this._data.length;
+
+        this.updateCounts();
+        // Show a toast message
+        this._pipToasts.showNotification(this._data[index], [NotificationAction.Ok], () => {});
+    }
+
+    private updateCounts() {
+        // Show badge with number of notifications in application bar actions
+        this._pipNavService.actions.updateCount('global.notifications', this._showCount);
+        // Show badge with number of notifications in side navigation menu link
+        this._pipNavService.menu.updateCount('events', this._showCount);
+    }
+
+    public start () {
+        if (this._data.length === 0) return;
+
+        this._stopTime = this._$interval(() => { this.show(); }, this._interval);
+    }
+
+    public stop () {
+        this._$interval.cancel(this._stopTime);
+        this._showCount = 0;
+        this.updateCounts();
+    }
+
+    public data(data: string[]) {
+        this._data = data;
+    }
+
+}
+
+angular.module('app.Notifications', [])
+    .service('notificationService', NotificationService);
 ```
 
-Change the code in node.js:
+Import **notifications.ts** and add notifications module in **index.ts**:
 
 ```javascript
-    thisModule.controller('nodesController', function($scope, $http, pipAppBar) {
+ 'use strict';
 
-         var req;
-         
-        // Show page title
-        pipAppBar.showTitleText('Nodes');
-        // Show menu icon to open sidenav
-        pipAppBar.showMenuNavIcon();
-        // Show local page actions
-        pipAppBar.showLocalActions();
-        // Add shadow under the appbar
-        pipAppBar.hideShadow();
+...
+import './notifications';
+...
 
-        // Get test data
-        req = {method: 'GET', url: 'http://fakeserver.net' + '/api/nodes'};
+angular
+    .module('app', [
+        'ngMaterial',
+        'pipLayout', 
+        'pipNav', 
+        'pipControls',
+        'pipBehaviors',
+        'pipServices', 
+        'pipTheme',
+        'pipSettings',
+        'pipButtons',
+        'pipLocations',
 
-        $http(req)
-            .success(function (result) {
-                $scope.nodes = result;
-
-                $scope.iconPath = 'M0,15a15,15 0 1,0 30,0a15,15 0 1,0 -30,0';
-
-                $scope.location_points = getLocations();            
-            })
-            .error(function (error) {
-                console.log('Error: get nodes error! ', error); 
-            }); 
-
-        function getLocations() {
-            var points = [];
-
-            $scope.nodes.forEach(function (node) {
-                points.push(node.location_points);
-            });
-
-            return points;
-        }
-    });
+        'app.Templates',
+        'app.Events',
+        'app.Nodes',
+        'app.Settings.Sample',
+        'app.Notifications' <------ Pay attention!
+    ])
+    .config(configApp)
+    .controller('appController', AppController);
 ```
 
-Rebuild the application and test it. 
-
-Here we are going to simulate incoming events and show them as toast messages.
-
-Add the code below into **eventsController**:
+Import **notification service interface** and update **events controller**:
 
 ```javascript
- thisModule.controller('eventsController', function($scope, $interval, $mdMedia, $http, pipAppBar, pipToasts) {
+'use strict';
 
-        var req,
-            stopTime,
-            EVENTS_MAX = 200, // The maximum number of events that can be generated
-            events;
+import { INotificationService } from './notifications';
 
-        // Show page title
-        pipAppBar.showTitleText('Events');
-        // Show menu icon to open sidenav
-        pipAppBar.showMenuNavIcon();
-        // Show local page actions
-        pipAppBar.showLocalActions();
-        // Add shadow under the appbar
-        pipAppBar.hideShadow();
-        // Initialize service for changing layouts when the screen size changed
-        $scope.$mdMedia = $mdMedia;
-        
-        // Get test data 
-        events = $scope.dataSet.get('EventsTestCollection');
+...
 
-        // Prepare request 
-        req = {method: 'GET', url: 'http://fakeserver.net' + '/api/events'};
-
-        // Get data from the server
-        $http(req)
-            .success(function (result) {
-                $scope.events = result;
-
-                stopTime = $interval(addNextToast, 10000); // use angular $interval for imitation receiving messages every 10 sec.            
-            })
-            .error(function (error) {
-                console.log('Error: get events error! ', error); 
-            });    
-
-        $scope.iconColors = {
-            'warn-circle': '#EF5350',
-            'info-circle-outline': '#8BC34A',
-            'warn-triangle': '#FFD54F'
-        };
-
-        return;
-
-        function addNextToast() {
-            var event,
-                i = $scope.events.length;
-
-            if (i > EVENTS_MAX) {
-                $interval.cancel(stopTime);
-            } else {
-                // generate event
-                event = events.create();
-
-                // get event from server 
-                // Prepare request 
-                req = {method: 'GET', url: 'http://fakeserver.net' + '/api/events/' + event.id};
-                // Get data from the server
-                $http(req)
-                    .success(function (result) {
-                        $scope.events.push(result);
-                    })
-                    .error(function (error) {
-                        console.log('Error: get events error! ', error); 
-                    }); 
-
-                // Function to display notification
-                pipToasts.showNotification('Node ' + event.node_name + ' (' + event.node_id + '): ' + event.description);
-                i++;
-            }
-        }
-    });
-```
-
-Rebuild the application. Now every 10 seconds you shall see a toast with an event in the left bottom corner:
-
-![Notification](artifacts/notification.png)
-
-Add re-reading data from the server after you click 'Reload Button':
-
-![Reload button](artifacts/reload_button.png)
-
-Add this code to **eventsController**:
-
-```javascript
- thisModule.controller('eventsController', function($scope, $interval, $mdMedia, $http, pipAppBar, pipToasts) {
- 
-        ... 
-
-        $scope..onReload = onReload;
-
-        return;
-
+class EventsController {
+    public constructor(
+        pipBreadcrumb: pip.nav.IBreadcrumbService,
+        pipMedia: pip.layouts.IMediaService,
+        notificationService: INotificationService <------ Pay attention!
+    ) {
         ...
 
-        function onReload() {
-            var req = {method: 'GET', url: 'http://fakeserver.net' + '/api/events'};
+        notificationService.data([
+            this.events[0].node_name + ': ' + this.events[0].description,
+            this.events[1].node_name + ': ' + this.events[1].description,
+            this.events[2].node_name + ': ' + this.events[2].description
+        ]);
 
-            $http(req)
-                .success(function (result) {
-                    $scope.events = result;
-                    pipToasts.showNotification('Events data are reloaded!');
-                })
-                .error(function (error) {
-                    console.log('Error: get events error! ', error); 
-                }); 
-        }
-        
-    });
+        notificationService.start();
+    }
+    
+    public reloadNotifications() {
+        this.notificationService.stop();
+        this.notificationService.start();
+    }
+    
+    public pipMedia: pip.layouts.IMediaService;
+    public events: IoTEvent[] = [];
+    public notificationService: INotificationService; <------ Pay attention!
+}
+
+...
+
 ```
 
-Change ./src/events/events.html:
+Update **events.html**. Add **ng-click** attribute to button:
 
 ```html
  ...
-    <md-button class="md-fab md-accent md-fab-bottom-right" aria-label="refresh" ng-click="onReload()"> 
+    <md-button class="md-fab md-accent md-fab-bottom-right" aria-label="refresh" ng-click="vm.reloadNotifications()"> 
         <md-tooltip md-direction="left">Refresh</md-tooltip>
         <md-icon md-svg-icon="icons:reload"></md-icon>
     </md-button>
  ...
 ```
-Rebuild the application. Click on the reload button. Now you will see a toast with message: 'Events data are reloaded!' on left bottom corner.
-![Reload notification](artifacts/reload_notification.png) 
+Rebuild the application and you will see:
+
+![Notifications](artifacts/reload_notification.png) 
 
 ### Continue
 
