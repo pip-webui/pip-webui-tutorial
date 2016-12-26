@@ -36,6 +36,7 @@ Place **pip-appbar** and **pip-sidenav** components under **pip-main** tag.
             <pip-secondary-actions class="flex-fixed"></pip-secondary-actions>
         </pip-appbar>
         <pip-sidenav>
+            <pip-nav-header></pip-nav-header>
             <pip-nav-menu></pip-nav-menu>
         </pip-sidenav>
         <pip-main-body ui-view></pip-main-body>
@@ -57,6 +58,7 @@ We will create a page for the global actions later. For now, you can see a routi
 function configApp(
     $mdIconProvider: ng.material.IIconProvider, 
     pipSideNavProvider: pip.nav.ISideNavProvider, 
+    pipNavHeaderProvider: pip.nav.INavHeaderProvider,
     pipNavMenuProvider: pip.nav.INavMenuProvider, 
     pipAppBarProvider: pip.nav.IAppBarProvider, 
     pipNavIconProvider: pip.nav.INavIconProvider,
@@ -66,13 +68,16 @@ function configApp(
     $mdIconProvider.iconSet('icons', 'images/icons.svg', 512);
     pipSideNavProvider.type = 'popup';
 
+    pipNavHeaderProvider.title = "Sample application";
+    pipNavHeaderProvider.subtitle = "Learn how to use pip-webui";
+
     pipNavMenuProvider.sections = [
         {
             name: 'main',
             links: [
                 { name: 'nodes', icon: 'icons:dashboard', title: 'Nodes', state: 'nodes' },
                 { name: 'events', icon: 'icons:event', title: 'Events', state: 'events' },
-                { name: 'settings', icon: 'icons:config', title: 'Settings', state: 'settings.appearance', parentState: 'settings' }
+                { name: 'settings', icon: 'icons:config', title: 'Settings', state: 'settings.sample', parentState: 'settings' }
             ]
         },
         {
@@ -84,7 +89,7 @@ function configApp(
     ];
 
     // Configure appbar    
-    pipBreadcrumbProvider.text = "Sample Application";
+    pipBreadcrumbProvider.text = "Sample application";
     pipNavIconProvider.setMenu();
     pipActionsProvider.primaryGlobalActions = [
             { name: 'global.notifications', icon: 'icons:bell', count: 0, event: 'appNotificationsClicked', subActions: []  }
