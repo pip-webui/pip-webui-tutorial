@@ -162,7 +162,7 @@ Update **events.html**. Add **ng-click** attribute to button:
 ```
 Rebuild the application and you will see:
 
-![Notifications](artifacts/reload_notification.png) 
+![Notifications](artifacts/notifications.png) 
 
 ### Continue
 
