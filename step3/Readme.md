@@ -95,7 +95,6 @@ function configApp(
         { name: 'global.settings', title: 'Settings', state: 'settings.sample', subActions: [] },
         { name: 'global.signout', title: 'Sign out', event: 'appSignout', subActions: [] }
     ];
-    pipAppBarProvider.parts = {icon: true, title: 'breadcrumb', actions: 'primary', menu: true };
 }
 ```
 
