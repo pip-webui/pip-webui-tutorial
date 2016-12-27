@@ -78,14 +78,29 @@ angular.module('app.Notifications', [])
     .service('notificationService', NotificationService);
 ```
 
-Import **notifications.ts** and add notifications module in **index.ts**:
+Import **notifications.ts** and **notification service interface**, update **app controller** and add notifications module in **index.ts**:
 
 ```javascript
  'use strict';
 
 ...
 import './notifications/notifications';
+import { INotificationService } from './notifications';
 ...
+
+class AppController {
+    public constructor(
+        notificationService: INotificationService
+    ) {
+        notificationService.data([
+            'Node 1: Raised temperature',
+            'Node 1: Lowered temperature',
+            'Node 2: Location changed'
+        ]);
+
+        notificationService.start();
+    }
+};
 
 angular
     .module('app', [
@@ -110,58 +125,6 @@ angular
     .controller('appController', AppController);
 ```
 
-Import **notification service interface** and update **events controller**:
-
-```javascript
-'use strict';
-
-import { INotificationService } from '../notifications/notifications';
-
-...
-
-class EventsController {
-    public constructor(
-        pipNavService: pip.nav.INavService,
-        pipMedia: pip.layouts.IMediaService,
-        notificationService: INotificationService //<------ Pay attention!
-    ) {
-        ...
-
-        this.notificationService = notificationService;
-
-        notificationService.data([
-            this.events[0].node_name + ': ' + this.events[0].description,
-            this.events[1].node_name + ': ' + this.events[1].description,
-            this.events[2].node_name + ': ' + this.events[2].description
-        ]);
-
-        notificationService.start();
-    }
-    
-    public reloadNotifications() {
-        this.notificationService.stop();
-        this.notificationService.start();
-    }
-    
-    public pipMedia: pip.layouts.IMediaService;
-    public events: IoTEvent[] = [];
-    public notificationService: INotificationService; //<------ Pay attention!
-}
-
-...
-
-```
-
-Update **events.html**. Add **ng-click** attribute to button:
-
-```html
- ...
-    <md-button class="md-fab md-accent md-fab-bottom-right" aria-label="refresh" ng-click="vm.reloadNotifications()"> 
-        <md-tooltip md-direction="left">Refresh</md-tooltip>
-        <md-icon md-svg-icon="icons:reload"></md-icon>
-    </md-button>
- ...
-```
 Rebuild the application and you will see:
 
 ![Notifications](artifacts/notifications.png) 
