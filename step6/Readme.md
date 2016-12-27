@@ -74,9 +74,11 @@ export class IoTNode {
 
 export class NodesController {
     public constructor(
-        pipBreadcrumb: pip.nav.IBreadcrumbService
+        pipNavService: pip.nav.INavService
     ) {
-        pipBreadcrumb.text = "Nodes";
+        pipNavService.appbar.show();
+        pipNavService.sidenav.show();
+        pipNavService.breadcrumb.text = "Nodes";
 
         this.nodes = [
             { 
@@ -105,8 +107,7 @@ export class NodesController {
 
 angular
     .module('app.Nodes', [ ])
-    .config(configureNodeRoutes)
-    .controller('nodesController', NodesController);
+    .config(configureNodeRoutes);
 ```
 
 Rebuild and reopen the application. You will see now:
