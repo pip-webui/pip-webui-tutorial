@@ -107,6 +107,22 @@ module.exports = {
         name: 'app',
         styles: 'styles'
     },
+    build: {
+        js: false,
+        ts: false,
+        bundle: true,
+        html: true,
+        less: true,    
+        sass: false,    
+        lib: true,
+        images: true,
+        dist: true
+    },
+    browserify: {
+        entries: [ 
+            './src/index.ts'
+        ]
+    },
     file: {
         lib: [
             'node_modules/pip-webui-all/dist/**/*'
@@ -121,7 +137,7 @@ For more information on build tasks and configuration see [pip-webui-tasks modul
 
 In the **/src** folder create the following files:
 
-##### index.js
+##### index.ts
 ```javascript
 // Todo: add logic here
 ```
