@@ -50,7 +50,7 @@ Add angular module, configuration and controller into **index.ts**:
 ```javascript
 'use strict';
 
-function configApp() {
+function configureApp() {
     // Todo: Add application configuration
 }
 
@@ -66,7 +66,7 @@ angular
     .module('app', [
         // Add references here
     ])
-    .config(configApp)
+    .config(configureApp)
     .controller('appController', AppController);
 ```
 
