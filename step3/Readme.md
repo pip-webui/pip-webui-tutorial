@@ -75,8 +75,8 @@ function configureApp(
         {
             name: 'main',
             links: [
-                { name: 'nodes', icon: 'icons:dashboard', title: 'Nodes', state: 'nodes' },
-                { name: 'events', icon: 'icons:event', title: 'Events', state: 'events' },
+                { name: 'nodes', icon: 'icons:grid', title: 'Nodes', state: 'nodes' },
+                { name: 'events', icon: 'icons:progress', title: 'Events', state: 'events' },
                 { name: 'settings', icon: 'icons:config', title: 'Settings', state: 'settings.sample' }
             ]
         },
