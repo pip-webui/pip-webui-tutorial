@@ -10,7 +10,7 @@ Replace content of **events.html** page with the content below. The page will sh
 <md-toolbar class="pip-appbar-ext">
 </md-toolbar>
 
-<pip-document>
+<pip-document class="app-events">
     <div ng-show="vm.pipMedia('gt-sm')" class="scrolled-container">
         <table class="w-stretch">
             <thead class="color-secondary-text">
@@ -85,7 +85,7 @@ function configureEventRoutes(
         url: '/events',
         controller: EventsController,
         controllerAs: 'vm',
-        templateUrl: 'events.html'
+        templateUrl: 'events/events.html'
     });
 }
 
@@ -100,10 +100,12 @@ export class IoTEvent {
 
 export class EventsController {
     public constructor(
-        pipBreadcrumb: pip.nav.IBreadcrumbService,
+        pipNavService: pip.nav.INavService,
         pipMedia: pip.layouts.IMediaService
     ) {
-        pipBreadcrumb.text = "Events";
+        pipNavService.appbar.show();
+        pipNavService.sidenav.show();
+        pipNavService.breadcrumb.text = "Events";
         this.pipMedia = pipMedia;
 
         this.events = [
@@ -140,21 +142,26 @@ export class EventsController {
 
 angular
     .module('app.Events', [ ])
-    .config(configureEventRoutes)
-    .controller('eventsController', EventsController);
+    .config(configureEventRoutes);
 ```
 
-Add styles to **styles.less** in root folder
+Add styles to **events.less** in **/src/events** folder
 ```css
-table {
-  border-collapse: collapse
+.app-events {
+    table {
+      border-collapse: collapse
+    }
 }
-
-.pip-document {
+.app_events.pip-document {
   .scrolled-container {
     overflow: auto;
   }
 }
+```
+
+Add link to **styles.less** file
+```css
+@import "events/events.less"
 ```
 
 Rebuild and reopen the application. You shall see now:
