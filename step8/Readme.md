@@ -121,9 +121,9 @@ import { INotificationService } from '../notifications/notifications';
 
 class EventsController {
     public constructor(
-        pipBreadcrumb: pip.nav.IBreadcrumbService,
+        pipNavService: pip.nav.INavService,
         pipMedia: pip.layouts.IMediaService,
-        notificationService: INotificationService <------ Pay attention!
+        notificationService: INotificationService //<------ Pay attention!
     ) {
         ...
 
