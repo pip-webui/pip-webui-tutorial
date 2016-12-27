@@ -56,7 +56,7 @@ function configureNodeRoutes(
         url: '/nodes',
         controller: NodesController,
         controllerAs: 'vm',
-        templateUrl: 'nodes.html'
+        templateUrl: 'nodes/nodes.html'
     });
 }
 
