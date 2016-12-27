@@ -38,7 +38,7 @@ export class NotificationService implements INotificationService {
         this._pipToasts = pipToasts;
     }
 
-    private show () {
+    private show() {
         let index;
 
         this._showCount++;
@@ -56,13 +56,13 @@ export class NotificationService implements INotificationService {
         this._pipNavService.menu.updateCount('events', this._showCount);
     }
 
-    public start () {
+    public start() {
         if (this._data.length === 0) return;
 
         this._stopTime = this._$interval(() => { this.show(); }, this._interval);
     }
 
-    public stop () {
+    public stop() {
         this._$interval.cancel(this._stopTime);
         this._showCount = 0;
         this.updateCounts();
@@ -85,13 +85,15 @@ Import **notifications.ts** and **notification service interface**, update **app
 
 ...
 import './notifications/notifications';
-import { INotificationService } from './notifications';
+import { INotificationService } from './notifications/notifications';
 ...
 
 class AppController {
     public constructor(
         notificationService: INotificationService
     ) {
+        "ngInject";
+        
         notificationService.data([
             'Node 1: Raised temperature',
             'Node 1: Lowered temperature',
@@ -125,7 +127,7 @@ angular
     .controller('appController', AppController);
 ```
 
-Rebuild the application and you will see:
+Rebuild the application and you shall see:
 
 ![Notifications](artifacts/notifications.png) 
 
