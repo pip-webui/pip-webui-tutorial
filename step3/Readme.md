@@ -55,7 +55,7 @@ Load the default iconset, define global actions and default application title in
 We will create a page for the global actions later. For now, you can see a routing error page if you try to trigger them.
 
 ```javascript
-function configApp(
+function configureApp(
     $mdIconProvider: ng.material.IIconProvider, 
     pipSideNavProvider: pip.nav.ISideNavProvider, 
     pipNavMenuProvider: pip.nav.INavMenuProvider, 
