@@ -40,8 +40,7 @@ class NodesController {
 
 angular
     .module('app.Nodes', [ ])
-    .config(configureNodeRoutes)
-    .controller('nodesController', NodesController);
+    .config(configureNodeRoutes);
 ```
 
 ### Add events page 
@@ -75,16 +74,17 @@ function configureEventRoutes(
 
 class EventsController {
     public constructor(
-        pipBreadcrumb: pip.nav.IBreadcrumbService
+        pipNavService: pip.nav.INavService
     ) {
-        pipBreadcrumb.text = "Events";
+        pipNavService.appbar.show();
+        pipNavService.sidenav.show();
+        pipNavService.breadcrumb.text = "Events";
     }
 }
 
 angular
     .module('app.Events', [ ])
-    .config(configureEventRoutes)
-    .controller('eventsController', EventsController);
+    .config(configureEventRoutes);
 ```
 
 ### Include compiled HTML templates
