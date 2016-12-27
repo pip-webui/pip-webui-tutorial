@@ -34,8 +34,11 @@ function configureSampleTab(
 }
 
 class SettingsSampleController {
-    public constructor() {
-
+    public constructor(
+        pipNavService: pip.nav.INavService,
+    ) {
+        pipNavService.appbar.show();
+        pipNavService.sidenav.show();
     }
 }
 
