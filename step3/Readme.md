@@ -59,6 +59,7 @@ function configApp(
     $mdIconProvider: ng.material.IIconProvider, 
     pipSideNavProvider: pip.nav.ISideNavProvider, 
     pipNavMenuProvider: pip.nav.INavMenuProvider, 
+    pipNavHeaderProvider: pip.nav.INavHeaderProvider,
     pipAppBarProvider: pip.nav.IAppBarProvider, 
     pipNavIconProvider: pip.nav.INavIconProvider,
     pipActionsProvider: pip.nav.IActionsProvider, 
@@ -67,6 +68,9 @@ function configApp(
     $mdIconProvider.iconSet('icons', 'images/icons.svg', 512);
     pipSideNavProvider.type = 'popup';
 
+    pipNavHeaderProvider.title = "Sample application";
+    pipNavHeaderProvider.subtitle = "Learn how to use pip-webui";
+    
     pipNavMenuProvider.sections = [
         {
             name: 'main',
