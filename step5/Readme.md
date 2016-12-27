@@ -69,7 +69,7 @@ angular
         'pipTheme',
         'pipSettings',
         'pipButtons',
-        'pipLoactions',
+        'pipLocations',
 
         'app.Templates',
         'app.Events',
@@ -82,8 +82,6 @@ angular
 
 Settings page:
 ![Settings](artifacts/settings_page.png)
-
-Todo: Add a screenshot of the help page. We shall also implement couple default pages similar to user settings (talk to AlexM)
 
 ### Continue
 
