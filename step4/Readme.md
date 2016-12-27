@@ -30,9 +30,11 @@ function configureNodeRoutes(
 
 class NodesController {
     public constructor(
-        pipBreadcrumb: pip.nav.IBreadcrumbService
+        pipNavService: pip.nav.INavService
     ) {
-        pipBreadcrumb.text = "Nodes";
+        pipNavService.appbar.show();
+        pipNavService.sidenav.show();
+        pipNavService.breadcrumb.text = "Nodes";
     }
 }
 
