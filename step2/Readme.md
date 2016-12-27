@@ -36,15 +36,12 @@ typings install dt~angular-material --save
 typings install dt~angular-ui-router --save
 ```
 
-Open **typings/tsd.d.ts** and add the following line:
+Open **typings/index.d.ts** and add the following line:
 ```javascript
 /// <reference path="../node_modules/pip-webui-all/dist/pip-webui.d.ts" />
 ```
 
-Note: currently dt~angular typings have issues. As a temporary workaround install angular typings using tsd and change path in index.d.ts accordingly:
-```bash
-tsd install angular
-```
+Note: currently dt~angular typings have issues. As a temporary workaround install angular typings using tsd. Hopefully that shall be fixed soon.
 
 ### Write Angular boilerplate code
 
@@ -81,28 +78,6 @@ Add **ng-app** and **ng-controller** attributes to **body** tag inside **index.h
     <p/>
     {{vm.greeting}}
 </body>
-```
-
-Open **build.conf.js** and add the following code:
-
-```javascript
-build: {
-        js: false,
-        ts: false,
-        bundle: true,
-        html: true,
-        less: true,    
-        sass: false,    
-        lib: true,
-        images: true,
-        dist: true
-    },
-
-browserify: {
-        entries: [ 
-            './src/index.ts'
-        ]
-    }
 ```
 
 #### Rebuild and launch the application
