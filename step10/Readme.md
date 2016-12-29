@@ -18,7 +18,7 @@ Create **src/events/events_chart.html** and put there the following markup:
         <pip-line-chart pip-series="vm.temperatureSerias" pip-x-tick-format="vm.formatXTick">
         </pip-line-chart>
         <h3>Radiation level changes</h3>
-        <pip-line-chart pip-series="vm.radLevelSeria" pip-x-tick-format="vm.formatXTick">
+        <pip-line-chart pip-series="vm.radLevelSerias" pip-x-tick-format="vm.formatXTick">
         </pip-line-chart>
         <h3>Total statistics</h3>
         <pip-pie-chart pip-series="vm.totalSeria" pip-centered="true" pip-donut="true" pip-show-total="true">
@@ -80,90 +80,39 @@ class EventsChartController {
             }
         ];
 
+        this.events = GenerateEvents();
+        this.generateTotal();
+        this.generateTimeSerias(this.temperatureSerias, 'temperature');
+        this.generateTimeSerias(this.radLevelSerias, 'rad_level');
+    }
+    
+    private generateTotal() {
         this.totalSeria = [
-            {label: 'Raised temperature', value: 2},
-            {label: 'Lowered temperature', value: 1},
-            {label: 'Change location', value: 1}
+            {label: 'Raised temperature', value: 0},
+            {label: 'Lowered temperature', value: 0},
+            {label: 'Change location', value: 0}
         ];
 
-        this.temperatureSerias = [
-            {
-                key: 'Node 1 temperature',
-                values: [
-                    {
-                        x: new Date(2016, 11, 1, 0),
-                        value: 24.5
-                    },
-                    {
-                        x: new Date(2016, 11, 2, 0),
-                        value: 20.5
-                    },
-                    {
-                        x: new Date(2016, 11, 3, 0),
-                        value: 28.5
-                    }
-                ]
-            },
-            {
-                key: 'Node 2 temperature',
-                values: [
-                    {
-                        x: new Date(2016, 11, 1, 0),
-                        value: 19.5
-                    },
-                    {
-                        x: new Date(2016, 11, 2, 0),
-                        value: 17
-                    },
-                    {
-                        x: new Date(2016, 11, 3, 0),
-                        value: 21.5
-                    }
-                ]
-            }
-        ];
+        _.each(this.events, (event) => {
+            let index = _.findIndex(this.totalSeria, (s) => { return s.label == event.description; });
+            this.totalSeria[index].value++;
+        })
+    }
 
-        this.radLevelSeria = [
-            {
-                key: 'Node 1 radiation level',
-                values: [
-                    {
-                        x: new Date(2016, 11, 1, 0),
-                        value: 100
-                    },
-                    {
-                        x: new Date(2016, 11, 2, 0),
-                        value: 105
-                    },
-                    {
-                        x: new Date(2016, 11, 3, 0),
-                        value: 91
-                    }
-                ]
-            },
-            {
-                key: 'Node 2 radiation level',
-                values: [
-                    {
-                        x: new Date(2016, 11, 1, 0),
-                        value: 102
-                    },
-                    {
-                        x: new Date(2016, 11, 2, 0),
-                        value: 95
-                    },
-                    {
-                        x: new Date(2016, 11, 3, 0),
-                        value: 112
-                    }
-                ]
+    private generateTimeSerias(serias: timeSeria[], type: string) {
+        let node_count = 2;
+
+        for (let i = 0; i < node_count; i++) {
+            serias.push({ key: 'Node ' + (i + 1), values:[] });
+            for (let j = 0; j < EVENTS_COUNT / node_count; j++) {
+                serias[i].values.push({value: this.events[(EVENTS_COUNT / node_count) * i + j][type], x: new Date(2016, 11, j + 1)});
             }
-        ];
+        }
     }
 
     public totalSeria: totalSeria[] = [];
     public temperatureSerias: timeSeria[] = [];
-    public radLevelSeria: timeSeria[] = [];
+    public radLevelSerias: timeSeria[] = [];
 
     // Format date of x axis
     public formatXTick(x) {
