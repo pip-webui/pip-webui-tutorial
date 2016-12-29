@@ -24,7 +24,11 @@ export class NotificationService implements INotificationService {
     private _interval: number = 20000;
     private _pipNavService: pip.nav.INavService;
     private _pipToasts: any;
-    private _data: string[] = [];
+    private _data: string[] = [
+        'Node 1: Raised temperature',
+        'Node 1: Lowered temperature',
+        'Node 2: Location changed'
+    ];
 
     constructor(
         $interval: angular.IIntervalService,
@@ -93,12 +97,6 @@ class AppController {
         notificationService: INotificationService
     ) {
         "ngInject";
-        
-        notificationService.data([
-            'Node 1: Raised temperature',
-            'Node 1: Lowered temperature',
-            'Node 2: Location changed'
-        ]);
 
         notificationService.start();
     }
