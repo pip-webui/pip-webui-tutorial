@@ -147,8 +147,8 @@ function configApp(
         {
             name: 'main',
             links: [
-                { name: 'nodes', icon: 'icons:dashboard', title: 'Nodes', state: 'nodes.tiles' }, // <----------Pay attention!
-                { name: 'events', icon: 'icons:action', title: 'Events', state: 'events' },
+                { name: 'nodes', icon: 'icons:grid', title: 'Nodes', state: 'nodes.tiles' }, // <----------Pay attention!
+                { name: 'events', icon: 'icons:progress', title: 'Events', state: 'events' },
                 { name: 'settings', icon: 'icons:config', title: 'Settings', state: 'settings.sample' }
             ]
         },
