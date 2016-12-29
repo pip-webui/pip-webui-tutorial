@@ -108,36 +108,45 @@ export class EventsController {
         pipNavService.breadcrumb.text = "Events";
         this.pipMedia = pipMedia;
 
-        this.events = [
-            {
-                icon: 'warn-circle',
-                node_id: '111',
-                node_name: 'Node 1',
-                description: 'Raised temperature',
-                temperature: 24.5,
-                rad_level: 100
-            },
-            {
-                icon: 'info-circle-outline',
-                node_id: '111',
-                node_name: 'Node 1',
-                description: 'Lowered temperature',
-                temperature: 23,
-                rad_level: 101
-            },
-            {
-                icon: 'location',
-                node_id: '222',
-                node_name: 'Node 2',
-                description: 'Location changed',
-                temperature: 24,
-                rad_level: 104
-            }
-        ];
+        this.events = GenerateEvents();
     }
 
     public pipMedia: pip.layouts.IMediaService;
     public events: IoTEvent[] = [];
+}
+
+export class eventTypes {
+    public static allDescriptions: string[] = ['Raised temperature', 'Lowered temperature', 'Change location'];
+    public static allIcons: string[] = ['tr-errors', 'info-circle', 'location']
+}
+
+function random(min, max) {
+    return (Math.random() * (max - min) + min).toFixed(0);
+}
+
+function GenerateEvents() {
+    let events = [],
+        eventsCount = EVENTS_COUNT,
+        maxTemp = 50,
+        minTemp = -50,
+        maxRadLev = 150,
+        minRadLevel = 80,
+        maxNodeNum = 15;
+
+    for (let i = 0; i < eventsCount; i++) {
+        let randType = random(0, eventTypes.allDescriptions.length - 1);
+
+        events.push({
+            icon: eventTypes.allIcons[randType],
+            node_id: random(0, maxNodeNum),
+            node_name: 'Node ' + random(0, maxNodeNum),
+            description: eventTypes.allDescriptions[randType],
+            temperature: random(minTemp, maxTemp),
+            rad_level: random(minRadLevel, maxRadLev)
+        });
+    }
+
+    return events;
 }
 
 angular
