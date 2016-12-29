@@ -105,7 +105,10 @@ class EventsChartController {
         for (let i = 0; i < node_count; i++) {
             serias.push({ key: 'Node ' + (i + 1), values:[] });
             for (let j = 0; j < EVENTS_COUNT / node_count; j++) {
-                serias[i].values.push({value: this.events[(EVENTS_COUNT / node_count) * i + j][type], x: new Date(2016, 11, j + 1)});
+                serias[i].values.push({
+                    value: this.events[(EVENTS_COUNT / node_count) * i + j][type], 
+                    x: new Date(2016, 11, j + 1)
+                });
             }
         }
     }
