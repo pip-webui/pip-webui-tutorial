@@ -99,6 +99,9 @@ export class IoTEvent {
 }
 
 export class EventsController {
+    private _descriptions: string[] = ['Raised temperature', 'Lowered temperature', 'Change location'];
+    private _icons: string[] = ['tr-errors', 'info-circle', 'location']
+
     public constructor(
         pipNavService: pip.nav.INavService,
         pipMedia: pip.layouts.IMediaService
@@ -108,45 +111,41 @@ export class EventsController {
         pipNavService.breadcrumb.text = "Events";
         this.pipMedia = pipMedia;
 
-        this.events = GenerateEvents();
+        this.events = this.generateEvents();
     }
 
     public pipMedia: pip.layouts.IMediaService;
     public events: IoTEvent[] = [];
-}
 
-export class eventTypes {
-    public static allDescriptions: string[] = ['Raised temperature', 'Lowered temperature', 'Change location'];
-    public static allIcons: string[] = ['tr-errors', 'info-circle', 'location']
-}
-
-function random(min, max) {
-    return (Math.random() * (max - min) + min).toFixed(0);
-}
-
-function GenerateEvents() {
-    let events = [],
-        eventsCount = EVENTS_COUNT,
-        maxTemp = 50,
-        minTemp = -50,
-        maxRadLev = 150,
-        minRadLevel = 80,
-        maxNodeNum = 15;
-
-    for (let i = 0; i < eventsCount; i++) {
-        let randType = random(0, eventTypes.allDescriptions.length - 1);
-
-        events.push({
-            icon: eventTypes.allIcons[randType],
-            node_id: random(0, maxNodeNum),
-            node_name: 'Node ' + random(0, maxNodeNum),
-            description: eventTypes.allDescriptions[randType],
-            temperature: random(minTemp, maxTemp),
-            rad_level: random(minRadLevel, maxRadLev)
-        });
+    private random(min: number, max: number): number {
+        return (Math.random() * (max - min) + min);
     }
 
-    return events;
+    private generateEvents(): IoTEvent[] {
+        let events: IoTEvent[] = [],
+            eventsCount = 25,
+            maxTemp = 50,
+            minTemp = -50,
+            maxRadLev = 150,
+            minRadLevel = 80,
+            maxNodeNum = 15;
+
+        for (let i = 0; i < eventsCount; i++) {
+            let randType = this.random(0, this._descriptions.length - 1);
+
+            events.push({
+                icon: this._icons[randType],
+                node_id: this.random(0, maxNodeNum).toFixed(0),
+                node_name: 'Node ' + this.random(0, maxNodeNum).toFixed(0),
+                description: this._descriptions[randType],
+                temperature: this.random(minTemp, maxTemp),
+                rad_level: this.random(minRadLevel, maxRadLev)
+            });
+        }
+
+        return events;
+    }
+
 }
 
 angular
@@ -170,7 +169,7 @@ Add styles to **events.less** in **/src/events** folder
 
 Add link to **styles.less** file
 ```css
-@import "events/events.less"
+@import "events/events.less";
 ```
 
 Rebuild and reopen the application. You shall see now:
