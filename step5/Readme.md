@@ -10,7 +10,7 @@ Add **settings_sample.html** file with settings tab view into **/src/settings** 
 <h1>Welcome to Settings sample tab!</h1>
 ```
 
-Add configuration and settings tab controller into **settings_sample.ts** file into **/src/settings**:
+Add configuration and settings tab controller into **settings_sample.ts** file in **/src/settings** folder:
 
 ```javascript
 'use strict';
@@ -56,7 +56,9 @@ Open **index.ts** file and import files containing code of settings page:
 
 import './nodes/nodes';
 import './events/events';
+// Changes start here
 import './settings/settings_sample';
+// Changes end here
 
 ...
 
@@ -77,13 +79,15 @@ angular
         'app.Templates',
         'app.Events',
         'app.Nodes',
+// Changes start here
         'app.Settings.Sample'
+// Changes end here
     ])
     .config(configureApp)
     .controller('appController', AppController);
 ```
 
-Settings page:
+Added settings page shall look like this:
 ![Settings](artifacts/settings_page.png)
 
 ### Continue

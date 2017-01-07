@@ -4,8 +4,8 @@
 
 ### Create nodes tiles view
 
-Replace content of **nodes.html** file with the content below.
-It will display a tile view with IoT nodes showing their name, measurements and current location:
+Replace content of **nodes.html** file with HTML snippet below.
+It will display tiles with IoT nodes showing their name, measurements and current location:
 
 ```html
 <pip-tiles class="layout-fill pip-no-tabs" column-width="440">
@@ -38,10 +38,7 @@ It will display a tile view with IoT nodes showing their name, measurements and 
 
 ### Update nodes controller
 
-Todo: Each node shall have its own location!
-Todo: Can we add the hook to resize tiles into the framework?
-
-Update **nodes.ts** file with the following code:
+Replace content **nodes.ts** file with the following code:
 
 ```javascript
 'use strict';
@@ -110,7 +107,7 @@ angular
     .config(configureNodeRoutes);
 ```
 
-Rebuild and reopen the application. You will see now:
+Rebuild and reopen the application. Now you shall see the following page:
 
 ![IoT nodes](artifacts/tiles_view.png)
 
