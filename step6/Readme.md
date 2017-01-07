@@ -1,11 +1,11 @@
-# Pip.WebUI Getting Started <br/> Step 6. Add Nodes page with tiles view
+# Getting Started With Pip.WebUI <br/> Step 6. Add tile view to the Nodes page
 
-[Go to step 5](https://github.com/pip-webui/pip-webui-tutorial/blob/master/step5/) to add settings pages.
+[Go to step 5](https://github.com/pip-webui/pip-webui-tutorial/blob/master/step5/) if you haven't already, to add the settings pages.
 
-### Create nodes tiles view
+### Create the nodes tile view
 
-Replace content of **nodes.html** file with HTML snippet below.
-It will display tiles with IoT nodes showing their name, measurements and current location:
+Replace the content of the **nodes.html** file with this HTML snippet below.
+It will display tiles with the IoT nodes showing their name, measurements and current location:
 
 ```html
 <pip-tiles class="layout-fill pip-no-tabs" column-width="440">
@@ -36,9 +36,9 @@ It will display tiles with IoT nodes showing their name, measurements and curren
 </md-button>
 ```
 
-### Update nodes controller
+### Update the nodes controller
 
-Replace content **nodes.ts** file with the following code:
+Replace the content of the **nodes.ts** file with the following code:
 
 ```javascript
 'use strict';
@@ -107,14 +107,14 @@ angular
     .config(configureNodeRoutes);
 ```
 
-Rebuild and reopen the application. Now you shall see the following page:
+Then, rebuild and reopen the application. Now you should see the following page:
 
 ![IoT nodes](artifacts/tiles_view.png)
 
-Resize the window and see those the page responses to fit a smaller screen:
+After that, resize the window and you will see that the page responds to fit a smaller screen:
 
 ![IoT nodes mobile](artifacts/tiles_view_mobile.png)
 
-### Continue
+### Continue to step 7
 
-[Go to step 7](https://github.com/pip-webui/pip-webui-tutorial/blob/master/step7/) to add Events page with table view
+[Go to step 7](https://github.com/pip-webui/pip-webui-tutorial/blob/master/step7/) to add the table view to the Events page.
