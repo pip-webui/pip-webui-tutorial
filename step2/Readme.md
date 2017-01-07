@@ -41,7 +41,7 @@ Open **typings/index.d.ts** and add the following line:
 /// <reference path="../node_modules/pip-webui-all/dist/pip-webui.d.ts" />
 ```
 
-Note: currently dt~angular typings have issues. As a temporary workaround install angular typings using tsd. Hopefully that shall be fixed soon.
+Note: currently dt~angular typings have issues. As a temporary workaround take typings from this github repository. Hopefully that shall be fixed soon.
 
 ### Write Angular boilerplate code
 
@@ -70,7 +70,7 @@ angular
     .controller('appController', AppController);
 ```
 
-Add **ng-app** and **ng-controller** attributes to **body** tag inside **index.html**. Inside body place the following tags:
+Add **ng-app** and **ng-controller** attributes to **body** tag inside **index.html**:
 
 ```html
 <body ng-app="app" ng-controller="appController as vm">
@@ -87,7 +87,7 @@ gulp build
 gulp launch
 ```
 
-You should see the following web page:
+After the build you shall see the following web page:
 
 ![Page 2](artifacts/page2.png)
 
