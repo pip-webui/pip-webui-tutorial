@@ -1,10 +1,10 @@
-# Pip.WebUI Getting Started <br/> Step 3. Add pip-webui components
+# Getting Started With Pip.WebUI <br/> Step 3. Add pip-webui components
 
-[Go to step 2](https://github.com/pip-webui/pip-webui-tutorial/blob/master/step2/Readme.md) to add **angular** components.
+[Go to step 2](https://github.com/pip-webui/pip-webui-tutorial/blob/master/step2/Readme.md) if you haven't already, to add **angular** components.
 
 ### Include navigation components into the application
 
-Add references to **angular-material** and **pip-webui** into module references:
+Add references to **angular-material** and **pip-webui** into the module references:
 
 ```javascript
 angular
@@ -26,7 +26,7 @@ angular
 
 ### Add AppBar and SideNav into index.html
 
-Place **pip-appbar** and **pip-sidenav** components under **pip-main** tag.
+Place **pip-appbar** and **pip-sidenav** components under the **pip-main** tag.
 
 ```html
 <body ng-app="app" ng-controller="appController as vm">
@@ -46,15 +46,15 @@ Place **pip-appbar** and **pip-sidenav** components under **pip-main** tag.
 </body>
 ```
 
-Rebuild the application. You shall see an empty material application with a toolbar and sidenav.
+Then, rebuild the application. You should see an empty material app with a toolbar and sidenav.
 
 ![navigation components](artifacts/navigation_components.png)
 
-### Configure application
+### Configure the application
 
-Load the default iconset, define global actions and default application title inside the application configuration section.
+Load the default iconset, define some global actions and the default application title inside the app configuration section.
 
-We will create a page for the global actions later. For now, you can see a routing error page if you try to trigger them.
+We will create a page for the global actions later. For now, you will see a routing error page if you try to trigger them.
 
 ```javascript
 // >>>> Changes start here >>>>
@@ -106,13 +106,13 @@ function configureApp(
 // >>>> Changes end here >>>>
 ```
 
-When you rebuild the application, you will see the following page:
+When you rebuild the app, you will see the following page:
 
 ![Page 3](artifacts/page3.png)
 
-### Continue
+### Continue to step 4
 
-For more information on Appbar and SideNav, please, visit [pip-webui-nav module](https://github.com/pip-webui/pip-webui-nav)
+For more information on Appbar and SideNav, please visit [pip-webui-nav module](https://github.com/pip-webui/pip-webui-nav)
 
-[Go to step 4](https://github.com/pip-webui/pip-webui-tutorial/blob/master/step4/) to add pages and navigation.
+[Go to step 4](https://github.com/pip-webui/pip-webui-tutorial/blob/master/step4/) to add more pages and navigation.
 
