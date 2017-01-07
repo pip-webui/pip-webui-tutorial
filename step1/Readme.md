@@ -1,12 +1,12 @@
-# Pip.WebUI Getting Started <br/> Step 1. Create application structure
+# Getting Started With Pip.WebUI <br/> Step 1. Create the application structure
 
-### Setup development environment
+### Setup the development environment
 
 If you don't have node.js on your computer yet, download and install it from [https://nodejs.org/en/download/](https://nodejs.org/en/download/).
 
 Verify that you are running at least node v4.x.x and npm 3.x.x by running node -v and npm -v in a terminal/console window.
 
-Install build tools:
+Then, install the build tools:
 ```bash
 npm install bower -g
 npm install gulp-cli -g
@@ -14,7 +14,7 @@ npm install typescript -g
 npm install typings -g
 ```
 
-### Create project folder structure
+### Create the project folder structure
 
 ```
 ├── src
@@ -29,7 +29,7 @@ npm install typings -g
 
 ### Install dependencies
 
-Create **package.json** file in the root folder, to define npm dependencies:
+Create a **package.json** file in the root folder, to define npm dependencies:
 
 ```javascript
 {
@@ -46,12 +46,12 @@ Create **package.json** file in the root folder, to define npm dependencies:
 
 ```
 
-Install npm dependencies by executing the command line:
+Then, install the npm dependencies by executing the command line:
 ```bash
 npm install
 ```
 
-Or create **bower.json** file in the root folder, to define bower dependencies:
+Or, create a **bower.json** file in the root folder, to define bower dependencies:
 
 ```javascript
 {
@@ -65,14 +65,14 @@ Or create **bower.json** file in the root folder, to define bower dependencies:
 
 ```
 
-Install bower dependencies by executing the command line:
+After that, install the bower dependencies by executing the command line:
 ```bash
 bower install
 ```
 
-### Configure build tasks 
+### Configure the build tasks 
 
-Create **gulpfile.js** file in the root folder, and define their build tasks using tasks provided **pip-webui-tasks** module:
+Create a **gulpfile.js** file in the root folder, and define its build tasks using the tasks provided in the **pip-webui-tasks** module:
 
 ```javascript
 var gulp = require('gulp');
@@ -99,7 +99,7 @@ gulp.task('launch', ['app-launch']);
 gulp.task('default', ['build']);
 ```
 
-Create **build.conf.js** file in the root folder and define configuration for the build tasks:
+Then, create a **build.conf.js** file in the root folder and define its configuration for the build tasks:
 
 ```javascript
 module.exports = {
@@ -131,11 +131,11 @@ module.exports = {
 };
 ```
 
-For more information on build tasks and configuration see [pip-webui-tasks module](https://github.com/pip-webui/pip-webui-tasks).
+For more information on build tasks and configuration,  see the [pip-webui-tasks module](https://github.com/pip-webui/pip-webui-tasks).
 
-### Create stubs for application source files
+### Create stubs for the application source files
 
-In the **/src** folder create the following files:
+In the **/src** folder, create the following files:
 
 ##### index.ts
 ```javascript
@@ -165,7 +165,7 @@ Nothing here yet!
 
 ### Configure Typescript
 
-Create **tsconfig.json** file in the root folder and define configuration for typescript build tasks:
+Create a **tsconfig.json** file in the root folder and define its configuration for typescript build tasks:
 
 ```javascript
 {
@@ -188,26 +188,26 @@ Create **tsconfig.json** file in the root folder and define configuration for ty
 }
 ```
 
-### Execute first build
+### Execute the first build
 
-In command line start the build process:
+In the command line,  start the build process:
 ```bash
 gulp build
 ```
 
-If build is successful, in the root folder you can find two new folders **/lib** and **/dist**
+If the build is successful, in the root folder you can find two new folders, **/lib** and **/dist**.
 
 ![Result structure](artifacts/result_structure.png)
 
-Open your app by executing the command line:
+Now, open your app by executing the command line:
 ```bash
 gulp launch
 ```
 
-Now you should see an empty web page.
+And now you should see an empty web page.
 
 ![Empty web page](artifacts/empty_screen.png)
 
-### Continue
+### Continue to step 2
 
-[Go to step 2](https://github.com/pip-webui/pip-webui-tutorial/blob/master/step2/) to create Angular boilerplate code in your application.
+[Go to step 2](https://github.com/pip-webui/pip-webui-tutorial/blob/master/step2/) to create the Angular boilerplate code in your app.
