@@ -5,8 +5,7 @@
 ### Create nodes map view
 
 Rename **/src/nodes/nodes.html** file to **/src/nodes/nodes_tiles.html**
-
-Create **/src/nodes/nodes_map.html** and copy there the content below:
+Then create **/src/nodes/nodes_map.html** file and place there HTML snippet below:
 
 ```html
 <pip-simple class="layout-row flex">
@@ -17,8 +16,8 @@ Create **/src/nodes/nodes_map.html** and copy there the content below:
 
 ### Create nodes tiles and map controllers
 
-After we split the Nodes page into tile and map views the  **nodesController** will become a parent controller for all views.
-Then we need to add two more child controllers **nodesTilesController** and **nodesMapController** for each view.
+After we split the Nodes page into tile and map views the  **nodesController** becomes a parent controller.
+Then we shall add two child controllers **nodesTilesController** and **nodesMapController** for each view.
 
 Make changes in the **/src/nodes/nodes.ts** file. Change **nodesController**, add **nodesTilesController** and **nodesMapController**:
 
@@ -34,17 +33,22 @@ class NodesController {
     ) {
         ...
 
+// Changes start here
         this.locationPoints = [
             this.nodes[0].location,
             this.nodes[1].location,
             this.nodes[2].location
         ];
+// Changes end here
     }
 
     public nodes: IoTNode[] = [];
-    public locationPoints: Point[] = []; // <------- Pay attention!
+// Changes start here
+    public locationPoints: Point[] = [];
+// Changes end here
 }
 
+// Changes start here
 class NodesTilesController {
     public constructor(
         pipActions: pip.nav.IActionsService,
@@ -77,19 +81,17 @@ class NodesMapController {
         ];
     }
 }
+// Changes end here
 
 angular
     .module('app.Nodes', [ ])
-    .config(configureNodeRoutes)
-    .controller('nodesController', NodesController)
-    .controller('nodesTilesController', NodesTilesController)// <------- Pay attention!
-    .controller('nodesMapController', NodesMapController);// <------- Pay attention!
+    .config(configureNodeRoutes);
 
 ```
 
 ## Update application routes
 
-Open **/src/nodes/nodes.ts** and in the configuration section make changes to nodes route states:
+Inside **/src/nodes/nodes.ts** file make changes to the nodes route configurations:
 
 ```javascript
 'use strict';
@@ -104,19 +106,23 @@ function configureNodeRoutes(
         url: '/nodes',
         controller: NodesController,
         controllerAs: 'vm',
-        template: '<ui-view class="layout-row flex w-stretch"></ui-view>', // <--- Pay attention!
-        abstract: true // <--- Pay attention!
+// Changes start here
+        template: '<ui-view class="layout-row flex w-stretch"></ui-view>',
+        abstract: true
+// Changes end here
     })
-    .state('nodes.tiles', { // <--- Pay attention!
-        url: '/tiles', // <--- Pay attention!
-        controller: NodesTilesController, // <--- Pay attention!
-        templateUrl: 'nodes/nodes_tiles.html' // <--- Pay attention!
+// Changes start here
+    .state('nodes.tiles', {
+        url: '/tiles',
+        controller: NodesTilesController,
+        templateUrl: 'nodes/nodes_tiles.html'
     })
-    .state('nodes.map', { // <--- Pay attention!
-        url: '/map', // <--- Pay attention!
-        controller: NodesMapController, // <--- Pay attention!
-        templateUrl: 'nodes/nodes_map.html' // <--- Pay attention!
+    .state('nodes.map', {
+        url: '/map',
+        controller: NodesMapController,
+        templateUrl: 'nodes/nodes_map.html'
     });
+// Changes end here
 }
         ...
 });
@@ -130,9 +136,9 @@ Open **index.ts** and change state name of first link in the first section from 
 
 ...
 
-function configApp(
+function configureApp(
     $mdIconProvider: ng.material.IIconProvider, 
-    $urlRouterProvider,
+    $urlRouterProvider: any,
     pipSideNavProvider: pip.nav.ISideNavProvider, 
     pipNavMenuProvider: pip.nav.INavMenuProvider, 
     pipAppBarProvider: pip.nav.IAppBarProvider, 
@@ -147,7 +153,9 @@ function configApp(
         {
             name: 'main',
             links: [
-                { name: 'nodes', icon: 'icons:grid', title: 'Nodes', state: 'nodes.tiles' }, // <----------Pay attention!
+// Changes start here
+                { name: 'nodes', icon: 'icons:grid', title: 'Nodes', state: 'nodes.tiles' },
+// Changes end here
                 { name: 'events', icon: 'icons:progress', title: 'Events', state: 'events' },
                 { name: 'settings', icon: 'icons:config', title: 'Settings', state: 'settings.sample' }
             ]
@@ -161,13 +169,14 @@ function configApp(
     ];
     
 ...
-$urlRouterProvider.otherwise("/nodes/tiles"); // <---------------- Pay attention!
-
+// Changes start here
+    $urlRouterProvider.otherwise("/nodes/tiles");
+// Changes end here
 }
 
 ```
 
-After you make all the changes, rebuild the application. When you go to the nodes page and toggle the view, you shall see a map with positions of IoT nodes:
+After all the changes are done, rebuild the application. When you go to the nodes page and toggle the view in the appbar, you shall see a map with positions of IoT nodes:
 
 ![IoT Nodes map view](artifacts/map_view.png)
 

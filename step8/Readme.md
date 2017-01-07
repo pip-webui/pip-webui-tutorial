@@ -127,7 +127,7 @@ angular
         'app.Notifications'
 // Changes end gere
     ])
-    .config(configApp)
+    .config(configureApp)
     .controller('appController', AppController);
 ```
 

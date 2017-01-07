@@ -202,7 +202,7 @@ angular
         'app.Settings.Sample',
         'app.Notifications'
     ])
-    .config(configApp)
+    .config(configureApp)
     .controller('appController', AppController);
 ```
 
@@ -235,7 +235,7 @@ Open **index.ts** and change state name of first link in the first section from 
 
 ...
 
-function configApp(
+function configureApp(
     $mdIconProvider: ng.material.IIconProvider, 
     $urlRouterProvider,
     pipSideNavProvider: pip.nav.ISideNavProvider, 
