@@ -1,4 +1,4 @@
-# <img src="https://github.com/pip-webui/pip-webui/raw/master/doc/Logo.png" alt="Pip.WebUI Logo" style="max-width:30%"> <br/> Getting Started Tutorial
+# <img src="https://github.com/pip-webui/pip-webui/raw/master/doc/Logo.png" alt="Pip.WebUI Logo" style="max-width:30%"> <br/> Getting Started With Pip.WebUI Tutorial
 
 This tutorial guides through the process of creating portable and responsive HTML5 Line-of-Business applications
 using the popular [Angular framework](https://angularjs.org), [Angular Material controls](https://material.angularjs.org/latest/) and [Pip.WebUI](http://www.github.com/pip-webui/pip-webui). 
