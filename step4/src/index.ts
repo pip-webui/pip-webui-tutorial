@@ -5,7 +5,7 @@ import './events/events.ts';
 
 function configureApp(
     $mdIconProvider: ng.material.IIconProvider, 
-    $urlRouterProvider,
+    $urlRouterProvider: any,
     pipSideNavProvider: pip.nav.ISideNavProvider, 
     pipNavMenuProvider: pip.nav.INavMenuProvider, 
     pipNavHeaderProvider: pip.nav.INavHeaderProvider,

@@ -9,6 +9,7 @@ Add references to **angular-material** and **pip-webui** into module references:
 ```javascript
 angular
     .module('app', [
+        // Changes start here
         'ngMaterial',
         'pipLayout', 
         'pipNav', 
@@ -19,6 +20,7 @@ angular
         'pipSettings',
         'pipButtons',
         'pipLocations'
+        // Changes end here
     ])
 ```
 
@@ -44,7 +46,7 @@ Place **pip-appbar** and **pip-sidenav** components under **pip-main** tag.
 </body>
 ```
 
-Rebuild the application. You shall see an empty application with a toolbar and sidenav.
+Rebuild the application. You shall see an empty material application with a toolbar and sidenav.
 
 ![navigation components](artifacts/navigation_components.png)
 
@@ -55,6 +57,7 @@ Load the default iconset, define global actions and default application title in
 We will create a page for the global actions later. For now, you can see a routing error page if you try to trigger them.
 
 ```javascript
+// Changes start here
 function configureApp(
     $mdIconProvider: ng.material.IIconProvider, 
     pipSideNavProvider: pip.nav.ISideNavProvider, 
@@ -100,9 +103,10 @@ function configureApp(
         { name: 'global.signout', title: 'Sign out', event: 'appSignout', subActions: [] }
     ];
 }
+// Changes end here
 ```
 
-When you rebuild the application, you will see the following:
+When you rebuild the application, you will see the following page:
 
 ![Page 3](artifacts/page3.png)
 
