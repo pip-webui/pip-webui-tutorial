@@ -7,9 +7,9 @@ It demonstates how to combine TypeScript, LESS, Gulp, and Browserify into a comp
 
 The sample application pretends to manage IoT nodes that measure air pollution in certain areas, like a factory. It contains 2 pages:
 * A list of IoT nodes, with their location and status information
-* The latest events of the IoT nodes: changes in location, on/off events, low battery warnings, critical failures, or no data
+* The latest events of the IoT nodes: changes in location, on / off events, low battery warnings, critical failures, or no data
 
-Standard app functionality, such as navigation, sign in/sign up, user settings, help and notifications will be provided out of the box by Pip.WebUI.
+Standard app functionality, such as navigation, signin / signup, user settings, help and notifications will be provided out of the box by Pip.WebUI.
 
 Todo: Add picture(s) that demonstrate the main application screens
 
