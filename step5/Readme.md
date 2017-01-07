@@ -1,16 +1,16 @@
-# Pip.WebUI Getting Started <br/> Step 5. Add settings page
+# Getting Started With Pip.WebUI <br/> Step 5. Add the settings page
 
-[Go to step 4](https://github.com/pip-webui/pip-webui-tutorial/blob/master/step4/) to add pages and navigation.
+[Go to step 4](https://github.com/pip-webui/pip-webui-tutorial/blob/master/step4/) if you haven't already, to add pages and navigation.
 
-### Add settings page
+### Add the settings page
 
-Add **settings_sample.html** file with settings tab view into **/src/settings** folder:
+Add a **settings_sample.html** file with the settings tab view into the **/src/settings** folder:
 
 ```html
 <h1>Welcome to Settings sample tab!</h1>
 ```
 
-Add configuration and settings tab controller into **settings_sample.ts** file in **/src/settings** folder:
+Then add configuration and the settings tab controller into the **settings_sample.ts** file in the **/src/settings** folder:
 
 ```javascript
 'use strict';
@@ -47,9 +47,9 @@ angular
     .config(configureSampleTab);
 ```
 
-### Add references to settings page into index.ts
+### Add references to the settings page into index.ts
 
-Open **index.ts** file and import files containing code of settings page:
+Open the **index.ts** file and import files containing code for the settings page:
 
 ```javascript
 'use strict';
@@ -87,9 +87,9 @@ angular
     .controller('appController', AppController);
 ```
 
-Added settings page shall look like this:
+The settings page should look like this:
 ![Settings](artifacts/settings_page.png)
 
-### Continue
+### Continue to step 6
 
-[Go to step 6](https://github.com/pip-webui/pip-webui-tutorial/blob/master/step6/) to add Nodes page with tiles view.
+[Go to step 6](https://github.com/pip-webui/pip-webui-tutorial/blob/master/step6/) to add the tile view to the Nodes page.
