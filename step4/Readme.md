@@ -1,15 +1,15 @@
-# Pip.WebUI Getting Started <br/> Step 4. Add pages and navigation
+# Getting Started With Pip.WebUI <br/> Step 4. Add pages and navigation
 
 [Go to step 3](https://github.com/pip-webui/pip-webui-tutorial/blob/master/step3/) to add pip-webui components.
 
-### Add notes page
+### Add the notes page
 
-Add **nodes.html** file into **/src/nodes** folder:
+Add a **nodes.html** file into the **/src/nodes** folder:
 
 ```html
 <h1>Welcome to Nodes page!</h1>
 ```
-Then add **nodes.ts** file into **/src/nodes** with controller and route configuration:
+Then add a **nodes.ts** file into **/src/nodes** with controller and route configuration:
 
 ```javascript
 'use strict';
@@ -43,17 +43,17 @@ angular
     .config(configureNodeRoutes);
 ```
 
-### Add events page 
+### Add the events page 
 
-Similar to nodes, add files for events page.
+Similar to nodes, add some files for the events page.
 
-Add **events.html** file into **/src/events** folder:
+Add a **events.html** file into the **/src/events** folder:
 
 ```html
 <h1>Welcome to Events page!</h1>
 ```
 
-Add **events.ts** file into **/src/events** folder:
+And add a **events.ts** file into the **/src/events** folder:
 
 ```javascript
 'use strict';
@@ -89,8 +89,8 @@ angular
 
 ### Include compiled HTML templates
 
-Open **build.conf.js** and add reference to **./temp/pip-webui-tutorial-html.js** file that contains html pages compiled into javascript templates.
-In the future versions of **pip-webui-tasks** this step can be removed and done automatically.
+Open **build.conf.js** and add a reference to the **./temp/pip-webui-tutorial-html.js** file that contains html pages compiled into javascript templates.
+In the future versions of **pip-webui-tasks**, this step can be removed and done automatically.
 
 ```javascript
     browserify: {
@@ -103,7 +103,7 @@ In the future versions of **pip-webui-tasks** this step can be removed and done 
 
 ### Add references to page modules into index.ts
 
-Open **index.ts** file and import files containing code of nodes and events pages:
+Open the **index.ts** file and import files containing code for nodes and events pages:
 
 ```javascript
 'use strict'
@@ -140,7 +140,7 @@ angular
     .controller('appController', AppController);
 ```
 
-Configure default route in application configuration:
+Configure the default route in the app config:
 
 ```javascript
 function configureApp(
@@ -162,10 +162,10 @@ function configureApp(
 } 
 ```
 
-When you rebuild and reopen the application you shall see the following result:
+When you rebuild and reopen the application, you will see the following result:
 
 ![Page 4](artifacts/page4.png)
 
-### Continue
+### Continue to step 5
 
-[Go to step 5](https://github.com/pip-webui/pip-webui-tutorial/blob/master/step5/) to add settings page.
+[Go to step 5](https://github.com/pip-webui/pip-webui-tutorial/blob/master/step5/) to add the settings page.
