@@ -1,17 +1,17 @@
-# Pip.WebUI Getting Started <br/> Step 2. Add angular components
+# Getting Started With Pip.WebUI <br/> Step 2. Add angular components
 
-[Go to step 1](https://github.com/pip-webui/pip-webui-tutorial/blob/master/step1/) to create the application structure.
+[Go to step 1](https://github.com/pip-webui/pip-webui-tutorial/blob/master/step1/) if you haven't already, to create the application structure.
 
-### Load CSS styles and javascript libraries
+### Load the CSS styles and javascript libraries
 
-Add into **index.html** links to **pip-webui** that contain angular and angular-material libraries. Then add **pip-webui-tutorial** CSS styles and compiled javascript code.
+Add links to **pip-webui** into **index.html** that contain the angular and angular-material libraries. Then add some **pip-webui-tutorial** CSS styles and compiled javascript code.
 
-In the application we are going to use Google Maps. So we'll add a link to Google Maps libraries as well:
+In the application, we are going to use Google Maps. So we'll add a link to the Google Maps libraries as well:
 
 ```html 
 <head>
     <meta charset="UTF-8">
-    <title>Pip.WebUI Getting Started</title>
+    <title>Getting Started With Pip.WebUI</title>
     <link rel="stylesheet" href="pip-webui-lib.css"/>
     <link rel="stylesheet" href="pip-webui.css"/>
     <link rel="stylesheet" href="pip-webui-tutorial.css"/>
@@ -22,9 +22,9 @@ In the application we are going to use Google Maps. So we'll add a link to Googl
 </head>
 ```
 
-### Add typescript definitions
+### Add Typescript definitions
 
-To support typescript compilation add definitions for angular, angular material and other modules:
+To support typescript compilations, add some definitions for the angular, angular material and other modules:
 
 ```bash
 typings install dt~jquery --save --global
@@ -36,16 +36,16 @@ typings install dt~angular-material --save
 typings install dt~angular-ui-router --save
 ```
 
-Open **typings/index.d.ts** and add the following line:
+Then open **typings/index.d.ts** and add the following line:
 ```javascript
 /// <reference path="../node_modules/pip-webui-all/dist/pip-webui.d.ts" />
 ```
 
-Note: currently dt~angular typings have issues. As a temporary workaround take typings from this github repository. Hopefully that shall be fixed soon.
+Note: Currently, dt~angular typings have issues. As a temporary workaround, take the typings from this github repository. Hopefully, that will be fixed soon.
 
-### Write Angular boilerplate code
+### Write the Angular boilerplate code
 
-Add angular module, configuration and controller into **index.ts**:
+Add an angular module, configuration and controller into **index.ts**:
 
 ```javascript
 'use strict';
@@ -70,7 +70,7 @@ angular
     .controller('appController', AppController);
 ```
 
-Add **ng-app** and **ng-controller** attributes to **body** tag inside **index.html**:
+Then, add **ng-app** and **ng-controller** attributes to the **body** tag inside **index.html**:
 
 ```html
 <body ng-app="app" ng-controller="appController as vm">
@@ -87,10 +87,10 @@ gulp build
 gulp launch
 ```
 
-After the build you shall see the following web page:
+After the build, you should see the following web page:
 
 ![Page 2](artifacts/page2.png)
 
-### Continue
+### Continue to step 3
 
-[Go to step 3](https://github.com/pip-webui/pip-webui-tutorial/blob/master/step3/) to add pip-webui components.
+[Go to step 3](https://github.com/pip-webui/pip-webui-tutorial/blob/master/step3/) to add the pip-webui components.
