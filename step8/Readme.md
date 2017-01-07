@@ -4,7 +4,7 @@
 
 ### Show notifications as toast messages
 
-Add new service to application. Create file **notifications.ts** in **/src/notifications** and add the following code:
+Add Notification service to the application. Create file **notifications.ts** in **/src/notifications** and place there code below:
 
 ```javascript
 export interface INotificationService {
@@ -88,10 +88,13 @@ Import **notifications.ts** and **notification service interface**, update **app
  'use strict';
 
 ...
+// Changes start here
 import './notifications/notifications';
 import { INotificationService } from './notifications/notifications';
+// Changes end here
 ...
 
+// Changes start here
 class AppController {
     public constructor(
         notificationService: INotificationService
@@ -101,6 +104,7 @@ class AppController {
         notificationService.start();
     }
 };
+// Changes end here
 
 angular
     .module('app', [
@@ -119,20 +123,22 @@ angular
         'app.Events',
         'app.Nodes',
         'app.Settings.Sample',
-        'app.Notifications' //<------ Pay attention!
+// Changes start here
+        'app.Notifications'
+// Changes end gere
     ])
     .config(configApp)
     .controller('appController', AppController);
 ```
 
-Rebuild the application and you shall see:
+Rebuild the application and you shall see the page below:
 
 ![Notifications](artifacts/notifications.png) 
 
-Badge in application bar:
+Find badge with the current notification count in the application bar:
 ![Badge in application bar](artifacts/appbar_badge.png)
 
-Badge in side navigation menu:
+Find notifications badge in side navigation menu:
 ![Badge in side navigation menu](artifacts/sidenav_badge.png) 
 
 ### Continue
