@@ -123,7 +123,7 @@ export class EventsController {
 
     private generateEvents(): IoTEvent[] {
         let events: IoTEvent[] = [],
-            eventsCount = 25,
+            eventsCount = 30,
             maxTemp = 50,
             minTemp = -50,
             maxRadLev = 150,
@@ -131,7 +131,7 @@ export class EventsController {
             maxNodeNum = 15;
 
         for (let i = 0; i < eventsCount; i++) {
-            let randType = this.random(0, this._descriptions.length - 1);
+            let randType = this.random(0, this._descriptions.length - 1).toFixed(0);
 
             events.push({
                 icon: this._icons[randType],
