@@ -2,7 +2,7 @@
 
 ### Setup development environment
 
-If you don't have node.js installed on your computer, download and install it from [https://nodejs.org/en/download/](https://nodejs.org/en/download/).
+If you don't have node.js on your computer yet, download and install it from [https://nodejs.org/en/download/](https://nodejs.org/en/download/).
 
 Verify that you are running at least node v4.x.x and npm 3.x.x by running node -v and npm -v in a terminal/console window.
 
@@ -204,7 +204,7 @@ Open your app by executing the command line:
 gulp launch
 ```
 
-You should see an empty web page.
+Now you should see an empty web page.
 
 ![Empty web page](artifacts/empty_screen.png)
 
