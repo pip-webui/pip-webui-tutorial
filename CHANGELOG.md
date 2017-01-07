@@ -1,5 +1,16 @@
 # Pip.WebUI.Sample Changelog
 
+## <a name="1.5.0"></a> 1.5.0 (2017-01-06)
+
+Full rewamp for Pip.WebUI 1.5 and TypeScript language
+
+### Features
+* **charts**: Added charts view for maintenance events
+
+### Breaking Changes
+* Help customization was removed
+* Javascript implementation changed to TypeScipt
+
 ## <a name="1.0.0"></a> 1.0.0 (2016-07-30)
 
 This is initial version targeted to Pip.WebUI 1.0.

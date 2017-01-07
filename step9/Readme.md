@@ -1,6 +1,6 @@
 # Pip.WebUI Getting Started <br/> Step 9. Add map view to Nodes page
 
-[Go to step 8](https://github.com/pip-webui/pip-webui-sample/blob/master/step8/) to show notifications.
+[Go to step 8](https://github.com/pip-webui/pip-webui-tutorial/blob/master/step8/) to show notifications.
 
 ### Create nodes map view
 
@@ -173,4 +173,4 @@ After you make all the changes, rebuild the application. When you go to the node
 
 ### Continue
 
-[Go to step 10](https://github.com/pip-webui/pip-webui-sample/blob/master/step10/) to add charts view to Events page.
+[Go to step 10](https://github.com/pip-webui/pip-webui-tutorial/blob/master/step10/) to add charts view to Events page.

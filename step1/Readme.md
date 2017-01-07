@@ -33,7 +33,7 @@ Create **package.json** file in the root folder, to define npm dependencies:
 
 ```javascript
 {
-  "name": "pip-webui-sample",
+  "name": "pip-webui-tutorial",
   "version": "1.0.0",
   "description": "Getting started sample for Pip.WebUI",
   "dependencies": {
@@ -55,7 +55,7 @@ Or create **bower.json** file in the root folder, to define bower dependencies:
 
 ```javascript
 {
-  "name": "pip-webui-sample",
+  "name": "pip-webui-tutorial",
   "version": "1.0.0",
   "description": "Getting started sample for Pip.WebUI",
   "dependencies": {
@@ -149,8 +149,8 @@ In the **/src** folder create the following files:
 <head>
     <meta charset="UTF-8">
     <title>Pip.WebUI Getting Started</title>
-    <link rel="stylesheet" href="pip-webui-sample.css"/>
-    <script src="pip-webui-sample.js"></script>
+    <link rel="stylesheet" href="pip-webui-tutorial.css"/>
+    <script src="pip-webui-tutorial.js"></script>
 </head>
 <body>
 Nothing here yet!
@@ -210,4 +210,4 @@ You should see an empty web page.
 
 ### Continue
 
-[Go to step 2](https://github.com/pip-webui/pip-webui-sample/blob/master/step2/) to create Angular boilerplate code in your application.
+[Go to step 2](https://github.com/pip-webui/pip-webui-tutorial/blob/master/step2/) to create Angular boilerplate code in your application.

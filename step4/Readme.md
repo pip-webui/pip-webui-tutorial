@@ -1,6 +1,6 @@
 # Pip.WebUI Getting Started <br/> Step 4. Add pages and navigation
 
-[Go to step 3](https://github.com/pip-webui/pip-webui-sample/blob/master/step3/) to add pip-webui components.
+[Go to step 3](https://github.com/pip-webui/pip-webui-tutorial/blob/master/step3/) to add pip-webui components.
 
 ### Add notes page
 
@@ -89,13 +89,13 @@ angular
 
 ### Include compiled HTML templates
 
-Open **build.conf.js** and add reference to **./temp/pip-webui-sample-html.js** file that contains html pages compiled into javascript templates.
+Open **build.conf.js** and add reference to **./temp/pip-webui-tutorial-html.js** file that contains html pages compiled into javascript templates.
 Later this step can be removed and done automatically.
 
 ```javascript
     browserify: {
         entries: [ 
-            './temp/pip-webui-sample-html.js',
+            './temp/pip-webui-tutorial-html.js',
             './src/index.ts'
         ]
     }
@@ -162,4 +162,4 @@ When you rebuild and reopen the application you shall see the following result:
 
 ### Continue
 
-[Go to step 5](https://github.com/pip-webui/pip-webui-sample/blob/master/step5/) to add settings page.
+[Go to step 5](https://github.com/pip-webui/pip-webui-tutorial/blob/master/step5/) to add settings page.

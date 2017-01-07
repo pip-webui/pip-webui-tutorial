@@ -1,6 +1,6 @@
 # Pip.WebUI Getting Started <br/> Step 6. Add Nodes page with tiles view
 
-[Go to step 5](https://github.com/pip-webui/pip-webui-sample/blob/master/step5/) to add settings pages.
+[Go to step 5](https://github.com/pip-webui/pip-webui-tutorial/blob/master/step5/) to add settings pages.
 
 ### Create nodes tiles view
 
@@ -120,4 +120,4 @@ Resize the window and see those the page responses to fit a smaller screen:
 
 ### Continue
 
-[Go to step 7](https://github.com/pip-webui/pip-webui-sample/blob/master/step7/) to add Events page with table view
+[Go to step 7](https://github.com/pip-webui/pip-webui-tutorial/blob/master/step7/) to add Events page with table view

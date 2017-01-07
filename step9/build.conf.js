@@ -4,16 +4,25 @@ module.exports = {
         styles: 'styles'
     },
     build: {
-        js: true,
-        ts: true,
+        js: false,
+        ts: false,
+        bundle: true,
         html: true,
-        css: true,
+        less: true,    
+        sass: false,    
         lib: true,
-        images: true
+        images: true,
+        dist: true
+    },
+    browserify: {
+        entries: [ 
+            './temp/pip-webui-tutorial-html.js',
+            './src/index.ts'
+        ]
     },
     file: {
         lib: [
-            'node_modules/pip-webui/dist/**/*'
+            'node_modules/pip-webui-all/dist/**/*'
         ]
     }
 };

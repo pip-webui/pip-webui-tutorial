@@ -1,8 +1,8 @@
 <md-toolbar class="pip-appbar-ext">
 </md-toolbar>
 
-<pip-document>
-    <div ng-show="$mdMedia('gt-xs')" class="scrolled-container">
+<pip-document class="app-events">
+    <div ng-show="vm.pipMedia('gt-sm')" class="scrolled-container">
         <table class="w-stretch">
             <thead class="color-secondary-text">
                 <tr class="h48 text-left">
@@ -16,7 +16,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="h48 text-subhead2 divider-bottom" ng-repeat="event in events">
+                <tr class="h48 text-subhead2 divider-bottom" ng-repeat="event in vm.events">
                     <td class="lp16 divider-bottom">
                         <md-icon ng-style="{color: iconColors[event.icon]}"
                                  md-svg-icon="icons:{{ event.icon }}">
@@ -32,8 +32,8 @@
             </tbody>
         </table>
     </div>
-    <div ng-show="$mdMedia('xs')" class="scrolled-container">
-        <div ng-repeat="event in events" class="layout-row layout-align-start-center">
+    <div ng-show="!vm.pipMedia('gt-sm')" class="scrolled-container">
+        <div ng-repeat="event in vm.events" class="layout-row layout-align-start-center">
             <div class="flex-fixed lp16 rp16">
                 <md-icon ng-style="{color: iconColors[event.icon]}"
                          md-svg-icon="icons:{{ event.icon }}">
@@ -52,7 +52,7 @@
             </div>
         </div>
     </div>
-    <md-button class="md-fab md-accent md-fab-bottom-right" aria-label="refresh" ng-click="onReload()"> 
+    <md-button class="md-fab md-accent md-fab-bottom-right" aria-label="refresh">
         <md-tooltip md-direction="left">Refresh</md-tooltip>
         <md-icon md-svg-icon="icons:reload"></md-icon>
     </md-button>

@@ -1,6 +1,6 @@
 # Pip.WebUI Getting Started <br/> Step 5. Add settings page
 
-[Go to step 4](https://github.com/pip-webui/pip-webui-sample/blob/master/step4/) to add pages and navigation.
+[Go to step 4](https://github.com/pip-webui/pip-webui-tutorial/blob/master/step4/) to add pages and navigation.
 
 ### Add settings page
 
@@ -88,4 +88,4 @@ Settings page:
 
 ### Continue
 
-[Go to step 6](https://github.com/pip-webui/pip-webui-sample/blob/master/step6/) to add Nodes page with tiles view.
+[Go to step 6](https://github.com/pip-webui/pip-webui-tutorial/blob/master/step6/) to add Nodes page with tiles view.

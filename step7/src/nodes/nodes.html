@@ -1,5 +1,5 @@
 <pip-tiles class="layout-fill pip-no-tabs" column-width="440">
-    <div class="masonry-brick pip-tile w440-flex " ng-repeat="node in nodes">
+    <div class="masonry-brick pip-tile w440-flex " ng-repeat="node in vm.nodes">
         <div class="p16">
             <h2 class="pip-title tm0">{{ node.name }}</h2>
             <div class="layout-row">
@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="pip-tile-location-container">
-            <pip-location-map pip-location-pos="location_points[$index]" pip-icon-path="iconPath"
+            <pip-location-map pip-location-pos="node.location" pip-icon-path="iconPath"
                               pip-stretch="true" class="h-stretch">
             </pip-location-map>
         </div>

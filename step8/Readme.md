@@ -1,6 +1,6 @@
 # Pip.WebUI Getting Started <br/> Step 8. Show notifications
 
-[Go to step 7](https://github.com/pip-webui/pip-webui-sample/blob/master/step7/) to add Events page with table view.
+[Go to step 7](https://github.com/pip-webui/pip-webui-tutorial/blob/master/step7/) to add Events page with table view.
 
 ### Show notifications as toast messages
 
@@ -137,4 +137,4 @@ Badge in side navigation menu:
 
 ### Continue
 
-[Go to step 9](https://github.com/pip-webui/pip-webui-sample/blob/master/step9/) to add map view to Nodes page.
+[Go to step 9](https://github.com/pip-webui/pip-webui-tutorial/blob/master/step9/) to add map view to Nodes page.

@@ -1,6 +1,6 @@
 # Pip.WebUI Getting Started <br/> Step 3. Add pip-webui components
 
-[Go to step 2](https://github.com/pip-webui/pip-webui-sample/blob/master/step2/Readme.md) to add **angular** components.
+[Go to step 2](https://github.com/pip-webui/pip-webui-tutorial/blob/master/step2/Readme.md) to add **angular** components.
 
 ### Include navigation components into the application
 
@@ -110,5 +110,5 @@ When you rebuild the application, you will see the following:
 
 For more information on Appbar and SideNav, please, visit [pip-webui-nav module](https://github.com/pip-webui/pip-webui-nav)
 
-[Go to step 4](https://github.com/pip-webui/pip-webui-sample/blob/master/step4/) to add pages and navigation.
+[Go to step 4](https://github.com/pip-webui/pip-webui-tutorial/blob/master/step4/) to add pages and navigation.
 

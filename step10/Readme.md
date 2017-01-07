@@ -1,6 +1,6 @@
 # Pip.WebUI Getting Started <br/> Step 10. Add charts view for Maintenance Events page
 
-[Go to step 9](https://github.com/pip-webui/pip-webui-sample/blob/master/step8/) to add map view to Nodes page.
+[Go to step 9](https://github.com/pip-webui/pip-webui-tutorial/blob/master/step9/) to add map view to Nodes page.
 
 ### Create events chart view
 
@@ -34,19 +34,19 @@ Open **src/events/events.ts** and add the following code:
 'use strict';
 ...
 
-class totalSeria {
+class TotalSeries {
     public label: string;
     public value: number;
 }
 
-class seriaValue {
+class SeriesValue {
     value: number;
     x: any
 }
 
-class timeSeria {
+class TimeSeries {
     public key: string;
-    public values: seriaValue[];
+    public values: SeriesValue[];
 }
 
 class EventsListController {
@@ -69,7 +69,7 @@ class EventsChartController {
     public constructor(
         pipActions: pip.nav.IActionsService,
         $state: angular.ui.IStateService,
-        $timeout: any
+        $scope: any
     ) {
         pipActions.primaryLocalActions = [
             {
@@ -80,42 +80,51 @@ class EventsChartController {
             }
         ];
 
-        this.events = GenerateEvents();
-        this.generateTotal();
-        this.generateTimeSerias(this.temperatureSerias, 'temperature');
-        this.generateTimeSerias(this.radLevelSerias, 'rad_level');
+        this.events = $scope.$parent.vm.events;
+        this.totalSeries = this.generateTotal();
+        this.temperatureSeries = this.generateTimeSeries('temperature');
+        this.radLevelSeries = this.generateTimeSeries('rad_level');
     }
-    
-    private generateTotal() {
-        this.totalSeria = [
+
+    private generateTotal(): TotalSeries[] {
+        let series: TotalSeries[] = [
             {label: 'Raised temperature', value: 0},
             {label: 'Lowered temperature', value: 0},
             {label: 'Change location', value: 0}
         ];
 
         _.each(this.events, (event) => {
-            let index = _.findIndex(this.totalSeria, (s) => { return s.label == event.description; });
-            this.totalSeria[index].value++;
-        })
+            let index = _.findIndex(series, (s) => { return s.label == event.description; });
+            series[index].value++;
+        });
+
+        return series;
     }
 
-    private generateTimeSerias(serias: timeSeria[], type: string) {
+    private generateTimeSeries(type: string): TimeSeries[] {
         let node_count = 2;
+        let event_count = this.events.length;
+        let series: TimeSeries[] = [];
 
         for (let i = 0; i < node_count; i++) {
-            serias.push({ key: 'Node ' + (i + 1), values:[] });
-            for (let j = 0; j < EVENTS_COUNT / node_count; j++) {
-                serias[i].values.push({
-                    value: this.events[(EVENTS_COUNT / node_count) * i + j][type], 
+            series.push({ key: 'Node ' + (i + 1), values:[] });
+            for (let j = 0; j < event_count / node_count; j++) {
+                series[i].values.push({
+                    value: this.events[(event_count / node_count) * i + j][type], 
                     x: new Date(2016, 11, j + 1)
                 });
             }
         }
+
+        console.log(type);
+        console.log(series);
+        return series;
     }
 
-    public totalSeria: totalSeria[] = [];
-    public temperatureSerias: timeSeria[] = [];
-    public radLevelSerias: timeSeria[] = [];
+    public events: IoTEvent[] = [];
+    public totalSeries: TotalSeries[] = [];
+    public temperatureSeries: TimeSeries[] = [];
+    public radLevelSeries: TimeSeries[] = [];
 
     // Format date of x axis
     public formatXTick(x) {
@@ -127,11 +136,7 @@ class EventsChartController {
 
 angular
     .module('app.Events', [ ])
-    .config(configureEventRoutes)
-    .controller('eventsController', EventsController)
-    .controller('eventsListController', EventsListController) // <------------- Pay attention!
-    .controller('eventsChartController', EventsChartController); // <------------- Pay attention!
-
+    .config(configureEventRoutes);
 ```
 
 ### Update application routes
@@ -189,7 +194,7 @@ angular
         'pipButtons',
         'pipLocations',
         'pipCharts', // <---------------- Pay attention!
-        'pipCharts.Templates', // <---------------- Pay attention!
+        'pipCharts.Templates', // <---------------- Pay attention! (TBR)
 
         'app.Templates',
         'app.Events',
@@ -213,13 +218,56 @@ Open **index.html** and add links to webui-optional .css and .js files:
     <link rel="stylesheet" href="pip-webui-lib.css"/>
     <link rel="stylesheet" href="pip-webui-lib-optional.css"/> <!-- Pay attention!  -->
     <link rel="stylesheet" href="pip-webui.css"/>
-    <link rel="stylesheet" href="pip-webui-sample.css"/>
+    <link rel="stylesheet" href="pip-webui-tutorial.css"/>
     <script src="pip-webui-lib.js"></script>
     <script src="pip-webui-lib-optional.js"></script> <!-- Pay attention!  -->
     <script src="pip-webui.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyBg6cm-FDBFPWzRcn39AuSHGQSrdtVIjEo"></script>
-    <script src="pip-webui-sample.js"></script>
+    <script src="pip-webui-tutorial.js"></script>
 </head>
+```
+
+Because of state 'events' is abstract now, you need to change link to events tool in application configuration. 
+Open **index.ts** and change state name of first link in the first section from 'events' to 'events.list'.
+
+```javascript
+'use strict';
+
+...
+
+function configApp(
+    $mdIconProvider: ng.material.IIconProvider, 
+    $urlRouterProvider,
+    pipSideNavProvider: pip.nav.ISideNavProvider, 
+    pipNavMenuProvider: pip.nav.INavMenuProvider, 
+    pipAppBarProvider: pip.nav.IAppBarProvider, 
+    pipNavIconProvider: pip.nav.INavIconProvider,
+    pipActionsProvider: pip.nav.IActionsProvider, 
+    pipBreadcrumbProvider: pip.nav.IBreadcrumbProvider, 
+ ) {
+ 
+ ...
+ 
+ pipNavMenuProvider.sections = [
+        {
+            name: 'main',
+            links: [
+                { name: 'nodes', icon: 'icons:grid', title: 'Nodes', state: 'nodes.tiles' },
+                { name: 'events', icon: 'icons:progress', title: 'Events', state: 'events.list' }, // <----------Pay attention!
+                { name: 'settings', icon: 'icons:config', title: 'Settings', state: 'settings.sample' }
+            ]
+        },
+        {
+            name: 'signout',
+            links: [
+                { name: 'signout', icon: 'icons:exit', title: 'Sign out', event: 'appSignout' }
+            ]
+        }
+    ];
+    
+...
+}
+
 ```
 
 After all changes, rebuild application. When you go to the events page and toggle the view, you shall see a line charts with temperature and radition statistics and one pie chart with total information about numbers of events by type:

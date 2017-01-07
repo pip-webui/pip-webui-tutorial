@@ -1,15 +1,16 @@
-# <img src="https://github.com/pip-webui/pip-webui/raw/master/doc/Logo.png" alt="Pip.WebUI Logo" style="max-width:30%"> <br/> Getting Started
+# <img src="https://github.com/pip-webui/pip-webui/raw/master/doc/Logo.png" alt="Pip.WebUI Logo" style="max-width:30%"> <br/> Getting Started Tutorial
 
-This tutorial demonstrates step-by-step creation of non-trivial Line-of-Business application
-using [Pip.WebUI framework](http://www.github.com/pip-webui/pip-webui). It was updated for Pip.WebUI version 1.5 and Typescript.
+This tutorial guides through the process of creation portable and responsive HTML5 Line-of-Business application
+using popular [Angular framework](https://angularjs.org), [Angular Material controls](https://material.angularjs.org/latest/) and [Pip.WebUI](http://www.github.com/pip-webui/pip-webui). 
 
-The sample application pretends to provide a tool to manage IoT nodes that measure air polution in certain area, like a plant.
-It contains only 2 screens:
+It demonstates how to combine TypeScript, LESS, Gulp, and Browserify ninto complete platform to develop complex enterprise web applications.
+
+The sample application pretends to manage IoT nodes that measure air polution in certain area, like a plant. It contains 2 pages:
 * List of IoT nodes with their location and status information
 * Latest events occured with the IoT nodes: changing locations, on/off events, low battery warnings, critical failures/no data
+* User application settings
 
-Standard application functionality like navigation, signin/signup, user settings, help and notifications
-will be provided out of the box by Pip.WebUI.
+Standard application functionality like navigation, signin/signup, user settings, help and notifications will be provided out of the box by Pip.WebUI.
 
 Todo: Add picture(s) that demonstrate the main application screens
 

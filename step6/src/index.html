@@ -1,21 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta charset="UTF-8">
-        <title>Pip.WebUI Getting Started</title>
-        <link rel="stylesheet" href="pip-webui-lib.css"/>
-        <link rel="stylesheet" href="pip-webui.css"/>
-        <link rel="stylesheet" href="pip-webui-sample.css"/>
-        <script src="pip-webui-lib.js"></script>
-        <script src="pip-webui.js"></script>
-        <script src="pip-webui-lib-test.js"></script>
-        <script src="http://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyBg6cm-FDBFPWzRcn39AuSHGQSrdtVIjEo"></script>
-        <script src="pip-webui-sample.js"></script>
+    <meta charset="UTF-8">
+    <title>Pip.WebUI Getting Started</title>
+    <link rel="stylesheet" href="pip-webui-lib.css"/>
+    <link rel="stylesheet" href="pip-webui.css"/>
+    <link rel="stylesheet" href="pip-webui-tutorial.css"/>
+    <script src="pip-webui-lib.js"></script>
+    <script src="pip-webui.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyBg6cm-FDBFPWzRcn39AuSHGQSrdtVIjEo"></script>
+    <script src="pip-webui-tutorial.js"></script>
 </head>
-<body ng-app="app" ng-controller="appController">
+<body ng-app="app" ng-controller="appController as vm">
     <pip-main>
-        <pip-appbar></pip-appbar>
-        <pip-sidenav></pip-sidenav>
+        <pip-appbar>
+            <pip-nav-icon></pip-nav-icon>
+            <pip-breadcrumb></pip-breadcrumb>
+            <div class="flex"></div>
+            <pip-primary-actions class="flex-fixed"></pip-primary-actions>
+            <pip-secondary-actions class="flex-fixed"></pip-secondary-actions>
+        </pip-appbar>
+        <pip-sidenav>
+            <pip-nav-menu></pip-nav-menu>
+        </pip-sidenav>
         <pip-main-body ui-view></pip-main-body>
     </pip-main>
 </body>
