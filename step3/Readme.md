@@ -9,7 +9,7 @@ Add references to **angular-material** and **pip-webui** into module references:
 ```javascript
 angular
     .module('app', [
-        // Changes start here
+        // >>>> Changes start here >>>>
         'ngMaterial',
         'pipLayout', 
         'pipNav', 
@@ -20,7 +20,7 @@ angular
         'pipSettings',
         'pipButtons',
         'pipLocations'
-        // Changes end here
+        // >>>> Changes end here >>>>
     ])
 ```
 
@@ -57,7 +57,7 @@ Load the default iconset, define global actions and default application title in
 We will create a page for the global actions later. For now, you can see a routing error page if you try to trigger them.
 
 ```javascript
-// Changes start here
+// >>>> Changes start here >>>>
 function configureApp(
     $mdIconProvider: ng.material.IIconProvider, 
     pipSideNavProvider: pip.nav.ISideNavProvider, 
@@ -103,7 +103,7 @@ function configureApp(
         { name: 'global.signout', title: 'Sign out', event: 'appSignout', subActions: [] }
     ];
 }
-// Changes end here
+// >>>> Changes end here >>>>
 ```
 
 When you rebuild the application, you will see the following page:

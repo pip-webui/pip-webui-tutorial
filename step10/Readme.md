@@ -6,7 +6,7 @@
 
 Rename **src/events/events.html** file to **src/events/events_list.html**
 
-Create **src/events/events_chart.html** and put there the following markup:
+Create **src/events/events_chart.html** and place there the following HTML snippet:
 
 ```html
 <md-toolbar class="pip-appbar-ext">
@@ -28,12 +28,13 @@ Create **src/events/events_chart.html** and put there the following markup:
 ```
 ### Create events list and chart controllers
 
-Open **src/events/events.ts** and add the following code:
+Open **src/events/events.ts** file and add the code below:
 
 ```javascript
 'use strict';
 ...
 
+// >>>> Changes start here >>>>
 class TotalSeries {
     public label: string;
     public value: number;
@@ -133,6 +134,7 @@ class EventsChartController {
         return date.getMonth() + '/' + date.getDate() + '/' + date.getFullYear();
     }
 }
+// >>>> Changes end here >>>>
 
 angular
     .module('app.Events', [ ])
@@ -156,20 +158,24 @@ function configureEventRoutes(
         url: '/events',
         controller: EventsController,
         controllerAs: 'vm',
-        template: '<ui-view class="layout-row flex w-stretch"></ui-view>', // <---- Pay attention!
-        abstract: true // <---- Pay attention!
+// >>>> Changes start here >>>>
+        template: '<ui-view class="layout-row flex w-stretch"></ui-view>',
+        abstract: true
+// >>>> Changes end here
     })
-    .state('events.list', { // <---- Pay attention!
-        url: '/list', // <---- Pay attention!
-        controller: EventsListController, // <---- Pay attention!
-        templateUrl: 'events/events_list.html' // <---- Pay attention!
+// >>>> Changes start here
+    .state('events.list', {
+        url: '/list',
+        controller: EventsListController,
+        templateUrl: 'events/events_list.html'
     })
-    .state('events.chart', { // <---- Pay attention!
-        url: '/chart', // <---- Pay attention!
-        controller: EventsChartController, // <---- Pay attention!
-        controllerAs: 'vm', // <---- Pay attention!
-        templateUrl: 'events/events_chart.html' // <---- Pay attention!
+    .state('events.chart', {
+        url: '/chart',
+        controller: EventsChartController,
+        controllerAs: 'vm',
+        templateUrl: 'events/events_chart.html'
     });
+// >>>> Changes end here >>>>
 }
 
 ...
@@ -193,8 +199,10 @@ angular
         'pipSettings',
         'pipButtons',
         'pipLocations',
-        'pipCharts', // <---------------- Pay attention!
-        'pipCharts.Templates', // <---------------- Pay attention! (TBR)
+// >>>> Changes start here >>>>
+        'pipCharts', 
+        'pipCharts.Templates', // To be removed
+// >>>> Changes end here >>>>
 
         'app.Templates',
         'app.Events',
@@ -216,11 +224,15 @@ Open **index.html** and add links to webui-optional .css and .js files:
 <meta charset="UTF-8">
     <title>Pip.WebUI Getting Started</title>
     <link rel="stylesheet" href="pip-webui-lib.css"/>
-    <link rel="stylesheet" href="pip-webui-lib-optional.css"/> <!-- Pay attention!  -->
+<!-- >>>> Changes start here >>>> -->
+    <link rel="stylesheet" href="pip-webui-lib-optional.css"/>
+<!-- >>>> Changes end here >>>> -->
     <link rel="stylesheet" href="pip-webui.css"/>
     <link rel="stylesheet" href="pip-webui-tutorial.css"/>
     <script src="pip-webui-lib.js"></script>
-    <script src="pip-webui-lib-optional.js"></script> <!-- Pay attention!  -->
+<!-- >>>> Changes start here >>>> -->
+    <script src="pip-webui-lib-optional.js"></script>
+<!-- >>>> Changes end here >>>> -->
     <script src="pip-webui.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyBg6cm-FDBFPWzRcn39AuSHGQSrdtVIjEo"></script>
     <script src="pip-webui-tutorial.js"></script>
@@ -253,7 +265,9 @@ function configureApp(
             name: 'main',
             links: [
                 { name: 'nodes', icon: 'icons:grid', title: 'Nodes', state: 'nodes.tiles' },
-                { name: 'events', icon: 'icons:progress', title: 'Events', state: 'events.list' }, // <----------Pay attention!
+// >>>> Changes start here >>>>
+                { name: 'events', icon: 'icons:progress', title: 'Events', state: 'events.list' },
+// >>>> Changes end here >>>>
                 { name: 'settings', icon: 'icons:config', title: 'Settings', state: 'settings.sample' }
             ]
         },
@@ -270,7 +284,8 @@ function configureApp(
 
 ```
 
-After all changes, rebuild application. When you go to the events page and toggle the view, you shall see a line charts with temperature and radition statistics and one pie chart with total information about numbers of events by type:
+After all the changes are done, rebuild application. Then go to the events page and toggle the view.
+Now you shall see line charts with temperature and radition statistics and one pie chart with total number of events by type:
 
 ![Events charts](artifacts/charts.png)
 

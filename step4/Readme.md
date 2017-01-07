@@ -108,10 +108,10 @@ Open **index.ts** file and import files containing code of nodes and events page
 ```javascript
 'use strict'
 
-// Changes start here
+// >>>> Changes start here >>>>
 import './nodes/nodes.ts';
 import './events/events.ts';
-// Changes end here
+// >>>> Changes end here >>>>
 ```
 
 Add references to page modules into the main module:
@@ -130,11 +130,11 @@ angular
         'pipSettings',
         'pipButtons',
         'pipLocations',
-// Changes start here
+// >>>> Changes start here >>>>
         'app.Templates',
         'app.Events',
         'app.Nodes'
-// Changes end here
+// >>>> Changes end here >>>>
     ])
     .config(configureApp)
     .controller('appController', AppController);
@@ -145,9 +145,9 @@ Configure default route in application configuration:
 ```javascript
 function configureApp(
     $mdIconProvider: ng.material.IIconProvider, 
-// Changes start here
+// >>>> Changes start here >>>>
     $urlRouterProvider: any,
-// Changes end here
+// >>>> Changes end here >>>>
     pipSideNavProvider: pip.nav.ISideNavProvider, 
     pipNavMenuProvider: pip.nav.INavMenuProvider, 
     pipAppBarProvider: pip.nav.IAppBarProvider, 
@@ -156,9 +156,9 @@ function configureApp(
     pipBreadcrumbProvider: pip.nav.IBreadcrumbProvider
  ) {
  ...
-// Changes start here
+// >>>> Changes start here >>>>
     $urlRouterProvider.otherwise("/nodes");
-// Changes end here
+// >>>> Changes end here >>>>
 } 
 ```
 

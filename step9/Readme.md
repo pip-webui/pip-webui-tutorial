@@ -33,22 +33,22 @@ class NodesController {
     ) {
         ...
 
-// Changes start here
+// >>>> Changes start here >>>>
         this.locationPoints = [
             this.nodes[0].location,
             this.nodes[1].location,
             this.nodes[2].location
         ];
-// Changes end here
+// >>>> Changes end here >>>>
     }
 
     public nodes: IoTNode[] = [];
-// Changes start here
+// >>>> Changes start here >>>>
     public locationPoints: Point[] = [];
-// Changes end here
+// >>>> Changes end here >>>>
 }
 
-// Changes start here
+// >>>> Changes start here >>>>
 class NodesTilesController {
     public constructor(
         pipActions: pip.nav.IActionsService,
@@ -81,7 +81,7 @@ class NodesMapController {
         ];
     }
 }
-// Changes end here
+// >>>> Changes end here >>>>
 
 angular
     .module('app.Nodes', [ ])
@@ -106,12 +106,12 @@ function configureNodeRoutes(
         url: '/nodes',
         controller: NodesController,
         controllerAs: 'vm',
-// Changes start here
+// >>>> Changes start here >>>>
         template: '<ui-view class="layout-row flex w-stretch"></ui-view>',
         abstract: true
-// Changes end here
+// >>>> Changes end here >>>>
     })
-// Changes start here
+// >>>> Changes start here >>>>
     .state('nodes.tiles', {
         url: '/tiles',
         controller: NodesTilesController,
@@ -122,7 +122,7 @@ function configureNodeRoutes(
         controller: NodesMapController,
         templateUrl: 'nodes/nodes_map.html'
     });
-// Changes end here
+// >>>> Changes end here >>>>
 }
         ...
 });
@@ -153,9 +153,9 @@ function configureApp(
         {
             name: 'main',
             links: [
-// Changes start here
+// >>>> Changes start here >>>>
                 { name: 'nodes', icon: 'icons:grid', title: 'Nodes', state: 'nodes.tiles' },
-// Changes end here
+// >>>> Changes end here >>>>
                 { name: 'events', icon: 'icons:progress', title: 'Events', state: 'events' },
                 { name: 'settings', icon: 'icons:config', title: 'Settings', state: 'settings.sample' }
             ]
@@ -169,9 +169,9 @@ function configureApp(
     ];
     
 ...
-// Changes start here
+// >>>> Changes start here >>>>
     $urlRouterProvider.otherwise("/nodes/tiles");
-// Changes end here
+// >>>> Changes end here >>>>
 }
 
 ```

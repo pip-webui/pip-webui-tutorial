@@ -56,9 +56,9 @@ Open **index.ts** file and import files containing code of settings page:
 
 import './nodes/nodes';
 import './events/events';
-// Changes start here
+// >>>> Changes start here >>>>
 import './settings/settings_sample';
-// Changes end here
+// >>>> Changes end here >>>>
 
 ...
 
@@ -79,9 +79,9 @@ angular
         'app.Templates',
         'app.Events',
         'app.Nodes',
-// Changes start here
+// >>>> Changes start here >>>>
         'app.Settings.Sample'
-// Changes end here
+// >>>> Changes end here >>>>
     ])
     .config(configureApp)
     .controller('appController', AppController);

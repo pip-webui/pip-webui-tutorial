@@ -88,13 +88,13 @@ Import **notifications.ts** and **notification service interface**, update **app
  'use strict';
 
 ...
-// Changes start here
+// >>>> Changes start here >>>>
 import './notifications/notifications';
 import { INotificationService } from './notifications/notifications';
-// Changes end here
+// >>>> Changes end here >>>>
 ...
 
-// Changes start here
+// >>>> Changes start here >>>>
 class AppController {
     public constructor(
         notificationService: INotificationService
@@ -104,7 +104,7 @@ class AppController {
         notificationService.start();
     }
 };
-// Changes end here
+// >>>> Changes end here >>>>
 
 angular
     .module('app', [
@@ -123,7 +123,7 @@ angular
         'app.Events',
         'app.Nodes',
         'app.Settings.Sample',
-// Changes start here
+// >>>> Changes start here >>>>
         'app.Notifications'
 // Changes end gere
     ])
