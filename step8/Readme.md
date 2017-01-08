@@ -1,10 +1,10 @@
-# Pip.WebUI Getting Started <br/> Step 8. Show notifications
+# Getting Started With Pip.WebUI <br/> Step 8. Show notifications
 
-[Go to step 7](https://github.com/pip-webui/pip-webui-tutorial/blob/master/step7/) to add Events page with table view.
+[Go to step 7](https://github.com/pip-webui/pip-webui-tutorial/blob/master/step7/) if you haven't already, to add the table view to the Events page.
 
 ### Show notifications as toast messages
 
-Add Notification service to the application. Create file **notifications.ts** in **/src/notifications** and place there code below:
+In order to add notification service to the application, create a **notifications.ts** file in **/src/notifications** and place the code below:
 
 ```javascript
 export interface INotificationService {
@@ -82,7 +82,7 @@ angular.module('app.Notifications', [])
     .service('notificationService', NotificationService);
 ```
 
-Import **notifications.ts** and **notification service interface**, update **app controller** and add notifications module in **index.ts**:
+Import **notifications.ts** and the **notification service interface**, then update the **app controller** and add the notifications module in **index.ts**:
 
 ```javascript
  'use strict';
@@ -131,16 +131,16 @@ angular
     .controller('appController', AppController);
 ```
 
-Rebuild the application and you shall see the page below:
+After that, rebuild the app and you shall see the page below:
 
 ![Notifications](artifacts/notifications.png) 
 
-Find badge with the current notification count in the application bar:
+Then find the badge with the current notification count in the application bar:
 ![Badge in application bar](artifacts/appbar_badge.png)
 
-Find notifications badge in side navigation menu:
+And, find the notifications badge in side navigation menu:
 ![Badge in side navigation menu](artifacts/sidenav_badge.png) 
 
-### Continue
+### Continue to step 9
 
-[Go to step 9](https://github.com/pip-webui/pip-webui-tutorial/blob/master/step9/) to add map view to Nodes page.
+[Go to step 9](https://github.com/pip-webui/pip-webui-tutorial/blob/master/step9/) to add a map view to Nodes page.
