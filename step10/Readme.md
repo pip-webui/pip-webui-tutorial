@@ -1,12 +1,12 @@
-# Pip.WebUI Getting Started <br/> Step 10. Add charts view for Maintenance Events page
+# Getting Started With Pip.WebUI <br/> Step 10. Add a charts view for the Maintenance Events page
 
-[Go to step 9](https://github.com/pip-webui/pip-webui-tutorial/blob/master/step9/) to add map view to Nodes page.
+[Go to step 9](https://github.com/pip-webui/pip-webui-tutorial/blob/master/step9/) if haven't already, to add the map view to Nodes page.
 
-### Create events chart view
+### Create the events chart view
 
-Rename **src/events/events.html** file to **src/events/events_list.html**
+Rename the **src/events/events.html** file to **src/events/events_list.html**.
 
-Create **src/events/events_chart.html** and place there the following HTML snippet:
+Then, create **src/events/events_chart.html** and add the following HTML snippet:
 
 ```html
 <md-toolbar class="pip-appbar-ext">
@@ -26,9 +26,9 @@ Create **src/events/events_chart.html** and place there the following HTML snipp
     </div>
 </pip-document>
 ```
-### Create events list and chart controllers
+### Create the events list and chart controllers
 
-Open **src/events/events.ts** file and add the code below:
+Open the **src/events/events.ts** file and add the code below:
 
 ```javascript
 'use strict';
@@ -141,9 +141,9 @@ angular
     .config(configureEventRoutes);
 ```
 
-### Update application routes
+### Update the application routes
 
-Open **/src/nodes/events.ts** and in the configuration section make changes to events route states:
+Open **/src/nodes/events.ts** and in the config section, make changes to the event route states:
 
 ```javascript
 'use strict';
@@ -182,9 +182,9 @@ function configureEventRoutes(
 
 ```
 
-### Add charts modules
+### Add chart modules
 
-Open **index.ts** and add charts and charts templates modules:
+Open **index.ts** and add the charts and charts templates modules:
 
 ```javascript
 angular
@@ -239,8 +239,8 @@ Open **index.html** and add links to webui-optional .css and .js files:
 </head>
 ```
 
-Because of state 'events' is abstract now, you need to change link to events tool in application configuration. 
-Open **index.ts** and change state name of first link in the first section from 'events' to 'events.list'.
+Because 'events' is now abstract, you need to change the link to the events tool in the app configuration. 
+Open **index.ts** and change the state name of the first link in the first section from 'events' to 'events.list'.
 
 ```javascript
 'use strict';
@@ -284,8 +284,9 @@ function configureApp(
 
 ```
 
-After all the changes are done, rebuild application. Then go to the events page and toggle the view.
-Now you shall see line charts with temperature and radition statistics and one pie chart with total number of events by type:
+After all the changes are done, rebuild the application. Then go to the events page and toggle the view.
+Now you should see line charts with temperature and radition statistics and one pie chart with the total number of events by type:
 
 ![Events charts](artifacts/charts.png)
 
+todo: add conclusion paragraph
