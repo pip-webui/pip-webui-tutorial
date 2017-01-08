@@ -1,11 +1,11 @@
-# Pip.WebUI Getting Started <br/> Step 9. Add map view to Nodes page
+# Getting Started With Pip.WebUI <br/> Step 9. Add a map view to Nodes page
 
-[Go to step 8](https://github.com/pip-webui/pip-webui-tutorial/blob/master/step8/) to show notifications.
+[Go to step 8](https://github.com/pip-webui/pip-webui-tutorial/blob/master/step8/) if you haven't already, to show notifications.
 
-### Create nodes map view
+### Create the nodes map view
 
-Rename **/src/nodes/nodes.html** file to **/src/nodes/nodes_tiles.html**
-Then create **/src/nodes/nodes_map.html** file and place there HTML snippet below:
+Rename the **/src/nodes/nodes.html** file to **/src/nodes/nodes_tiles.html**
+ and create a **/src/nodes/nodes_map.html** file and add the HTML snippet below:
 
 ```html
 <pip-simple class="layout-row flex">
@@ -14,12 +14,12 @@ Then create **/src/nodes/nodes_map.html** file and place there HTML snippet belo
 </pip-simple>
 ```
 
-### Create nodes tiles and map controllers
+### Create the nodes tiles and map controllers
 
-After we split the Nodes page into tile and map views the  **nodesController** becomes a parent controller.
-Then we shall add two child controllers **nodesTilesController** and **nodesMapController** for each view.
+After we split the Nodes page into the tile and map views, the  **nodesController** becomes a parent controller.
+We will add two child controllers, **nodesTilesController** and **nodesMapController**, for each view.
 
-Make changes in the **/src/nodes/nodes.ts** file. Change **nodesController**, add **nodesTilesController** and **nodesMapController**:
+Make these changes in the **/src/nodes/nodes.ts** file. Edit **nodesController** by adding **nodesTilesController** and **nodesMapController**:
 
 ```javascript
 
@@ -89,9 +89,9 @@ angular
 
 ```
 
-## Update application routes
+## Update the application routes
 
-Inside **/src/nodes/nodes.ts** file make changes to the nodes route configurations:
+Inside the **/src/nodes/nodes.ts** file, make some changes to the nodes route config:
 
 ```javascript
 'use strict';
@@ -128,8 +128,8 @@ function configureNodeRoutes(
 });
 ```
 
-Because of state 'nodes' is abstract now, you need to change link to nodes tool in application configuration. 
-Open **index.ts** and change state name of first link in the first section from 'nodes' to 'nodes.tiles'. Also change default state.
+Because 'nodes' is now abstract, you need to change the link to nodes tool in the app configuration. 
+Open **index.ts** and change the state name of the first link in the first section from 'nodes' to 'nodes.tiles'. Also change the default state.
 
 ```javascript
 'use strict';
@@ -176,10 +176,10 @@ function configureApp(
 
 ```
 
-After all the changes are done, rebuild the application. When you go to the nodes page and toggle the view in the appbar, you shall see a map with positions of IoT nodes:
+After all the changes are done, rebuild the application. When you go to the nodes page and toggle the view in the appbar, you should see a map with positions of IoT nodes:
 
 ![IoT Nodes map view](artifacts/map_view.png)
 
-### Continue
+### Continue to step 10
 
-[Go to step 10](https://github.com/pip-webui/pip-webui-tutorial/blob/master/step10/) to add charts view to Events page.
+[Go to step 10](https://github.com/pip-webui/pip-webui-tutorial/blob/master/step10/) to add a charts view to the Events page.
