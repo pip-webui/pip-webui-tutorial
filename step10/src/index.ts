@@ -80,7 +80,6 @@ angular
         'pipButtons',
         'pipLocations',
         'pipCharts',
-        'pipCharts.Templates',
 
         'app.Templates',
         'app.Events',
