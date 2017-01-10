@@ -167,8 +167,6 @@ class EventsChartController {
             }
         }
 
-        console.log(type);
-        console.log(series);
         return series;
     }
 
