@@ -201,7 +201,6 @@ angular
         'pipLocations',
 // >>>> Changes start here >>>>
         'pipCharts', 
-        'pipCharts.Templates', // To be removed
 // >>>> Changes end here >>>>
 
         'app.Templates',
