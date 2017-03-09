@@ -5,7 +5,7 @@
   "dependencies": {
   },
   "devDependencies": {
-    "pip-webui-all": "git+https://github.com/pip-webui/pip-webui-all.git",
-    "pip-webui-tasks": "git+https://github.com/pip-webui/pip-webui-tasks.git"
+    "pip-webui-all": "1.5.0",
+    "pip-webui-tasks": "1.8.0"
   }
 }
