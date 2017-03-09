@@ -4,4 +4,5 @@ dist
 build
 temp
 lib
+cordova
 npm-debug.log
