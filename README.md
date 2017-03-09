@@ -11,7 +11,7 @@ The sample application pretends to manage IoT nodes that measure air pollution i
 
 Standard app functionality, such as navigation, signin / signup, user settings, help and notifications will be provided out of the box by Pip.WebUI.
 
-Todo: Add picture(s) that demonstrate the main application screens
+![Collage](artifacts/collage.png)
 
 Let's get started.
 

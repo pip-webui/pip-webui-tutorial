@@ -161,7 +161,7 @@ Then add these styles to the **events.less** file in the **/src/events** folder.
       border-collapse: collapse
     }
 }
-.app_events.pip-document {
+.app-events.pip-document {
   .scrolled-container {
     overflow: auto;
   }

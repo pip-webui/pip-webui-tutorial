@@ -15,13 +15,13 @@ Then, create **src/events/events_chart.html** and add the following HTML snippet
 <pip-document>
     <div class="pip-body p16">
         <h3>Temperature changes</h3>
-        <pip-line-chart pip-series="vm.temperatureSerias" pip-x-tick-format="vm.formatXTick">
+        <pip-line-chart pip-series="vm.temperatureSeries" pip-x-tick-format="vm.formatXTick">
         </pip-line-chart>
         <h3>Radiation level changes</h3>
-        <pip-line-chart pip-series="vm.radLevelSerias" pip-x-tick-format="vm.formatXTick">
+        <pip-line-chart pip-series="vm.radLevelSeries" pip-x-tick-format="vm.formatXTick">
         </pip-line-chart>
         <h3>Total statistics</h3>
-        <pip-pie-chart pip-series="vm.totalSeria" pip-centered="true" pip-donut="true" pip-show-total="true">
+        <pip-pie-chart pip-series="vm.totalSeries" pip-centered="true" pip-donut="true" pip-show-total="true">
         </pip-pie-chart>
     </div>
 </pip-document>
@@ -201,7 +201,6 @@ angular
         'pipLocations',
 // >>>> Changes start here >>>>
         'pipCharts', 
-        'pipCharts.Templates', // To be removed
 // >>>> Changes end here >>>>
 
         'app.Templates',
